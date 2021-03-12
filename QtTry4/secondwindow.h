@@ -21,15 +21,20 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void ConOrNot(bool conect);
+    void LogOrNot(bool logIn);
+
 private:
     Ui::SecondWindow *ui;
 
     QSqlDatabase db;
 
-    bool conect;
+    bool conect;    
 
 signals:
     void ShowMain();
+    void DBConnect(QString sendStr);
+    void DBLog(QString log, QString pass);
 };
 
 #endif // SECONDWINDOW_H

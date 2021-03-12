@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "secondwindow.h"
+#include <QSqlQuery>
+#include <QSqlTableModel>
+
+#include <QSqlQueryModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,9 +27,22 @@ private slots:
 
     void reciveSignal();
 
+    void SigDBConnect(QString str);
+    void SigDBLog(QString log, QString pass);
+
 private:
     Ui::MainWindow *ui;
 
+    QSqlDatabase db;
+    QSqlTableModel* model;
+    QSqlQueryModel* qmodel;
+
     SecondWindow *sw;
+
+    bool conect;
+
+signals:
+    void RevDBConnect(bool conect);
+    void RevDBLog(bool logIn);
 };
 #endif // MAINWINDOW_H

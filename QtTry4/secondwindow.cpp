@@ -26,60 +26,51 @@ SecondWindow::~SecondWindow()
 
 void SecondWindow::on_LogIN_clicked()
 {
-    QString log = ui->login->text();
-    QString pass = ui->password->text();
+    emit DBLog(ui->login->text(), ui->password->text());
+}
 
-    QSqlQuery query;
-    query = QSqlQuery(db);
+void SecondWindow::LogOrNot(bool logIn)
+{
+    if(logIn)
+    {
+        QMessageBox *msgBox;
+        msgBox = new QMessageBox;
 
-    query.exec("SELECT * FROM Users");
-
-    if (conect)
+        msgBox->about(this, "Авторизация", "Авторизация прошла успешно!");
+        if (msgBox->Ok)
         {
-            while (query.next())
-            {
-                QString s1 = query.value(3).toString();
-                QString s2 = query.value(4).toString();
-
-                if(log == s1 && pass == s2)
-                {
-                    QMessageBox *msgBox;
-                    msgBox = new QMessageBox;
-
-                    msgBox->about(this, "Авторизация", "Авторизация прошла успешно!");
-                    if (msgBox->Ok)
-                    {
-                        emit ShowMain();
-                        delete msgBox;
-                        this->close();
-                    }
-                    return;
-                }
-            }
-
-            QMessageBox::critical(this, "Авторизация", "Логин и/или пароль введены не верно!");
-
-            return;
-         }
+            emit ShowMain();
+            delete msgBox;
+            this->close();
+        }
+        return;
+    }
+    else
+    {
+        QMessageBox::critical(this, "Авторизация", "Логин и/или пароль введены не верно!");
+        return;
+    }
 }
 
 void SecondWindow::on_pushButton_clicked()
 {
-    db = QSqlDatabase::addDatabase("QODBC");
-        db.setDatabaseName(ui->lineEdit->text());
+    emit DBConnect(ui->lineEdit->text());
+}
 
-        if (!db.open())
-                {
-                    qDebug() << db.lastError();
+void SecondWindow::ConOrNot(bool conect)
+{
+    if(!conect)
+    {
+        qDebug() << db.lastError();
 
-                    QMessageBox::critical(this, "Connection", "Наименование БД указано не верно/не инициализированно!");
-                }
-        else
-                {
-                    ui->LogIN->setEnabled(true);
-                    ui->lineEdit->clear();
-                    ui->lineEdit->setEnabled(false);
-                    ui->pushButton->setEnabled(false);
-                    conect = true;
-                }
+        QMessageBox::critical(this, "Connection", "Наименование БД указано не верно/не инициализированно!");
+    }
+    else
+    {
+        ui->LogIN->setEnabled(true);
+        ui->lineEdit->clear();
+        ui->lineEdit->setEnabled(false);
+        ui->pushButton->setEnabled(false);
+        this->conect = conect;
+    }
 }
