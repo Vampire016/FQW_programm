@@ -48,11 +48,16 @@ void MainWindow::on_action_2_triggered()
     ui->tabWidget->setCurrentIndex(1);
 
     qmodel = new QSqlQueryModel;
-    qmodel->setQuery("SELECT Orders.id, Orders.Title, Status.SName, Edit.DateEdit, Create.DateOpen, Priority.PName, Users.FullName "
-    "FROM Users INNER JOIN ((Priority INNER JOIN ((Status INNER JOIN Orders ON Status.id = Orders.Status) INNER JOIN Edit ON Orders.id = Edit.id) ON Priority.id = Orders.Priory) INNER JOIN [Create] ON Orders.id = Create.id) ON (Users.id = Edit.WhoEdit) AND (Users.id = Create.WhoCreate)", db);
+    model = new QSqlTableModel;
 
+    qmodel->setQuery("SELECT Orders.id, Orders.Title, Status.SName, Edit.DateEdit, Create.DateOpen, Priority.PName, createUser.fullName AS Инициатор, workUser.FullName AS [Кто назначен], Categories.[C+SC] "
+"FROM Users AS workUser INNER JOIN (Categories INNER JOIN (Status INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN [Create] ON createUser.id = Create.WhoCreate) ON Orders.id = Create.id) INNER JOIN Edit ON Orders.id = Edit.id) INNER JOIN [Work] ON Orders.id = Work.id) ON Priority.id = Orders.Priory) ON Status.id = Orders.Status) ON Categories.id = Orders.Category) ON workUser.id = Work.WhoWork;", db);
 
     ui->tableView->setModel(qmodel);
+    ui->tableView->resizeRowsToContents();
+    ui->tableView->setColumnWidth(1, 270);
+
+
 }
 
 void MainWindow::reciveSignal()
