@@ -18,18 +18,27 @@ MainWindow::MainWindow(QWidget *parent)
     QTabBar *tabBar = ui->tabWidget->findChild<QTabBar *>();
     tabBar->hide();
 
-    ui->pushButton->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
-    ui->pushButton_2->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
-    ui->pushButton_3->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
-    ui->pushButton_4->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
-    ui->pushButton_7->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
-    ui->pushButton_8->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: green}");
+    qmodel = new QSqlQueryModel;
+    qmodel_c1 = new QSqlQueryModel;
+
+
+    tmr = new QTimer();
+    tmr->setInterval(10000);
+    tmr->start();
+
+    ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
+    ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
+    ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
+    ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: green}");
 
     connect(sw, SIGNAL(ShowMain()), this, SLOT(reciveSignal()));
     connect(sw, SIGNAL(DBConnect(QString)), this, SLOT(SigDBConnect(QString)));
     connect(this, SIGNAL(RevDBConnect(bool)), sw, SLOT(ConOrNot(bool)));
     connect(sw, SIGNAL(DBLog(QString, QString)), this, SLOT(SigDBLog(QString, QString)));
     connect(this, SIGNAL(RevDBLog(bool)), sw, SLOT(LogOrNot(bool)));
+    connect(tmr, SIGNAL(timeout()), this, SLOT(UpdateDB()));
 }
 
 MainWindow::~MainWindow()
@@ -48,13 +57,8 @@ void MainWindow::on_action_2_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
 
-    qmodel = new QSqlQueryModel;
-    model = new QSqlTableModel;
-
-    qmodel->setQuery("SELECT Orders.id, Orders.Title, Status.SName, Edit.DateEdit, Create.DateOpen, Priority.PName, createUser.fullName AS Инициатор, workUser.FullName AS [Кто назначен], Categories.[C+SC] "
-"FROM Users AS workUser INNER JOIN (Categories INNER JOIN (Status INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN [Create] ON createUser.id = Create.WhoCreate) ON Orders.id = Create.id) INNER JOIN Edit ON Orders.id = Edit.id) INNER JOIN [Work] ON Orders.id = Work.id) ON Priority.id = Orders.Priory) ON Status.id = Orders.Status) ON Categories.id = Orders.Category) ON workUser.id = Work.WhoWork ORDER BY Orders.id DESC;", db);
-
     ui->tableView->verticalHeader()->setVisible(false);
+
 
 
     ui->tableView->setModel(qmodel);
@@ -109,4 +113,28 @@ void MainWindow::SigDBLog(QString log, QString pass)
             emit RevDBLog(false);
             return;
         }
+}
+
+void MainWindow::UpdateDB()
+{
+    qmodel->setQuery("SELECT Orders.id, Orders.Title, Status.SName, Edit.DateEdit, Create.DateOpen, Priority.PName, createUser.fullName AS Инициатор, workUser.FullName AS [Кто назначен], Categories.[C+SC] "
+"FROM Users AS workUser INNER JOIN (Categories INNER JOIN (Status INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN [Create] ON createUser.id = Create.WhoCreate) ON Orders.id = Create.id) INNER JOIN Edit ON Orders.id = Edit.id) INNER JOIN [Work] ON Orders.id = Work.id) ON Priority.id = Orders.Priory) ON Status.id = Orders.Status) ON Categories.id = Orders.Category) ON workUser.id = Work.WhoWork ORDER BY Orders.id DESC;", db);
+
+    qmodel_c1->setQuery("SELECT "
+"-SUM(NOT Status.SName = 'Закрыто') AS cOpened, "
+"-SUM(Status.SName = 'В работе (назначена)' OR Status.SName = 'В работе (запланированна)') AS cInWork "
+"FROM Status INNER JOIN Orders ON Status.id = Orders.Status;", db);
+
+    qmodel_c1->query().first();
+
+    ui->PB_wOpened->setText(qmodel_c1->query().value(0).toString());
+    ui->PB_wInWork->setText(qmodel_c1->query().value(1).toString());
+
+
+    tmr->start();
+}
+
+void MainWindow::on_PB_wOpened_clicked()
+{
+
 }

@@ -8,6 +8,9 @@
 
 #include <QSqlQueryModel>
 
+#include <QTime>
+#include <QTimer>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,15 +34,21 @@ private slots:
     void SigDBConnect(QString str);
     void SigDBLog(QString log, QString pass);
 
+    void UpdateDB();
+
+    void on_PB_wOpened_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     QSqlDatabase db;
-    QSqlTableModel* model;
-    QSqlQueryModel* qmodel;
 
+    QSqlQueryModel* qmodel;
+    QSqlQueryModel* qmodel_c1;
 
     SecondWindow *sw;
+
+    QTimer *tmr;
 
     bool conect;
 
