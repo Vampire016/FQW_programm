@@ -8,6 +8,7 @@
 
 #include <QSqlQueryModel>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -36,6 +37,7 @@ private:
     QSqlDatabase db;
     QSqlTableModel* model;
     QSqlQueryModel* qmodel;
+
 
     SecondWindow *sw;
 
