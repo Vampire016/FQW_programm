@@ -51,6 +51,7 @@ private:
     QTimer *tmr;
 
     bool conect;
+    int counterUpdate;
 
 signals:
     void RevDBConnect(bool conect);

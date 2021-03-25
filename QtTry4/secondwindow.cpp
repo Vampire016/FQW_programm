@@ -39,7 +39,7 @@ void SecondWindow::LogOrNot(bool logIn)
         msgBox->about(this, "Авторизация", "Авторизация прошла успешно!");
         if (msgBox->Ok)
         {
-            emit ShowMain();
+            emit ShowMain();            
             delete msgBox;
             this->close();
         }

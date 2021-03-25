@@ -4,12 +4,16 @@
 #include <QTabBar>
 #include <QLabel>
 
+#include <QDebug>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    counterUpdate = 0;
 
     conect = false;
     sw = new SecondWindow;
@@ -21,10 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     qmodel = new QSqlQueryModel;
     qmodel_c1 = new QSqlQueryModel;
 
-
     tmr = new QTimer();
-    tmr->setInterval(10000);
-    tmr->start();
 
     ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
     ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
@@ -106,6 +107,7 @@ void MainWindow::SigDBLog(QString log, QString pass)
                 if(log == s1 && pass == s2)
                 {
                     emit RevDBLog(true);
+                    tmr->start(1);
                     return;
                 }
             }
@@ -117,6 +119,12 @@ void MainWindow::SigDBLog(QString log, QString pass)
 
 void MainWindow::UpdateDB()
 {
+    counterUpdate++;
+
+    qDebug() << "Update #" + QVariant(counterUpdate).toString();
+
+
+
     qmodel->setQuery("SELECT Orders.id, Orders.Title, Status.SName, Edit.DateEdit, Create.DateOpen, Priority.PName, createUser.fullName AS Инициатор, workUser.FullName AS [Кто назначен], Categories.[C+SC] "
 "FROM Users AS workUser INNER JOIN (Categories INNER JOIN (Status INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN [Create] ON createUser.id = Create.WhoCreate) ON Orders.id = Create.id) INNER JOIN Edit ON Orders.id = Edit.id) INNER JOIN [Work] ON Orders.id = Work.id) ON Priority.id = Orders.Priory) ON Status.id = Orders.Status) ON Categories.id = Orders.Category) ON workUser.id = Work.WhoWork ORDER BY Orders.id DESC;", db);
 
@@ -131,7 +139,7 @@ void MainWindow::UpdateDB()
     ui->PB_wInWork->setText(qmodel_c1->query().value(1).toString());
 
 
-    tmr->start();
+    tmr->start(10000);
 }
 
 void MainWindow::on_PB_wOpened_clicked()
