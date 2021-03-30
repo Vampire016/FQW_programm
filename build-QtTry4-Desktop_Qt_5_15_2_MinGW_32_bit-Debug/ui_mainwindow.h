@@ -34,6 +34,7 @@ class Ui_MainWindow
 public:
     QAction *action;
     QAction *action_2;
+    QAction *action_3;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
@@ -105,6 +106,8 @@ public:
         action->setObjectName(QString::fromUtf8("action"));
         action_2 = new QAction(MainWindow);
         action_2->setObjectName(QString::fromUtf8("action_2"));
+        action_3 = new QAction(MainWindow);
+        action_3->setObjectName(QString::fromUtf8("action_3"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -493,6 +496,7 @@ public:
         menubar->addAction(menu->menuAction());
         menu->addAction(action);
         menu->addAction(action_2);
+        menu->addAction(action_3);
 
         retranslateUi(MainWindow);
 
@@ -507,6 +511,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         action->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\274\320\276\320\271", nullptr));
         action_2->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\270", nullptr));
+        action_3->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214...", nullptr));
         groupBox->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wOpened->setToolTip(QString());

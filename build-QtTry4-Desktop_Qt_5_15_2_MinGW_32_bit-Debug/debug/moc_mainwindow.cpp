@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[16];
-    char stringdata0[168];
+    QByteArrayData data[17];
+    char stringdata0[190];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,14 +47,16 @@ QT_MOC_LITERAL(11, 119, 8), // "SigDBLog"
 QT_MOC_LITERAL(12, 128, 3), // "log"
 QT_MOC_LITERAL(13, 132, 4), // "pass"
 QT_MOC_LITERAL(14, 137, 8), // "UpdateDB"
-QT_MOC_LITERAL(15, 146, 21) // "on_PB_wOpened_clicked"
+QT_MOC_LITERAL(15, 146, 21), // "on_PB_wOpened_clicked"
+QT_MOC_LITERAL(16, 168, 21) // "on_action_3_triggered"
 
     },
     "MainWindow\0RevDBConnect\0\0conect\0"
     "RevDBLog\0logIn\0on_action_triggered\0"
     "on_action_2_triggered\0reciveSignal\0"
     "SigDBConnect\0str\0SigDBLog\0log\0pass\0"
-    "UpdateDB\0on_PB_wOpened_clicked"
+    "UpdateDB\0on_PB_wOpened_clicked\0"
+    "on_action_3_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +66,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,17 +74,18 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x06 /* Public */,
-       4,    1,   62,    2, 0x06 /* Public */,
+       1,    1,   64,    2, 0x06 /* Public */,
+       4,    1,   67,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   65,    2, 0x08 /* Private */,
-       7,    0,   66,    2, 0x08 /* Private */,
-       8,    0,   67,    2, 0x08 /* Private */,
-       9,    1,   68,    2, 0x08 /* Private */,
-      11,    2,   71,    2, 0x08 /* Private */,
-      14,    0,   76,    2, 0x08 /* Private */,
-      15,    0,   77,    2, 0x08 /* Private */,
+       6,    0,   70,    2, 0x08 /* Private */,
+       7,    0,   71,    2, 0x08 /* Private */,
+       8,    0,   72,    2, 0x08 /* Private */,
+       9,    1,   73,    2, 0x08 /* Private */,
+      11,    2,   76,    2, 0x08 /* Private */,
+      14,    0,   81,    2, 0x08 /* Private */,
+      15,    0,   82,    2, 0x08 /* Private */,
+      16,    0,   83,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -94,6 +97,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,   12,   13,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -115,6 +119,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->SigDBLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 7: _t->UpdateDB(); break;
         case 8: _t->on_PB_wOpened_clicked(); break;
+        case 9: _t->on_action_3_triggered(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -165,13 +170,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

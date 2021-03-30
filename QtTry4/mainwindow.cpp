@@ -6,6 +6,12 @@
 
 #include <QDebug>
 
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QPainter>
+#include <QPixmap>
+#include <QPrintPreviewDialog>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -145,4 +151,41 @@ void MainWindow::UpdateDB()
 void MainWindow::on_PB_wOpened_clicked()
 {
 
+}
+
+void MainWindow::on_action_3_triggered()
+{
+    QPrinter printer;
+
+    QPainter painter;
+
+    /*painter.setWindow(sw->rect());
+    this->render(&painter);*/
+
+    //QPrintDialog dialog(&printer, this);
+    QPixmap pix = QWidget::grab(sw->rect());
+
+
+
+
+    QPrintPreviewDialog preview(&printer,this);
+
+
+
+
+    if(preview.exec() == QDialog::Accepted)
+    {
+        /*
+        painter.begin(&printer);
+        painter.drawPixmap(0, 0, pix);
+        painter.end();*/
+    }
+
+    /*
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        painter.begin(&printer);
+        painter.drawPixmap(0, 0, pix);
+        painter.end();
+    }*/
 }

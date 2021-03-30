@@ -38,6 +38,8 @@ private slots:
 
     void on_PB_wOpened_clicked();
 
+    void on_action_3_triggered();
+
 private:
     Ui::MainWindow *ui;
 

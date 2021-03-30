@@ -272,6 +272,7 @@ Makefile: ../QtTry4/QtTry4.pro D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-
 		D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/yacc.prf \
 		D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/lex.prf \
 		../QtTry4/QtTry4.pro \
+		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5PrintSupport.prl \
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Widgets.prl \
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Gui.prl \
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Sql.prl \
@@ -481,6 +482,7 @@ D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/exceptions.prf:
 D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/yacc.prf:
 D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/lex.prf:
 ../QtTry4/QtTry4.pro:
+D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5PrintSupport.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Widgets.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Gui.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Sql.prl:
