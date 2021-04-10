@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>img/IT-Osoba_Logo.png</file>
+        <file>img/IT-Osoba_Logo_150x88.png</file>
+    </qresource>
+</RCC>

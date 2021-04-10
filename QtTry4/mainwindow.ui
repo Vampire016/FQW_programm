@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -166,7 +166,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label">
+                <widget class="QLabel" name="label_btn_Opend">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -318,7 +318,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label_5">
+                <widget class="QLabel" name="label_btn_New">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -470,7 +470,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label_6">
+                <widget class="QLabel" name="label_btn_InWork">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -622,7 +622,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label_9">
+                <widget class="QLabel" name="label_btn_Solved">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -774,7 +774,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label_10">
+                <widget class="QLabel" name="label_btn_Awaits">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -926,7 +926,7 @@
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-                <widget class="QLabel" name="label_11">
+                <widget class="QLabel" name="label_btn_Overdue">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -979,21 +979,83 @@
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QTableView" name="tableView">
-          <property name="mouseTracking">
-           <bool>false</bool>
-          </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-          <property name="dragDropOverwriteMode">
-           <bool>false</bool>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>70</height>
+             </size>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <widget class="QComboBox" name="comboBox">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>20</y>
+               <width>71</width>
+               <height>22</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_2">
+             <property name="geometry">
+              <rect>
+               <x>90</x>
+               <y>20</y>
+               <width>221</width>
+               <height>22</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_3">
+             <property name="geometry">
+              <rect>
+               <x>320</x>
+               <y>20</y>
+               <width>69</width>
+               <height>22</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_4">
+             <property name="geometry">
+              <rect>
+               <x>400</x>
+               <y>20</y>
+               <width>211</width>
+               <height>22</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableView" name="tableView">
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Tab 3</string>
+       </attribute>
       </widget>
      </widget>
     </item>
@@ -1021,25 +1083,44 @@
     <property name="title">
      <string>Поддержка</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <widget class="QMenu" name="menu_2">
+     <property name="title">
+      <string>Печать...</string>
+     </property>
+     <addaction name="act_editOrd"/>
+    </widget>
+    <addaction name="act_home"/>
+    <addaction name="act_orders"/>
+    <addaction name="menu_2"/>
    </widget>
    <addaction name="menu"/>
   </widget>
-  <action name="action">
+  <action name="act_home">
    <property name="text">
     <string>Домой</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="act_orders">
    <property name="text">
     <string>Заявки</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="act_editOrd">
    <property name="text">
-    <string>Печать...</string>
+    <string>Редактировать отчет</string>
+   </property>
+  </action>
+  <action name="act_print">
+   <property name="text">
+    <string>Печать</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="act_return">
+   <property name="text">
+    <string>Возврат</string>
    </property>
   </action>
  </widget>

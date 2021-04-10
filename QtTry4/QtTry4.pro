@@ -11,17 +11,24 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    printorder.cpp \
     secondwindow.cpp
 
 HEADERS += \
+    Libraries.h \
     mainwindow.h \
+    printorder.h \
     secondwindow.h
 
 FORMS += \
     mainwindow.ui \
+    printorder.ui \
     secondwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resourses.qrc

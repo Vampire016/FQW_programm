@@ -278,7 +278,8 @@ Makefile: ../QtTry4/QtTry4.pro D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Sql.prl \
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Core.prl \
 		D:/Programs/QT_3/5.15.2/mingw81_32/lib/qtmain.prl \
-		D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/build_pass.prf
+		D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/build_pass.prf \
+		../QtTry4/resourses.qrc
 	$(QMAKE) -o Makefile ..\QtTry4\QtTry4.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/spec_pre.prf:
 D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/qdevice.pri:
@@ -489,6 +490,7 @@ D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Sql.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/lib/Qt5Core.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/lib/qtmain.prl:
 D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/build_pass.prf:
+../QtTry4/resourses.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\QtTry4\QtTry4.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

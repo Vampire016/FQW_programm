@@ -1,8 +1,7 @@
 #ifndef SECONDWINDOW_H
 #define SECONDWINDOW_H
 
-#include <QDialog>
-#include <QSqlDatabase>
+#include "Libraries.h"
 
 namespace Ui {
 class SecondWindow;

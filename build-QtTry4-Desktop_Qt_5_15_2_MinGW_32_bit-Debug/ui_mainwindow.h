@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -32,9 +33,11 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *action;
-    QAction *action_2;
-    QAction *action_3;
+    QAction *act_home;
+    QAction *act_orders;
+    QAction *act_editOrd;
+    QAction *act_print;
+    QAction *act_return;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
@@ -49,7 +52,7 @@ public:
     QSplitter *splitter;
     QPushButton *PB_wOpened;
     QSplitter *splitter_2;
-    QLabel *label;
+    QLabel *label_btn_Opend;
     QGroupBox *groupBox_7;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_3;
@@ -57,7 +60,7 @@ public:
     QSplitter *splitter_5;
     QPushButton *PB_wNew;
     QSplitter *splitter_6;
-    QLabel *label_5;
+    QLabel *label_btn_New;
     QGroupBox *groupBox_8;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_4;
@@ -65,7 +68,7 @@ public:
     QSplitter *splitter_8;
     QPushButton *PB_wInWork;
     QSplitter *splitter_9;
-    QLabel *label_6;
+    QLabel *label_btn_InWork;
     QGroupBox *groupBox_9;
     QHBoxLayout *horizontalLayout_7;
     QSpacerItem *horizontalSpacer_5;
@@ -73,7 +76,7 @@ public:
     QSplitter *splitter_11;
     QPushButton *PB_wSolved;
     QSplitter *splitter_12;
-    QLabel *label_9;
+    QLabel *label_btn_Solved;
     QGroupBox *groupBox_10;
     QHBoxLayout *horizontalLayout_8;
     QSpacerItem *horizontalSpacer_6;
@@ -81,7 +84,7 @@ public:
     QSplitter *splitter_14;
     QPushButton *PB_wAwaits;
     QSplitter *splitter_15;
-    QLabel *label_10;
+    QLabel *label_btn_Awaits;
     QGroupBox *groupBox_11;
     QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer_7;
@@ -89,25 +92,38 @@ public:
     QSplitter *splitter_17;
     QPushButton *PB_wOverdue;
     QSplitter *splitter_18;
-    QLabel *label_11;
+    QLabel *label_btn_Overdue;
     QSpacerItem *verticalSpacer_2;
     QWidget *tab_2;
-    QHBoxLayout *horizontalLayout_3;
+    QVBoxLayout *verticalLayout_4;
+    QVBoxLayout *verticalLayout_3;
+    QGroupBox *groupBox_2;
+    QComboBox *comboBox;
+    QComboBox *comboBox_2;
+    QComboBox *comboBox_3;
+    QComboBox *comboBox_4;
     QTableView *tableView;
+    QWidget *tab_3;
     QMenuBar *menubar;
     QMenu *menu;
+    QMenu *menu_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(885, 588);
-        action = new QAction(MainWindow);
-        action->setObjectName(QString::fromUtf8("action"));
-        action_2 = new QAction(MainWindow);
-        action_2->setObjectName(QString::fromUtf8("action_2"));
-        action_3 = new QAction(MainWindow);
-        action_3->setObjectName(QString::fromUtf8("action_3"));
+        act_home = new QAction(MainWindow);
+        act_home->setObjectName(QString::fromUtf8("act_home"));
+        act_orders = new QAction(MainWindow);
+        act_orders->setObjectName(QString::fromUtf8("act_orders"));
+        act_editOrd = new QAction(MainWindow);
+        act_editOrd->setObjectName(QString::fromUtf8("act_editOrd"));
+        act_print = new QAction(MainWindow);
+        act_print->setObjectName(QString::fromUtf8("act_print"));
+        act_print->setVisible(true);
+        act_return = new QAction(MainWindow);
+        act_return->setObjectName(QString::fromUtf8("act_return"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -170,17 +186,17 @@ public:
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setMinimumSize(QSize(71, 17));
         splitter_2->setOrientation(Qt::Horizontal);
-        label = new QLabel(splitter_2);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_btn_Opend = new QLabel(splitter_2);
+        label_btn_Opend->setObjectName(QString::fromUtf8("label_btn_Opend"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(15);
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
-        label->setMinimumSize(QSize(0, 15));
-        label->setLayoutDirection(Qt::LeftToRight);
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        splitter_2->addWidget(label);
+        sizePolicy1.setHeightForWidth(label_btn_Opend->sizePolicy().hasHeightForWidth());
+        label_btn_Opend->setSizePolicy(sizePolicy1);
+        label_btn_Opend->setMinimumSize(QSize(0, 15));
+        label_btn_Opend->setLayoutDirection(Qt::LeftToRight);
+        label_btn_Opend->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        splitter_2->addWidget(label_btn_Opend);
         splitter_3->addWidget(splitter_2);
 
         horizontalLayout_4->addWidget(splitter_3);
@@ -227,14 +243,14 @@ public:
         splitter_6->setObjectName(QString::fromUtf8("splitter_6"));
         splitter_6->setMinimumSize(QSize(71, 17));
         splitter_6->setOrientation(Qt::Horizontal);
-        label_5 = new QLabel(splitter_6);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        sizePolicy1.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy1);
-        label_5->setMinimumSize(QSize(0, 15));
-        label_5->setLayoutDirection(Qt::LeftToRight);
-        label_5->setAlignment(Qt::AlignCenter);
-        splitter_6->addWidget(label_5);
+        label_btn_New = new QLabel(splitter_6);
+        label_btn_New->setObjectName(QString::fromUtf8("label_btn_New"));
+        sizePolicy1.setHeightForWidth(label_btn_New->sizePolicy().hasHeightForWidth());
+        label_btn_New->setSizePolicy(sizePolicy1);
+        label_btn_New->setMinimumSize(QSize(0, 15));
+        label_btn_New->setLayoutDirection(Qt::LeftToRight);
+        label_btn_New->setAlignment(Qt::AlignCenter);
+        splitter_6->addWidget(label_btn_New);
         splitter_4->addWidget(splitter_6);
 
         horizontalLayout_5->addWidget(splitter_4);
@@ -281,14 +297,14 @@ public:
         splitter_9->setObjectName(QString::fromUtf8("splitter_9"));
         splitter_9->setMinimumSize(QSize(71, 17));
         splitter_9->setOrientation(Qt::Horizontal);
-        label_6 = new QLabel(splitter_9);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy1.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy1);
-        label_6->setMinimumSize(QSize(0, 15));
-        label_6->setLayoutDirection(Qt::LeftToRight);
-        label_6->setAlignment(Qt::AlignCenter);
-        splitter_9->addWidget(label_6);
+        label_btn_InWork = new QLabel(splitter_9);
+        label_btn_InWork->setObjectName(QString::fromUtf8("label_btn_InWork"));
+        sizePolicy1.setHeightForWidth(label_btn_InWork->sizePolicy().hasHeightForWidth());
+        label_btn_InWork->setSizePolicy(sizePolicy1);
+        label_btn_InWork->setMinimumSize(QSize(0, 15));
+        label_btn_InWork->setLayoutDirection(Qt::LeftToRight);
+        label_btn_InWork->setAlignment(Qt::AlignCenter);
+        splitter_9->addWidget(label_btn_InWork);
         splitter_7->addWidget(splitter_9);
 
         horizontalLayout_6->addWidget(splitter_7);
@@ -335,14 +351,14 @@ public:
         splitter_12->setObjectName(QString::fromUtf8("splitter_12"));
         splitter_12->setMinimumSize(QSize(71, 17));
         splitter_12->setOrientation(Qt::Horizontal);
-        label_9 = new QLabel(splitter_12);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        sizePolicy1.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy1);
-        label_9->setMinimumSize(QSize(0, 15));
-        label_9->setLayoutDirection(Qt::LeftToRight);
-        label_9->setAlignment(Qt::AlignCenter);
-        splitter_12->addWidget(label_9);
+        label_btn_Solved = new QLabel(splitter_12);
+        label_btn_Solved->setObjectName(QString::fromUtf8("label_btn_Solved"));
+        sizePolicy1.setHeightForWidth(label_btn_Solved->sizePolicy().hasHeightForWidth());
+        label_btn_Solved->setSizePolicy(sizePolicy1);
+        label_btn_Solved->setMinimumSize(QSize(0, 15));
+        label_btn_Solved->setLayoutDirection(Qt::LeftToRight);
+        label_btn_Solved->setAlignment(Qt::AlignCenter);
+        splitter_12->addWidget(label_btn_Solved);
         splitter_10->addWidget(splitter_12);
 
         horizontalLayout_7->addWidget(splitter_10);
@@ -389,14 +405,14 @@ public:
         splitter_15->setObjectName(QString::fromUtf8("splitter_15"));
         splitter_15->setMinimumSize(QSize(71, 17));
         splitter_15->setOrientation(Qt::Horizontal);
-        label_10 = new QLabel(splitter_15);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-        sizePolicy1.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
-        label_10->setSizePolicy(sizePolicy1);
-        label_10->setMinimumSize(QSize(0, 15));
-        label_10->setLayoutDirection(Qt::LeftToRight);
-        label_10->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        splitter_15->addWidget(label_10);
+        label_btn_Awaits = new QLabel(splitter_15);
+        label_btn_Awaits->setObjectName(QString::fromUtf8("label_btn_Awaits"));
+        sizePolicy1.setHeightForWidth(label_btn_Awaits->sizePolicy().hasHeightForWidth());
+        label_btn_Awaits->setSizePolicy(sizePolicy1);
+        label_btn_Awaits->setMinimumSize(QSize(0, 15));
+        label_btn_Awaits->setLayoutDirection(Qt::LeftToRight);
+        label_btn_Awaits->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        splitter_15->addWidget(label_btn_Awaits);
         splitter_13->addWidget(splitter_15);
 
         horizontalLayout_8->addWidget(splitter_13);
@@ -443,14 +459,14 @@ public:
         splitter_18->setObjectName(QString::fromUtf8("splitter_18"));
         splitter_18->setMinimumSize(QSize(71, 17));
         splitter_18->setOrientation(Qt::Horizontal);
-        label_11 = new QLabel(splitter_18);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-        sizePolicy1.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
-        label_11->setSizePolicy(sizePolicy1);
-        label_11->setMinimumSize(QSize(0, 15));
-        label_11->setLayoutDirection(Qt::LeftToRight);
-        label_11->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        splitter_18->addWidget(label_11);
+        label_btn_Overdue = new QLabel(splitter_18);
+        label_btn_Overdue->setObjectName(QString::fromUtf8("label_btn_Overdue"));
+        sizePolicy1.setHeightForWidth(label_btn_Overdue->sizePolicy().hasHeightForWidth());
+        label_btn_Overdue->setSizePolicy(sizePolicy1);
+        label_btn_Overdue->setMinimumSize(QSize(0, 15));
+        label_btn_Overdue->setLayoutDirection(Qt::LeftToRight);
+        label_btn_Overdue->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        splitter_18->addWidget(label_btn_Overdue);
         splitter_16->addWidget(splitter_18);
 
         horizontalLayout_9->addWidget(splitter_16);
@@ -468,17 +484,43 @@ public:
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        horizontalLayout_3 = new QHBoxLayout(tab_2);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        verticalLayout_4 = new QVBoxLayout(tab_2);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        groupBox_2 = new QGroupBox(tab_2);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        groupBox_2->setMinimumSize(QSize(0, 70));
+        comboBox = new QComboBox(groupBox_2);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(10, 20, 71, 22));
+        comboBox_2 = new QComboBox(groupBox_2);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBox_2->setGeometry(QRect(90, 20, 221, 22));
+        comboBox_3 = new QComboBox(groupBox_2);
+        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
+        comboBox_3->setGeometry(QRect(320, 20, 69, 22));
+        comboBox_4 = new QComboBox(groupBox_2);
+        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
+        comboBox_4->setGeometry(QRect(400, 20, 211, 22));
+
+        verticalLayout_3->addWidget(groupBox_2);
+
         tableView = new QTableView(tab_2);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setMouseTracking(false);
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableView->setDragDropOverwriteMode(false);
 
-        horizontalLayout_3->addWidget(tableView);
+        verticalLayout_3->addWidget(tableView);
+
+
+        verticalLayout_4->addLayout(verticalLayout_3);
 
         tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        tabWidget->addTab(tab_3, QString());
 
         verticalLayout->addWidget(tabWidget);
 
@@ -491,16 +533,19 @@ public:
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu->setCursor(QCursor(Qt::ArrowCursor));
+        menu_2 = new QMenu(menu);
+        menu_2->setObjectName(QString::fromUtf8("menu_2"));
         MainWindow->setMenuBar(menubar);
 
         menubar->addAction(menu->menuAction());
-        menu->addAction(action);
-        menu->addAction(action_2);
-        menu->addAction(action_3);
+        menu->addAction(act_home);
+        menu->addAction(act_orders);
+        menu->addAction(menu_2->menuAction());
+        menu_2->addAction(act_editOrd);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -509,48 +554,53 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        action->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\274\320\276\320\271", nullptr));
-        action_2->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\270", nullptr));
-        action_3->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214...", nullptr));
+        act_home->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\274\320\276\320\271", nullptr));
+        act_orders->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\270", nullptr));
+        act_editOrd->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\276\321\202\321\207\320\265\321\202", nullptr));
+        act_print->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214", nullptr));
+        act_return->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\267\320\262\321\200\320\260\321\202", nullptr));
         groupBox->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wOpened->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wOpened->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "  \320\236\321\202\320\272\321\200\321\213\321\202\321\213\320\265", nullptr));
+        label_btn_Opend->setText(QCoreApplication::translate("MainWindow", "  \320\236\321\202\320\272\321\200\321\213\321\202\321\213\320\265", nullptr));
         groupBox_7->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wNew->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wNew->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271", nullptr));
+        label_btn_New->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271", nullptr));
         groupBox_8->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wInWork->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wInWork->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "\320\222 \321\200\320\260\320\261\320\276\321\202\320\265", nullptr));
+        label_btn_InWork->setText(QCoreApplication::translate("MainWindow", "\320\222 \321\200\320\260\320\261\320\276\321\202\320\265", nullptr));
         groupBox_9->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wSolved->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wSolved->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_9->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\321\210\320\265\320\275\320\260", nullptr));
+        label_btn_Solved->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\321\210\320\265\320\275\320\260", nullptr));
         groupBox_10->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wAwaits->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wAwaits->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_10->setText(QCoreApplication::translate("MainWindow", "\320\236\320\266\320\270\320\264\320\260\321\216\321\211\320\270\320\265", nullptr));
+        label_btn_Awaits->setText(QCoreApplication::translate("MainWindow", "\320\236\320\266\320\270\320\264\320\260\321\216\321\211\320\270\320\265", nullptr));
         groupBox_11->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wOverdue->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
         PB_wOverdue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\201\321\200\320\276\321\207\320\265\320\275\320\276", nullptr));
+        label_btn_Overdue->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\201\321\200\320\276\321\207\320\265\320\275\320\276", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
+        groupBox_2->setTitle(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\264\320\264\320\265\321\200\320\266\320\272\320\260", nullptr));
+        menu_2->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214...", nullptr));
     } // retranslateUi
 
 };
