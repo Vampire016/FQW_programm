@@ -33,8 +33,7 @@
 
 //Библиотеки инструментов
 //---------------------------------------------------------------------------------
-#include <QTabBar>
-#include <QLabel>
+#include <QMouseEvent>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки
@@ -49,6 +48,10 @@
 #include <QWidget>
 #include <QDialog>
 #include <QMessageBox>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QTabBar>
+#include <QLabel>
 //---------------------------------------------------------------------------------
 
 #endif // LIBRARIES_H

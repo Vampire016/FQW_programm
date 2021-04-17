@@ -11,14 +11,29 @@ class PrintOrder : public QWidget
 {
     Q_OBJECT
 
+signals:
+    void clicked(QMouseEvent *);
+
 public:
     explicit PrintOrder(QWidget *parent = nullptr);
     ~PrintOrder();
+
+    void setBtn(int);
+    int button(void);
 
 private:
     Ui::PrintOrder *ui;
 
     QPixmap *logo;
+
+    int btn;
+
+private slots:
+    void inputReject();
+    void clearFocusEd();
+
+protected:
+    void mousePressEvent (QMouseEvent *);
 };
 
 #endif // PRINTORDER_H

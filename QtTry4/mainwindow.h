@@ -6,6 +6,8 @@
 #include "secondwindow.h"
 #include "printorder.h"
 #include "Libraries.h"
+#include "qtabwidget_v.h"
+#include "clickablewidget.h"
 
 
 
@@ -36,11 +38,16 @@ private slots:
     void UpdateDB();
 
     void on_PB_wOpened_clicked();
+    void on_PB_wNew_clicked();
 
     void CreateMenu();
     void ReturnEdit();    
 
-    void print(QPrinter * printer);
+    void print(QPrinter * printer);   
+
+    void onTableView_clicked(const QModelIndex &);
+
+    void ClearFocusLE();
 
 private:
     Ui::MainWindow *ui;
@@ -63,7 +70,7 @@ private:
 
     bool subWflags;
     bool conect;
-    int counterUpdate;
+    int counterUpdate;    
 
 //    Node_1 *head, *tail;
 

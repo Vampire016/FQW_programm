@@ -17,6 +17,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -27,6 +28,8 @@
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "clickablewidget.h"
+#include "qtabwidget_v.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -104,6 +107,13 @@ public:
     QComboBox *comboBox_4;
     QTableView *tableView;
     QWidget *tab_3;
+    QWidget *tab_4;
+    QHBoxLayout *horizontalLayout_2;
+    TabWidget *tabWidget_2;
+    QWidget *tab_5;
+    ClickableWidget *tab_6;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_2;
@@ -521,6 +531,29 @@ public:
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         tabWidget->addTab(tab_3, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName(QString::fromUtf8("tab_4"));
+        horizontalLayout_2 = new QHBoxLayout(tab_4);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        tabWidget_2 = new TabWidget(tab_4);
+        tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
+        tabWidget_2->setTabPosition(QTabWidget::West);
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QString::fromUtf8("tab_5"));
+        tabWidget_2->addTab(tab_5, QString());
+        tab_6 = new ClickableWidget();
+        tab_6->setObjectName(QString::fromUtf8("tab_6"));
+        lineEdit = new QLineEdit(tab_6);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(170, 80, 113, 20));
+        lineEdit_2 = new QLineEdit(tab_6);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(370, 80, 113, 20));
+        tabWidget_2->addTab(tab_6, QString());
+
+        horizontalLayout_2->addWidget(tabWidget_2);
+
+        tabWidget->addTab(tab_4, QString());
 
         verticalLayout->addWidget(tabWidget);
 
@@ -545,7 +578,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -599,6 +633,9 @@ public:
         groupBox_2->setTitle(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\260", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 4", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\264\320\264\320\265\321\200\320\266\320\272\320\260", nullptr));
         menu_2->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214...", nullptr));
     } // retranslateUi

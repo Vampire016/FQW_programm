@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -45,8 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
     ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
     ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
-    ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: green}");
+    ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: green}");    
     //--------------------------------------------------------------------------------------------------------------------------------------------
+
     //Блок соединений
     //--------------------------------------------------------------------------------------------------------------------------------------------
     connect(sw, SIGNAL(ShowMain()), this, SLOT(reciveSignal()));
@@ -56,6 +58,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, SIGNAL(RevDBLog(bool)), sw, SLOT(LogOrNot(bool)));
     connect(tmr, SIGNAL(timeout()), this, SLOT(UpdateDB()));
     connect(ui->act_return, SIGNAL(triggered()), this, SLOT(ReturnEdit()));
+    connect(ui->tableView, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableView_clicked(const QModelIndex &)));
+
+
+    connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
+    connect(ui->tab_6, SIGNAL(clicked(QMouseEvent *)), this, SLOT(ClearFocusLE()));
+    //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
+
+
+
+    //qDebug() << ui->tab_6->focusWidget();
+
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Фильтр заявок
@@ -130,6 +143,10 @@ void MainWindow::on_act_orders_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
 
+    ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->tableView->setFocusPolicy(Qt::NoFocus);
+
+
     ui->tableView->verticalHeader()->setVisible(false);
 
 
@@ -137,6 +154,11 @@ void MainWindow::on_act_orders_triggered()
     ui->tableView->setModel(qmodel);
     ui->tableView->resizeRowsToContents();
     ui->tableView->setColumnWidth(1, 270);
+
+    //connect(ui->tableView, SIGNAL(pressed()), this, SLOT(onTableVeiw_clicked()));
+
+
+    //ui->tableView->
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -263,6 +285,11 @@ void MainWindow::on_PB_wOpened_clicked()
     }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::on_PB_wNew_clicked()
+{
+    ui->tabWidget->setCurrentIndex(3);
+}
 
 //Редактирование отчета перед выводом на печать
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -454,3 +481,24 @@ void MainWindow::print(QPrinter * printer)
     PrOrd->render(&painter);
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::onTableView_clicked(const QModelIndex &index)
+{
+    /*ui->tableView->selectRow(ui->tableView->currentIndex().row());
+
+    qDebug() << index;
+    qDebug() << ui->tableView->currentIndex().row();*/
+}
+
+void MainWindow::ClearFocusLE()
+{
+    qDebug() << ui->tab_6->focusWidget();
+
+    qDebug() << (ui->tab_6->focusWidget() == NULL);
+
+    if(ui->tab_6->focusWidget() != NULL)
+    {
+        ui->tab_6->focusWidget()->clearFocus();
+    }
+    //ui->lineEdit->clearFocus();
+}

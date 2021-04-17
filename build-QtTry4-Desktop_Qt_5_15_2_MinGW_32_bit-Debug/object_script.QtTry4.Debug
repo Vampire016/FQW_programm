@@ -1,0 +1,10 @@
+debug/clickablewidget.o
+debug/main.o
+debug/mainwindow.o
+debug/printorder.o
+debug/secondwindow.o
+debug/qrc_resourses.o
+debug/moc_clickablewidget.o
+debug/moc_mainwindow.o
+debug/moc_printorder.o
+debug/moc_secondwindow.o
