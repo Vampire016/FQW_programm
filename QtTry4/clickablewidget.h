@@ -4,7 +4,6 @@
 #include "Libraries.h"
 
 
-
 class ClickableWidget : public QWidget
 {
     Q_OBJECT

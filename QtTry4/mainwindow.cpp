@@ -1,12 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
 
     //Окно авторизации
     //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,6 +40,19 @@ MainWindow::MainWindow(QWidget *parent)
     subWflags = true;
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
+    //Кнопка вывода календаря
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    menu = new QMenu(this);
+    calendar = new ClickableCalendar();
+    action = new QWidgetAction(this);
+
+
+    action->setDefaultWidget(calendar);
+    menu->addAction(action);
+    ui->toolButton->setPopupMode(QToolButton::InstantPopup);
+    ui->toolButton->setMenu(menu);
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+
     //Стили центальных кнопок
     //--------------------------------------------------------------------------------------------------------------------------------------------
     ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
@@ -65,7 +79,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->tab_6, SIGNAL(clicked(QMouseEvent *)), this, SLOT(ClearFocusLE()));
     //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
 
-
+    connect(calendar, SIGNAL(clickedDate()), this, SLOT(FocusDate()));
+    //calendar->clickedDate()
 
     //qDebug() << ui->tab_6->focusWidget();
 
@@ -79,6 +94,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox->addItems(var1);
     ui->comboBox_2->addItems(var2);
     //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -119,8 +135,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
 */
 
-
-
+    //QDate
+    //calendar->
 
 }
 
@@ -502,3 +518,20 @@ void MainWindow::ClearFocusLE()
     }
     //ui->lineEdit->clearFocus();
 }
+
+void MainWindow::FocusDate()
+{
+    qDebug() << calendar->selectedDate().toString("dd-MM-yyyy");
+
+
+
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+
+    strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
+
+    qDebug() << buf;
+}
+

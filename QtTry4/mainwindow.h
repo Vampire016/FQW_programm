@@ -1,13 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-
 #include "secondwindow.h"
 #include "printorder.h"
 #include "Libraries.h"
 #include "qtabwidget_v.h"
 #include "clickablewidget.h"
+#include "clickablecalendar.h"
 
 
 
@@ -49,6 +48,8 @@ private slots:
 
     void ClearFocusLE();
 
+    void FocusDate();
+
 private:
     Ui::MainWindow *ui;
 
@@ -65,8 +66,15 @@ private:
     QMdiArea * mdiArea;
 
     QMenu *report;
+    QMenu *menu;
 
     QWidget *centrWidget;
+    QWidgetAction *action;
+
+    ClickableCalendar *calendar;
+
+
+
 
     bool subWflags;
     bool conect;

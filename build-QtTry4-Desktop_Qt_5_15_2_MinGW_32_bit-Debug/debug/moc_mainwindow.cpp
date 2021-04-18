@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[27];
-    char stringdata0[330];
+    QByteArrayData data[28];
+    char stringdata0[340];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,7 +58,8 @@ QT_MOC_LITERAL(22, 267, 9), // "QPrinter*"
 QT_MOC_LITERAL(23, 277, 7), // "printer"
 QT_MOC_LITERAL(24, 285, 19), // "onTableView_clicked"
 QT_MOC_LITERAL(25, 305, 11), // "QModelIndex"
-QT_MOC_LITERAL(26, 317, 12) // "ClearFocusLE"
+QT_MOC_LITERAL(26, 317, 12), // "ClearFocusLE"
+QT_MOC_LITERAL(27, 330, 9) // "FocusDate"
 
     },
     "MainWindow\0RevDBConnect\0\0conect\0"
@@ -69,7 +70,7 @@ QT_MOC_LITERAL(26, 317, 12) // "ClearFocusLE"
     "UpdateDB\0on_PB_wOpened_clicked\0"
     "on_PB_wNew_clicked\0CreateMenu\0ReturnEdit\0"
     "print\0QPrinter*\0printer\0onTableView_clicked\0"
-    "QModelIndex\0ClearFocusLE"
+    "QModelIndex\0ClearFocusLE\0FocusDate"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +80,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,25 +88,26 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   99,    2, 0x06 /* Public */,
-       4,    1,  102,    2, 0x06 /* Public */,
+       1,    1,  104,    2, 0x06 /* Public */,
+       4,    1,  107,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  105,    2, 0x08 /* Private */,
-       7,    0,  106,    2, 0x08 /* Private */,
-       8,    0,  107,    2, 0x08 /* Private */,
-       9,    0,  108,    2, 0x08 /* Private */,
-      10,    1,  109,    2, 0x08 /* Private */,
-      12,    2,  112,    2, 0x08 /* Private */,
-      15,    0,  117,    2, 0x08 /* Private */,
-      16,    0,  118,    2, 0x08 /* Private */,
-      17,    0,  119,    2, 0x08 /* Private */,
-      18,    0,  120,    2, 0x08 /* Private */,
-      19,    0,  121,    2, 0x08 /* Private */,
-      20,    0,  122,    2, 0x08 /* Private */,
-      21,    1,  123,    2, 0x08 /* Private */,
-      24,    1,  126,    2, 0x08 /* Private */,
-      26,    0,  129,    2, 0x08 /* Private */,
+       6,    0,  110,    2, 0x08 /* Private */,
+       7,    0,  111,    2, 0x08 /* Private */,
+       8,    0,  112,    2, 0x08 /* Private */,
+       9,    0,  113,    2, 0x08 /* Private */,
+      10,    1,  114,    2, 0x08 /* Private */,
+      12,    2,  117,    2, 0x08 /* Private */,
+      15,    0,  122,    2, 0x08 /* Private */,
+      16,    0,  123,    2, 0x08 /* Private */,
+      17,    0,  124,    2, 0x08 /* Private */,
+      18,    0,  125,    2, 0x08 /* Private */,
+      19,    0,  126,    2, 0x08 /* Private */,
+      20,    0,  127,    2, 0x08 /* Private */,
+      21,    1,  128,    2, 0x08 /* Private */,
+      24,    1,  131,    2, 0x08 /* Private */,
+      26,    0,  134,    2, 0x08 /* Private */,
+      27,    0,  135,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -126,6 +128,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 22,   23,
     QMetaType::Void, 0x80000000 | 25,    2,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -154,6 +157,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 14: _t->print((*reinterpret_cast< QPrinter*(*)>(_a[1]))); break;
         case 15: _t->onTableView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 16: _t->ClearFocusLE(); break;
+        case 17: _t->FocusDate(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -204,13 +208,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 17;
+        _id -= 18;
     }
     return _id;
 }

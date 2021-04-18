@@ -1,9 +1,11 @@
+release/clickablecalendar.o
 release/clickablewidget.o
 release/main.o
 release/mainwindow.o
 release/printorder.o
 release/secondwindow.o
 release/qrc_resourses.o
+release/moc_clickablecalendar.o
 release/moc_clickablewidget.o
 release/moc_mainwindow.o
 release/moc_printorder.o
