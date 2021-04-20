@@ -37,6 +37,7 @@
 #include <QMouseEvent>
 #include <QWidgetAction>
 #include <QMenu>
+#include <QList>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки
@@ -57,6 +58,7 @@
 #include <QTabBar>
 #include <QLabel>
 #include <QCalendarWidget>
+#include <QToolButton>
 //---------------------------------------------------------------------------------
 
 #endif // LIBRARIES_H

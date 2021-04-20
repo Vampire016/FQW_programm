@@ -55,23 +55,27 @@ SOURCES       = ..\QtTry4\clickablecalendar.cpp \
 		..\QtTry4\main.cpp \
 		..\QtTry4\mainwindow.cpp \
 		..\QtTry4\printorder.cpp \
+		..\QtTry4\qtoolcalendar.cpp \
 		..\QtTry4\secondwindow.cpp release\qrc_resourses.cpp \
 		release\moc_clickablecalendar.cpp \
 		release\moc_clickablewidget.cpp \
 		release\moc_mainwindow.cpp \
 		release\moc_printorder.cpp \
+		release\moc_qtoolcalendar.cpp \
 		release\moc_secondwindow.cpp
 OBJECTS       = release/clickablecalendar.o \
 		release/clickablewidget.o \
 		release/main.o \
 		release/mainwindow.o \
 		release/printorder.o \
+		release/qtoolcalendar.o \
 		release/secondwindow.o \
 		release/qrc_resourses.o \
 		release/moc_clickablecalendar.o \
 		release/moc_clickablewidget.o \
 		release/moc_mainwindow.o \
 		release/moc_printorder.o \
+		release/moc_qtoolcalendar.o \
 		release/moc_secondwindow.o
 
 DIST          =  ..\QtTry4\Libraries.h \
@@ -80,11 +84,13 @@ DIST          =  ..\QtTry4\Libraries.h \
 		..\QtTry4\mainwindow.h \
 		..\QtTry4\printorder.h \
 		..\QtTry4\qtabwidget_v.h \
+		..\QtTry4\qtoolcalendar.h \
 		..\QtTry4\secondwindow.h ..\QtTry4\clickablecalendar.cpp \
 		..\QtTry4\clickablewidget.cpp \
 		..\QtTry4\main.cpp \
 		..\QtTry4\mainwindow.cpp \
 		..\QtTry4\printorder.cpp \
+		..\QtTry4\qtoolcalendar.cpp \
 		..\QtTry4\secondwindow.cpp
 QMAKE_TARGET  = QtTry4
 DESTDIR        = release\ #avoid trailing-slash linebreak
@@ -105,10 +111,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) QtTry4.zip $(SOURCES) $(DIST) ..\QtTry4\QtTry4.pro D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\spec_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\qdevice.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\device_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\sanitize.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\gcc-base.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\g++-base.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\angle.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\windows-vulkan.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\g++-win32.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\windows-desktop.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\qconfig.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_charts.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_charts_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3d.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3drender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uiplugin.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_zlib_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt_functions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\win32-g++\qmake.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\spec_post.prf .qmake.stash D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exclusive_builds.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\toolchain.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\default_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\default_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resolve_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exclusive_builds_post.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\default_post.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\build_pass.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qml_debug.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\precompile_header.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\warn_on.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resources_functions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resources.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\moc.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\opengl.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\uic.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qmake_use.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\file_copies.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\windows.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\testcase_targets.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exceptions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\yacc.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\lex.prf ..\QtTry4\QtTry4.pro ..\QtTry4\resourses.qrc D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5PrintSupport.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Widgets.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Gui.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Sql.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Core.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\qtmain.prl   ..\QtTry4\resourses.qrc D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp ..\QtTry4\Libraries.h ..\QtTry4\clickablecalendar.h ..\QtTry4\clickablewidget.h ..\QtTry4\mainwindow.h ..\QtTry4\printorder.h ..\QtTry4\qtabwidget_v.h ..\QtTry4\secondwindow.h  ..\QtTry4\clickablecalendar.cpp ..\QtTry4\clickablewidget.cpp ..\QtTry4\main.cpp ..\QtTry4\mainwindow.cpp ..\QtTry4\printorder.cpp ..\QtTry4\secondwindow.cpp ..\QtTry4\mainwindow.ui ..\QtTry4\printorder.ui ..\QtTry4\secondwindow.ui    
+	$(ZIP) QtTry4.zip $(SOURCES) $(DIST) ..\QtTry4\QtTry4.pro D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\spec_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\qdevice.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\device_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\sanitize.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\gcc-base.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\g++-base.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\angle.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\windows-vulkan.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\g++-win32.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\common\windows-desktop.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\qconfig.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_charts.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_charts_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3d.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3drender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uiplugin.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\modules\qt_lib_zlib_private.pri D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt_functions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\win32-g++\qmake.conf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\spec_post.prf .qmake.stash D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exclusive_builds.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\toolchain.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\default_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\default_pre.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resolve_config.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exclusive_builds_post.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\default_post.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\build_pass.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qml_debug.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\precompile_header.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\warn_on.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qt.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resources_functions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\resources.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\moc.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\opengl.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\uic.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\qmake_use.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\file_copies.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\win32\windows.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\testcase_targets.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\exceptions.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\yacc.prf D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\lex.prf ..\QtTry4\QtTry4.pro ..\QtTry4\resourses.qrc D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5PrintSupport.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Widgets.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Gui.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Sql.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\Qt5Core.prl D:\Programs\QT_3\5.15.2\mingw81_32\lib\qtmain.prl   ..\QtTry4\resourses.qrc D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp ..\QtTry4\Libraries.h ..\QtTry4\clickablecalendar.h ..\QtTry4\clickablewidget.h ..\QtTry4\mainwindow.h ..\QtTry4\printorder.h ..\QtTry4\qtabwidget_v.h ..\QtTry4\qtoolcalendar.h ..\QtTry4\secondwindow.h  ..\QtTry4\clickablecalendar.cpp ..\QtTry4\clickablewidget.cpp ..\QtTry4\main.cpp ..\QtTry4\mainwindow.cpp ..\QtTry4\printorder.cpp ..\QtTry4\qtoolcalendar.cpp ..\QtTry4\secondwindow.cpp ..\QtTry4\mainwindow.ui ..\QtTry4\printorder.ui ..\QtTry4\secondwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\clickablecalendar.o release\clickablewidget.o release\main.o release\mainwindow.o release\printorder.o release\secondwindow.o release\qrc_resourses.o release\moc_clickablecalendar.o release\moc_clickablewidget.o release\moc_mainwindow.o release\moc_printorder.o release\moc_secondwindow.o
+	-$(DEL_FILE) release\clickablecalendar.o release\clickablewidget.o release\main.o release\mainwindow.o release\printorder.o release\qtoolcalendar.o release\secondwindow.o release\qrc_resourses.o release\moc_clickablecalendar.o release\moc_clickablewidget.o release\moc_mainwindow.o release\moc_printorder.o release\moc_qtoolcalendar.o release\moc_secondwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -130,6 +136,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resourses.cpp
 release/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/rcc.exe \
+		../QtTry4/img/calendar.png \
 		../QtTry4/img/IT-Osoba_Logo.png \
 		../QtTry4/img/IT-Osoba_Logo_150x88.png
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\rcc.exe -name resourses ..\QtTry4\resourses.qrc -o release\qrc_resourses.cpp
@@ -140,14 +147,14 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: D:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextra -dM -E -o release\moc_predefs.h D:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_clickablecalendar.cpp release/moc_clickablewidget.cpp release/moc_mainwindow.cpp release/moc_printorder.cpp release/moc_secondwindow.cpp
+compiler_moc_header_make_all: release/moc_clickablecalendar.cpp release/moc_clickablewidget.cpp release/moc_mainwindow.cpp release/moc_printorder.cpp release/moc_qtoolcalendar.cpp release/moc_secondwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_clickablecalendar.cpp release\moc_clickablewidget.cpp release\moc_mainwindow.cpp release\moc_printorder.cpp release\moc_secondwindow.cpp
+	-$(DEL_FILE) release\moc_clickablecalendar.cpp release\moc_clickablewidget.cpp release\moc_mainwindow.cpp release\moc_printorder.cpp release\moc_qtoolcalendar.cpp release\moc_secondwindow.cpp
 release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
@@ -169,23 +176,24 @@ release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
@@ -198,12 +206,43 @@ release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
@@ -217,16 +256,11 @@ release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
@@ -234,22 +268,65 @@ release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupport-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagedpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagelayout.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagesize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qabstractprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPainter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpainter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintPreviewDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\clickablecalendar.h -o release\moc_clickablecalendar.cpp
@@ -399,9 +476,17 @@ release/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -418,15 +503,21 @@ release/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\clickablewidget.h -o release\moc_clickablewidget.cpp
 
 release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		../QtTry4/secondwindow.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
@@ -448,24 +539,24 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
@@ -478,12 +569,43 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
@@ -497,16 +619,11 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
@@ -514,13 +631,6 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
@@ -529,28 +639,6 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		../QtTry4/secondwindow.h \
-		../QtTry4/Libraries.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
@@ -570,9 +658,17 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -589,6 +685,11 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
@@ -605,6 +706,7 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
+		../QtTry4/clickablecalendar.h \
 		release/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\mainwindow.h -o release\moc_mainwindow.cpp
@@ -754,9 +856,17 @@ release/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -773,9 +883,195 @@ release/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\printorder.h -o release\moc_printorder.cpp
+
+release/moc_qtoolcalendar.cpp: ../QtTry4/qtoolcalendar.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtcore-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsystemdetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qprocessordetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcompilerdetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtypeinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsysinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlogging.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qflags.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasicatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qgenericatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_cxx11.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_msvc.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobalstatic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhashfunctions.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpair.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvector.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainertools_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpoint.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearraylist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpalette.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcolor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qrgb.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qrgba64.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qbrush.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmatrix.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qsizepolicy.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupport-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagedpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagelayout.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagesize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qabstractprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPainter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpainter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintPreviewDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		release/moc_predefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
+	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\qtoolcalendar.h -o release\moc_qtoolcalendar.cpp
 
 release/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		../QtTry4/Libraries.h \
@@ -922,9 +1218,17 @@ release/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -941,6 +1245,11 @@ release/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\secondwindow.h -o release\moc_secondwindow.cpp
@@ -1225,9 +1534,17 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -1243,7 +1560,12 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\uic.exe ..\QtTry4\mainwindow.ui -o ui_mainwindow.h
 
 ui_printorder.h: ../QtTry4/printorder.ui \
@@ -1267,10 +1589,10 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 ####### Compile
 
 release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickablecalendar.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
@@ -1292,23 +1614,24 @@ release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickable
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
@@ -1321,12 +1644,43 @@ release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickable
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
@@ -1340,16 +1694,11 @@ release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickable
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
@@ -1357,22 +1706,65 @@ release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickable
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupport-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagedpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagelayout.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagesize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qabstractprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPainter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpainter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintPreviewDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\clickablecalendar.o ..\QtTry4\clickablecalendar.cpp
 
 release/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidget.h \
@@ -1520,9 +1912,17 @@ release/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidg
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -1538,14 +1938,20 @@ release/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidg
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\clickablewidget.o ..\QtTry4\clickablewidget.cpp
 
 release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		../QtTry4/secondwindow.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
@@ -1567,24 +1973,24 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
@@ -1597,12 +2003,43 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
@@ -1616,16 +2053,11 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
@@ -1633,13 +2065,6 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
@@ -1648,28 +2073,6 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		../QtTry4/secondwindow.h \
-		../QtTry4/Libraries.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
@@ -1689,9 +2092,17 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -1708,6 +2119,11 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
@@ -1724,6 +2140,7 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
+		../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
@@ -1734,10 +2151,11 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\QtTry4\main.cpp
 
 release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		../QtTry4/secondwindow.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
@@ -1759,24 +2177,24 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
@@ -1789,12 +2207,43 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
@@ -1808,16 +2257,11 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
@@ -1825,13 +2269,6 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
@@ -1840,28 +2277,6 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		../QtTry4/secondwindow.h \
-		../QtTry4/Libraries.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
@@ -1881,9 +2296,17 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -1900,6 +2323,11 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
@@ -1916,11 +2344,10 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
+		../QtTry4/clickablecalendar.h \
 		ui_mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QAction \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
@@ -1928,8 +2355,6 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
@@ -1944,13 +2369,10 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qheaderview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenuBar \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenubar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QScrollArea \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qscrollarea.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
@@ -1959,11 +2381,7 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTableView \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtableview.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\QtTry4\mainwindow.cpp
 
 release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
@@ -2111,9 +2529,17 @@ release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -2130,6 +2556,11 @@ release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		ui_printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
@@ -2148,6 +2579,185 @@ release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\printorder.o ..\QtTry4\printorder.cpp
+
+release/qtoolcalendar.o: ../QtTry4/qtoolcalendar.cpp ../QtTry4/qtoolcalendar.h \
+		../QtTry4/Libraries.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qconfig.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtcore-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsystemdetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qprocessordetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcompilerdetection.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtypeinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsysinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlogging.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qflags.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasicatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qgenericatomic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_cxx11.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qatomic_msvc.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qglobalstatic.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmutex.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qtsql-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstring.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qchar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlTableModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqltablemodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvariant.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiterator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhashfunctions.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpair.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvector.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainertools_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpoint.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbytearraylist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregexp.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qset.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTime \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QTimer \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qtimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMdiArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmdiarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qmargins.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qrect.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qsize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpalette.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcolor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qrgb.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qrgba64.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qbrush.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmatrix.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qregion.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qline.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtransform.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimage.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfont.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qsizepolicy.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qevent.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurl.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfile.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrinter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprinter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qtprintsupport-config.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagedpaintdevice.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagelayout.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpagesize.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qabstractprintdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPainter \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpainter.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/QPrintPreviewDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qtoolcalendar.o ..\QtTry4\qtoolcalendar.cpp
 
 release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		../QtTry4/Libraries.h \
@@ -2294,9 +2904,17 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QPixmap \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMouseEvent \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidgetAction \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qwidgetaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenu \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QStringList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -2313,6 +2931,11 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		ui_secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
@@ -2331,7 +2954,6 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\secondwindow.o ..\QtTry4\secondwindow.cpp
 
@@ -2349,6 +2971,9 @@ release/moc_mainwindow.o: release/moc_mainwindow.cpp
 
 release/moc_printorder.o: release/moc_printorder.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_printorder.o release\moc_printorder.cpp
+
+release/moc_qtoolcalendar.o: release/moc_qtoolcalendar.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_qtoolcalendar.o release\moc_qtoolcalendar.cpp
 
 release/moc_secondwindow.o: release/moc_secondwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_secondwindow.o release\moc_secondwindow.cpp

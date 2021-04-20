@@ -7,6 +7,7 @@
 #include "qtabwidget_v.h"
 #include "clickablewidget.h"
 #include "clickablecalendar.h"
+#include "qtoolcalendar.h"
 
 
 
@@ -48,7 +49,13 @@ private slots:
 
     void ClearFocusLE();
 
-    void FocusDate();
+    void FocusDateOp();
+    void FocusDateCl();
+    void FocusDateDi();
+
+    void FocusToolBtn();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -57,6 +64,8 @@ private:
 
     QSqlQueryModel* qmodel;
     QSqlQueryModel* qmodel_c1;
+    QSqlQueryModel* qmodel_c2;
+
 
     SecondWindow *sw;
     PrintOrder *PrOrd;
@@ -66,19 +75,26 @@ private:
     QMdiArea * mdiArea;
 
     QMenu *report;
-    QMenu *menu;
+    QMenu *menuOp;
+    QMenu *menuCl;
+    QMenu *menuDi;
 
     QWidget *centrWidget;
-    QWidgetAction *action;
 
-    ClickableCalendar *calendar;
+    QWidgetAction *actionOp;
+    QWidgetAction *actionCl;
+    QWidgetAction *actionDi;
 
+    ClickableCalendar *calendarOp;
+    ClickableCalendar *calendarCl;
+    ClickableCalendar *calendarDi;
 
 
 
     bool subWflags;
     bool conect;
-    int counterUpdate;    
+    int counterUpdate;
+    QToolButton *curToolBtn;
 
 //    Node_1 *head, *tail;
 

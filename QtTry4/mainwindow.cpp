@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
-
     //Окно авторизации
     //--------------------------------------------------------------------------------------------------------------------------------------------
     conect = false;
@@ -26,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     //--------------------------------------------------------------------------------------------------------------------------------------------
     qmodel = new QSqlQueryModel;
     qmodel_c1 = new QSqlQueryModel;
+    qmodel_c2 = new QSqlQueryModel;
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Таймер
@@ -40,17 +39,38 @@ MainWindow::MainWindow(QWidget *parent)
     subWflags = true;
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
-    //Кнопка вывода календаря
+    //Валидатор значений для полей дата/время
     //--------------------------------------------------------------------------------------------------------------------------------------------
-    menu = new QMenu(this);
-    calendar = new ClickableCalendar();
-    action = new QWidgetAction(this);
+    QRegExp r_date_time("(0[1-9]|[12][0-9]|3[01])\\.(0[1-9]|[1][0-2])\\.(19[0-9][0-9]|20[0-9][0-9])\\ (0[1-9]|1[0-9]|2[0-3])\\:([05][0-9])\\:([05][0-9])");
+    QRegExpValidator *valida = new QRegExpValidator(r_date_time, this);
 
+    ui->lineEdit->setValidator(valida);
+    ui->lineEdit_4->setValidator(valida);
+    ui->lineEdit_5->setValidator(valida);
+    //--------------------------------------------------------------------------------------------------------------------------------------------
 
-    action->setDefaultWidget(calendar);
-    menu->addAction(action);
-    ui->toolButton->setPopupMode(QToolButton::InstantPopup);
-    ui->toolButton->setMenu(menu);
+    //Кнопки вывода календаря (наверное можно компактнее)
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    menuOp = new QMenu(this);
+    menuCl = new QMenu(this);
+    menuDi = new QMenu(this);
+    calendarOp = new ClickableCalendar();
+    calendarCl = new ClickableCalendar();
+    calendarDi = new ClickableCalendar();
+    actionOp = new QWidgetAction(this);
+    actionCl = new QWidgetAction(this);
+    actionDi = new QWidgetAction(this);
+
+    actionOp->setDefaultWidget(calendarOp);
+    actionCl->setDefaultWidget(calendarCl);
+    actionDi->setDefaultWidget(calendarDi);
+    menuOp->addAction(actionOp);
+    menuCl->addAction(actionCl);
+    menuDi->addAction(actionDi);
+
+    ui->toolButton_Opened->setMenu(menuOp);
+    ui->toolButton_Decision->setMenu(menuCl);
+    ui->toolButton_Closed->setMenu(menuDi);
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Стили центальных кнопок
@@ -74,12 +94,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->act_return, SIGNAL(triggered()), this, SLOT(ReturnEdit()));
     connect(ui->tableView, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableView_clicked(const QModelIndex &)));
 
-
-    connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
+    //connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
     connect(ui->tab_6, SIGNAL(clicked(QMouseEvent *)), this, SLOT(ClearFocusLE()));
+
+    connect(calendarOp, SIGNAL(clickedDate()), this, SLOT(FocusDateOp()));
+    connect(calendarCl, SIGNAL(clickedDate()), this, SLOT(FocusDateCl()));
+    connect(calendarDi, SIGNAL(clickedDate()), this, SLOT(FocusDateDi()));
+
+    connect(ui->toolButton_Opened, SIGNAL(clicked()), this, SLOT(FocusToolBtn()));
+
     //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
 
-    connect(calendar, SIGNAL(clickedDate()), this, SLOT(FocusDate()));
+
     //calendar->clickedDate()
 
     //qDebug() << ui->tab_6->focusWidget();
@@ -516,22 +542,61 @@ void MainWindow::ClearFocusLE()
     {
         ui->tab_6->focusWidget()->clearFocus();
     }
-    //ui->lineEdit->clearFocus();
 }
 
-void MainWindow::FocusDate()
+void MainWindow::FocusDateOp()
 {
-    qDebug() << calendar->selectedDate().toString("dd-MM-yyyy");
+    ui->lineEdit->setText(calendarOp->selectedDate().toString(QString("dd.MM.yyyy")) + " 12:00:00");
 
 
 
+
+
+
+    //qDebug() << calendarOp->selectedDate().toString("dd.MM.yyyy");
+
+    //текущее время и дата
+    /*
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];
     tstruct = *localtime(&now);
 
-    strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
+    //strftime(buf, sizeof(buf), "%d.%m.%Y %X", &tstruct);
+    strftime(buf, sizeof(buf), "%X", &tstruct);
 
-    qDebug() << buf;
+    qDebug() << buf;*/
 }
 
+void MainWindow::FocusToolBtn()
+{
+    qDebug() << ui->tab_6->focusWidget();
+}
+
+void MainWindow::FocusDateCl()
+{
+
+}
+
+void MainWindow::FocusDateDi()
+{
+
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+
+    strftime(buf, sizeof(buf), "%d.%m.%Y %X", &tstruct);
+    //strftime(buf, sizeof(buf), "%X", &tstruct);
+
+    QString str(buf);
+
+    qmodel_c2->setQuery("SELECT Users.FullName FROM Users");
+    qmodel_c2->query().first();
+
+    ui->label_17->setText(str + " на " + qmodel_c2->query().value(0).toString());
+}

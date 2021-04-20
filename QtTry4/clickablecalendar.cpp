@@ -2,8 +2,7 @@
 
 ClickableCalendar::ClickableCalendar(QCalendarWidget *parent) : QCalendarWidget(parent)
 {
-    connect(this, SIGNAL(selectionChanged()), this, SLOT(DateChosen()));
-       //QCalendarWidget::
+    connect(this, SIGNAL(selectionChanged()), this, SLOT(DateChosen()));       
 }
 
 void ClickableCalendar::DateChosen()

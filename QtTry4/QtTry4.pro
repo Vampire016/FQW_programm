@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     printorder.cpp \
+    qtoolcalendar.cpp \
     secondwindow.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     mainwindow.h \
     printorder.h \
     qtabwidget_v.h \
+    qtoolcalendar.h \
     secondwindow.h
 
 FORMS += \

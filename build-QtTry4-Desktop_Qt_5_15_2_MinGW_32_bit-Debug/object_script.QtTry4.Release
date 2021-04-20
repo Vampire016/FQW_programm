@@ -3,10 +3,12 @@ release/clickablewidget.o
 release/main.o
 release/mainwindow.o
 release/printorder.o
+release/qtoolcalendar.o
 release/secondwindow.o
 release/qrc_resourses.o
 release/moc_clickablecalendar.o
 release/moc_clickablewidget.o
 release/moc_mainwindow.o
 release/moc_printorder.o
+release/moc_qtoolcalendar.o
 release/moc_secondwindow.o
