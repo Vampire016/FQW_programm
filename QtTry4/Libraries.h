@@ -38,6 +38,7 @@
 #include <QWidgetAction>
 #include <QMenu>
 #include <QList>
+#include <QStandardItemModel>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки

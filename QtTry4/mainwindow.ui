@@ -1128,14 +1128,14 @@
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-46</y>
+                 <y>0</y>
                  <width>921</width>
                  <height>707</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
-                 <widget class="QLabel" name="label_DataZayavitel">
+                 <widget class="QLabel" name="label_idZayavki">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1159,6 +1159,9 @@
                   </property>
                   <property name="text">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;N/A&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::RichText</enum>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -2130,7 +2133,7 @@ line-height: 0.5;
                      <string notr="true">background-color: rgb(181, 181, 181);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Заголовок&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Описание&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -2290,6 +2293,7 @@ line-height: 0.5;
     <addaction name="act_home"/>
     <addaction name="act_orders"/>
     <addaction name="menu_2"/>
+    <addaction name="act_create_ord"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -2319,6 +2323,11 @@ line-height: 0.5;
   <action name="act_return">
    <property name="text">
     <string>Возврат</string>
+   </property>
+  </action>
+  <action name="act_create_ord">
+   <property name="text">
+    <string>Создать заявку</string>
    </property>
   </action>
  </widget>

@@ -10,6 +10,19 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     conect = false;
 
+//Список возможных для соединения видов БД
+//--------------------------------------------------------------------------------------------------------------------------------------------
+    dbTypes = new QStringList();
+    /*
+    dbTypes->insert(0, "");
+    dbTypes->insert(1, "mySQL");
+    dbTypes->insert(2, "MS Access");
+    */
+    dbTypes->operator<<("").operator<<("mySQL").operator<<("MS Access");
+
+    ui->comboBox->addItems(*dbTypes);
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
     if (!conect)
     {
         ui->LogIN->setEnabled(false);
@@ -58,8 +71,8 @@ void SecondWindow::LogOrNot(bool logIn)
 //Отправка сигнала о попытке соединения с БД (имя БД)
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void SecondWindow::on_pushButton_clicked()
-{
-    emit DBConnect(ui->lineEdit->text());
+{    
+        emit DBConnect(ui->lineEdit->text(), ui->comboBox->currentText());
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -71,7 +84,14 @@ void SecondWindow::ConOrNot(bool conect)
     {
         qDebug() << db.lastError();
 
-        QMessageBox::critical(this, "Connection", "Наименование БД указано не верно/не инициализированно!");
+        if(ui->comboBox->currentIndex() == 0)
+        {
+            QMessageBox::critical(this, "Connection", "Выберите тип используемой БД!");
+        }
+        else
+        {
+            QMessageBox::critical(this, "Connection", "Наименование/тип БД указан(о) не верно/не инициализированно!");
+        }
     }
     else
     {

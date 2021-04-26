@@ -7,8 +7,7 @@ class QToolCalendar : public QToolButton
 {
     Q_OBJECT
 public:
-    explicit QToolCalendar(QWidget *parent = nullptr);
-        //~QToolCalendar();
+    explicit QToolCalendar(QWidget *parent = nullptr);       
 
 signals:
 

@@ -44,6 +44,7 @@ public:
     QAction *act_editOrd;
     QAction *act_print;
     QAction *act_return;
+    QAction *act_create_ord;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout_22;
     QTabWidget *tabWidget;
@@ -119,7 +120,7 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout;
-    QLabel *label_DataZayavitel;
+    QLabel *label_idZayavki;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label;
     QLineEdit *lineEdit;
@@ -214,6 +215,8 @@ public:
         act_print->setVisible(true);
         act_return = new QAction(MainWindow);
         act_return->setObjectName(QString::fromUtf8("act_return"));
+        act_create_ord = new QAction(MainWindow);
+        act_create_ord->setObjectName(QString::fromUtf8("act_create_ord"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout_22 = new QHBoxLayout(centralwidget);
@@ -642,22 +645,23 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, -46, 921, 707));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 921, 707));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label_DataZayavitel = new QLabel(scrollAreaWidgetContents);
-        label_DataZayavitel->setObjectName(QString::fromUtf8("label_DataZayavitel"));
+        label_idZayavki = new QLabel(scrollAreaWidgetContents);
+        label_idZayavki->setObjectName(QString::fromUtf8("label_idZayavki"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_DataZayavitel->sizePolicy().hasHeightForWidth());
-        label_DataZayavitel->setSizePolicy(sizePolicy3);
-        label_DataZayavitel->setMinimumSize(QSize(0, 30));
-        label_DataZayavitel->setMaximumSize(QSize(6000, 30));
-        label_DataZayavitel->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
-        label_DataZayavitel->setAlignment(Qt::AlignCenter);
+        sizePolicy3.setHeightForWidth(label_idZayavki->sizePolicy().hasHeightForWidth());
+        label_idZayavki->setSizePolicy(sizePolicy3);
+        label_idZayavki->setMinimumSize(QSize(0, 30));
+        label_idZayavki->setMaximumSize(QSize(6000, 30));
+        label_idZayavki->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label_idZayavki->setTextFormat(Qt::RichText);
+        label_idZayavki->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label_DataZayavitel);
+        verticalLayout->addWidget(label_idZayavki);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -1162,6 +1166,7 @@ public:
         menu->addAction(act_home);
         menu->addAction(act_orders);
         menu->addAction(menu_2->menuAction());
+        menu->addAction(act_create_ord);
         menu_2->addAction(act_editOrd);
 
         retranslateUi(MainWindow);
@@ -1181,6 +1186,7 @@ public:
         act_editOrd->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\276\321\202\321\207\320\265\321\202", nullptr));
         act_print->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214", nullptr));
         act_return->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\267\320\262\321\200\320\260\321\202", nullptr));
+        act_create_ord->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \320\267\320\260\321\217\320\262\320\272\321\203", nullptr));
         groupBox->setTitle(QString());
 #if QT_CONFIG(tooltip)
         PB_wOpened->setToolTip(QString());
@@ -1222,7 +1228,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));
-        label_DataZayavitel->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
+        label_idZayavki->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
 "\n"
 "div {\n"
@@ -1274,7 +1280,7 @@ public:
         label_15->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\235\320\260\320\261\320\273\321\216\320\264\320\260\321\202\320\265\320\273\321\214</span></p></body></html>", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\235\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\276</span></p></body></html>", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\227\320\260\320\263\320\276\320\273\320\276\320\262\320\276\320\272</span></p></body></html>", nullptr));
-        label_12->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\227\320\260\320\263\320\276\320\273\320\276\320\262\320\276\320\272</span></p></body></html>", nullptr));
+        label_12->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\236\320\277\320\270\321\201\320\260\320\275\320\270\320\265</span></p></body></html>", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));

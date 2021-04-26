@@ -28,11 +28,13 @@ private:
 
     QSqlDatabase db;
 
-    bool conect;    
+    QStringList *dbTypes;
+
+    bool conect;
 
 signals:
     void ShowMain();
-    void DBConnect(QString sendStr);
+    void DBConnect(QString sendStr, QString dbType);
     void DBLog(QString log, QString pass);
 };
 

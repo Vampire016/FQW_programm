@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SecondWindow_t {
-    QByteArrayData data[14];
-    char stringdata0[126];
+    QByteArrayData data[15];
+    char stringdata0[133];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,21 +37,22 @@ QT_MOC_LITERAL(1, 13, 8), // "ShowMain"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 9), // "DBConnect"
 QT_MOC_LITERAL(4, 33, 7), // "sendStr"
-QT_MOC_LITERAL(5, 41, 5), // "DBLog"
-QT_MOC_LITERAL(6, 47, 3), // "log"
-QT_MOC_LITERAL(7, 51, 4), // "pass"
-QT_MOC_LITERAL(8, 56, 16), // "on_LogIN_clicked"
-QT_MOC_LITERAL(9, 73, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(10, 95, 8), // "ConOrNot"
-QT_MOC_LITERAL(11, 104, 6), // "conect"
-QT_MOC_LITERAL(12, 111, 8), // "LogOrNot"
-QT_MOC_LITERAL(13, 120, 5) // "logIn"
+QT_MOC_LITERAL(5, 41, 6), // "dbType"
+QT_MOC_LITERAL(6, 48, 5), // "DBLog"
+QT_MOC_LITERAL(7, 54, 3), // "log"
+QT_MOC_LITERAL(8, 58, 4), // "pass"
+QT_MOC_LITERAL(9, 63, 16), // "on_LogIN_clicked"
+QT_MOC_LITERAL(10, 80, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(11, 102, 8), // "ConOrNot"
+QT_MOC_LITERAL(12, 111, 6), // "conect"
+QT_MOC_LITERAL(13, 118, 8), // "LogOrNot"
+QT_MOC_LITERAL(14, 127, 5) // "logIn"
 
     },
     "SecondWindow\0ShowMain\0\0DBConnect\0"
-    "sendStr\0DBLog\0log\0pass\0on_LogIN_clicked\0"
-    "on_pushButton_clicked\0ConOrNot\0conect\0"
-    "LogOrNot\0logIn"
+    "sendStr\0dbType\0DBLog\0log\0pass\0"
+    "on_LogIN_clicked\0on_pushButton_clicked\0"
+    "ConOrNot\0conect\0LogOrNot\0logIn"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,25 +71,25 @@ static const uint qt_meta_data_SecondWindow[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   49,    2, 0x06 /* Public */,
-       3,    1,   50,    2, 0x06 /* Public */,
-       5,    2,   53,    2, 0x06 /* Public */,
+       3,    2,   50,    2, 0x06 /* Public */,
+       6,    2,   55,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   58,    2, 0x08 /* Private */,
-       9,    0,   59,    2, 0x08 /* Private */,
-      10,    1,   60,    2, 0x08 /* Private */,
-      12,    1,   63,    2, 0x08 /* Private */,
+       9,    0,   60,    2, 0x08 /* Private */,
+      10,    0,   61,    2, 0x08 /* Private */,
+      11,    1,   62,    2, 0x08 /* Private */,
+      13,    1,   65,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    4,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    6,    7,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    4,    5,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    7,    8,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   11,
-    QMetaType::Void, QMetaType::Bool,   13,
+    QMetaType::Void, QMetaType::Bool,   12,
+    QMetaType::Void, QMetaType::Bool,   14,
 
        0        // eod
 };
@@ -100,7 +101,7 @@ void SecondWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->ShowMain(); break;
-        case 1: _t->DBConnect((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->DBConnect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 2: _t->DBLog((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 3: _t->on_LogIN_clicked(); break;
         case 4: _t->on_pushButton_clicked(); break;
@@ -118,7 +119,7 @@ void SecondWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
         {
-            using _t = void (SecondWindow::*)(QString );
+            using _t = void (SecondWindow::*)(QString , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SecondWindow::DBConnect)) {
                 *result = 1;
                 return;
@@ -181,9 +182,9 @@ void SecondWindow::ShowMain()
 }
 
 // SIGNAL 1
-void SecondWindow::DBConnect(QString _t1)
+void SecondWindow::DBConnect(QString _t1, QString _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 

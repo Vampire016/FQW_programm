@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -25,13 +26,13 @@ QT_BEGIN_NAMESPACE
 class Ui_SecondWindow
 {
 public:
-    QHBoxLayout *horizontalLayout_4;
     QGroupBox *groupBox;
     QPushButton *pushButton;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *lineEdit;
+    QComboBox *comboBox;
     QGroupBox *groupBox_2;
     QPushButton *LogIN;
     QWidget *layoutWidget1;
@@ -47,17 +48,16 @@ public:
     {
         if (SecondWindow->objectName().isEmpty())
             SecondWindow->setObjectName(QString::fromUtf8("SecondWindow"));
-        SecondWindow->resize(455, 134);
-        horizontalLayout_4 = new QHBoxLayout(SecondWindow);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        SecondWindow->resize(739, 134);
         groupBox = new QGroupBox(SecondWindow);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setGeometry(QRect(170, 10, 311, 116));
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(70, 60, 75, 23));
+        pushButton->setGeometry(QRect(170, 60, 75, 23));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 30, 177, 22));
+        layoutWidget->setGeometry(QRect(130, 20, 177, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -71,9 +71,12 @@ public:
 
         horizontalLayout->addWidget(lineEdit);
 
-        groupBox_2 = new QGroupBox(groupBox);
+        comboBox = new QComboBox(groupBox);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(10, 20, 101, 22));
+        groupBox_2 = new QGroupBox(SecondWindow);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(220, 0, 220, 156));
+        groupBox_2->setGeometry(QRect(500, 10, 231, 111));
         LogIN = new QPushButton(groupBox_2);
         LogIN->setObjectName(QString::fromUtf8("LogIN"));
         LogIN->setGeometry(QRect(70, 80, 75, 23));
@@ -120,9 +123,6 @@ public:
 
 
         verticalLayout->addLayout(horizontalLayout_3);
-
-
-        horizontalLayout_4->addWidget(groupBox);
 
 
         retranslateUi(SecondWindow);

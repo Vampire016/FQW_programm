@@ -10,9 +10,6 @@
 #include "qtoolcalendar.h"
 
 
-
-//struct Node_1;
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -31,7 +28,7 @@ private slots:
     void on_act_print_triggered();
     void on_act_editOrd_triggered();
 
-    void SigDBConnect(QString str);
+    void SigDBConnect(QString name, QString type);
     void SigDBLog(QString log, QString pass);
     void reciveSignal();
 
@@ -57,15 +54,19 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_act_create_ord_triggered();
+
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui;    
 
     QSqlDatabase db;
 
-    QSqlQueryModel* qmodel;
-    QSqlQueryModel* qmodel_c1;
-    QSqlQueryModel* qmodel_c2;
+    QSqlQueryModel* qmodel, * qmodel_c1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_piory, * qmodel_creator,
+    * qmodel_super, * qmodel_appoin, * qmodel_id;
 
+    QSqlQuery *createOrd;
+
+    QStandardItemModel *modelVar2;
 
     SecondWindow *sw;
     PrintOrder *PrOrd;
@@ -74,42 +75,23 @@ private:
 
     QMdiArea * mdiArea;
 
-    QMenu *report;
-    QMenu *menuOp;
-    QMenu *menuCl;
-    QMenu *menuDi;
+    QMenu *report, *menuOp, *menuCl, *menuDi;
 
     QWidget *centrWidget;
 
-    QWidgetAction *actionOp;
-    QWidgetAction *actionCl;
-    QWidgetAction *actionDi;
+    QWidgetAction *actionOp, *actionCl,  *actionDi;
 
-    ClickableCalendar *calendarOp;
-    ClickableCalendar *calendarCl;
-    ClickableCalendar *calendarDi;
+    ClickableCalendar *calendarOp, *calendarCl, *calendarDi;
 
-
-
-    bool subWflags;
-    bool conect;
-    int counterUpdate;
     QToolButton *curToolBtn;
 
-//    Node_1 *head, *tail;
+
+    bool subWflags, conect;
+    int counterUpdate;    
 
 signals:
     void RevDBConnect(bool conect);
     void RevDBLog(bool logIn);
-};
-/*
-struct Node_1
-{
-    Node_1 *next;
 
-    int id;
-    QString data;
 };
-*/
-
 #endif // MAINWINDOW_H
