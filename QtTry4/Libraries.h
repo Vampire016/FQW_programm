@@ -39,6 +39,7 @@
 #include <QMenu>
 #include <QList>
 #include <QStandardItemModel>
+#include <QListWidgetItem>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки
@@ -61,5 +62,7 @@
 #include <QCalendarWidget>
 #include <QToolButton>
 //---------------------------------------------------------------------------------
+
+
 
 #endif // LIBRARIES_H

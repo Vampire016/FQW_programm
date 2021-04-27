@@ -43,6 +43,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label;
     QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *horizontalSpacer_3;
     QFrame *line;
     QLabel *label_DataZayavitel;
     QHBoxLayout *horizontalLayout_7;
@@ -106,14 +107,14 @@ public:
         if (PrintOrder->objectName().isEmpty())
             PrintOrder->setObjectName(QString::fromUtf8("PrintOrder"));
         PrintOrder->setEnabled(true);
-        PrintOrder->resize(750, 1080);
+        PrintOrder->resize(780, 1080);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(PrintOrder->sizePolicy().hasHeightForWidth());
         PrintOrder->setSizePolicy(sizePolicy);
-        PrintOrder->setMinimumSize(QSize(750, 1080));
-        PrintOrder->setMaximumSize(QSize(750, 1127));
+        PrintOrder->setMinimumSize(QSize(780, 1080));
+        PrintOrder->setMaximumSize(QSize(780, 1127));
         line_2 = new QFrame(PrintOrder);
         line_2->setObjectName(QString::fromUtf8("line_2"));
         line_2->setGeometry(QRect(50, 1040, 131, 16));
@@ -149,7 +150,7 @@ public:
 
         horizontalLayout_2->addWidget(img_logo);
 
-        horizontalSpacer_5 = new QSpacerItem(160, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(140, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_5);
 
@@ -162,7 +163,7 @@ public:
 
         horizontalLayout_2->addWidget(txt_logo_1);
 
-        horizontalSpacer_6 = new QSpacerItem(200, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(180, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_6);
 
@@ -206,6 +207,10 @@ public:
 
 
         horizontalLayout_2->addLayout(verticalLayout);
+
+        horizontalSpacer_3 = new QSpacerItem(10, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_3);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);

@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
-
     //Окно авторизации
     //--------------------------------------------------------------------------------------------------------------------------------------------
     conect = false;
@@ -85,15 +83,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->toolButton_Closed->setMenu(menuCl);
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
-    //Стили центальных кнопок
-    //--------------------------------------------------------------------------------------------------------------------------------------------
-    ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
-    ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
-    ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
-    ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
-    ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
-    ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: green}");    
-    //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
     //Блок соединений
     //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -102,8 +92,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, SIGNAL(RevDBConnect(bool)), sw, SLOT(ConOrNot(bool)));
     connect(sw, SIGNAL(DBLog(QString, QString)), this, SLOT(SigDBLog(QString, QString)));
     connect(this, SIGNAL(RevDBLog(bool)), sw, SLOT(LogOrNot(bool)));
-    connect(tmr, SIGNAL(timeout()), this, SLOT(UpdateDB()));
-    connect(ui->act_return, SIGNAL(triggered()), this, SLOT(ReturnEdit()));
+    connect(tmr, SIGNAL(timeout()), this, SLOT(UpdateDB()));    
     connect(ui->tableView, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableView_clicked(const QModelIndex &)));    
     connect(ui->tab_6, SIGNAL(clicked(QMouseEvent *)), this, SLOT(ClearFocusLE()));
     connect(calendarOp, SIGNAL(clickedDate()), this, SLOT(FocusDateOp()));
@@ -155,7 +144,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox_9->setModel(qmodel_piory);
     ui->comboBox_10->setModel(qmodel_creator);
     ui->comboBox_11->setModel(qmodel_super);
-    ui->comboBox_12->setModel(qmodel_appoin);
+    ui->comboBox_12->setModel(qmodel_appoin);    
+
+
+    //mdiArea для отчета
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    ui->mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    auto flags = PrOrd->windowFlags();
+    flags.setFlag(Qt::MSWindowsFixedSizeDialogHint).setFlag(Qt::WindowCloseButtonHint, false);
+    ui->mdiArea->addSubWindow(PrOrd, flags & ~Qt::WindowCloseButtonHint);
+    //--------------------------------------------------------------------------------------------------------------------------------------------
 }
 
 MainWindow::~MainWindow()
@@ -278,13 +277,78 @@ void MainWindow::UpdateDB()
 
     qmodel_c1->setQuery("SELECT "
 "ABS(SUM(NOT Status.SName = 'Закрыто')) AS cOpened, "
-"ABS(SUM(Status.SName = 'В работе (назначена)' OR Status.SName = 'В работе (запланированна)')) AS cInWork "
+"ABS(SUM(Status.SName = 'В работе (назначена)' OR Status.SName = 'В работе (запланированна)')) AS cInWork, "
+"ABS(SUM(Status.SName = 'Новый')) AS cNew "
 "FROM Status INNER JOIN Orders ON Status.id = Orders.Status;");
 
     qmodel_c1->query().first();
 
     ui->PB_wOpened->setText(qmodel_c1->query().value(0).toString());
     ui->PB_wInWork->setText(qmodel_c1->query().value(1).toString());
+    ui->PB_wNew->setText(qmodel_c1->query().value(2).toString());
+
+    /*
+    //Стили центальных кнопок
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
+    ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: aqua}");
+    ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
+    ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: darkgreen}");
+    ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
+    ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: limegreen}");
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    */
+
+
+    if(ui->PB_wOpened->text() == "0")
+    {
+        ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: blue}");
+    }
+    if(ui->PB_wNew->text() == "0")
+    {
+        ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wNew->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: aqua}");
+    }
+    if(ui->PB_wInWork->text() == "0")
+    {
+        ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: limegreen}");
+    }
+    if(ui->PB_wSolved->text() == "0")
+    {
+        ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wSolved->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: darkgreen}");
+    }
+    if(ui->PB_wAwaits->text() == "0")
+    {
+        ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wAwaits->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: orange}");
+    }
+    if(ui->PB_wOverdue->text() == "0")
+    {
+        ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
+    }
+    else
+    {
+        ui->PB_wOverdue->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: red}");
+    }
+
 
     tmr->start(10000);
 }
@@ -295,38 +359,7 @@ void MainWindow::UpdateDB()
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wOpened_clicked()
 {
-    QPrinter printer;
-    //print(&printer);
 
-
-    QPainter painter;
-
-    //painter.setWindow(PrOrd->rect());
-    //this->render(&painter);
-
-    //QPrintDialog dialog(&printer, this);
-
-    //QPixmap pix = QWidget::grab(PrOrd->rect());
-
-
-    QPixmap pix = QPixmap::grabWidget(PrOrd);
-
-
-    QPrintPreviewDialog preview(&printer);
-
-
-
-
-    if(preview.exec() == QDialog::Accepted)
-    {/*
-        painter.setWindow(PrOrd->rect());
-        PrOrd->render(&painter);*/
-
-
-        painter.begin(&printer);
-        painter.drawPixmap(0, 0, pix);
-        painter.end();
-    }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -335,19 +368,6 @@ void MainWindow::on_PB_wNew_clicked()
     ui->tabWidget->setCurrentIndex(3);
 }
 
-//Редактирование отчета перед выводом на печать
-//--------------------------------------------------------------------------------------------------------------------------------------------
-void MainWindow::on_act_editOrd_triggered()
-{
-    ui->tabWidget->setCurrentIndex(2);
-
-    tmr->stop();
-
-    ui->menu->setDisabled(true);
-
-    CreateMenu();
-
-    ui->menubar->addMenu(report);
 /*
     //PrintOrder *pr = new PrintOrder(mdiArea);
 
@@ -367,21 +387,6 @@ void MainWindow::on_act_editOrd_triggered()
 
     //mdiArea->addSubWindow(PrOrd, Qt::MSWindowsFixedSizeDialogHint);*/
 
-    mdiArea = new QMdiArea(ui->tab_3);
-
-    mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-    //qDebug() << centralWidget();
-    qDebug() << mdiArea;
-
-    centrWidget = takeCentralWidget();
-    setCentralWidget(mdiArea);
-
-    auto flags = PrOrd->windowFlags();
-    flags.setFlag(Qt::MSWindowsFixedSizeDialogHint).setFlag(Qt::WindowCloseButtonHint, false);
-
-    mdiArea->addSubWindow(PrOrd, flags & ~Qt::WindowCloseButtonHint);
 
     /*
     //PrOrd->setWindowFlags(windowFlags() & ~Qt::WindowSystemMenuHint);
@@ -426,49 +431,11 @@ void MainWindow::on_act_editOrd_triggered()
         //painter.drawPixmap(0, 0, pix);
         //painter.end();
     }*/
-}
-//--------------------------------------------------------------------------------------------------------------------------------------------
 
-//Создание меню работы с отчетом
-//--------------------------------------------------------------------------------------------------------------------------------------------
-void MainWindow::CreateMenu()
-{
-    report = new QMenu(nullptr);
-    report->setTitle("Работа с отчетом");
-    report->addAction(ui->act_print);
-    report->addSeparator();
-    report->addAction(ui->act_return);
-}
-//--------------------------------------------------------------------------------------------------------------------------------------------
-
-//Действие "Возврат" в меню работы с отчетом (вылеты)
-//--------------------------------------------------------------------------------------------------------------------------------------------
-void MainWindow::ReturnEdit()
-{
-    delete report;
-    //report = NULL;
-    delete mdiArea;
-
-    ui->menu->setDisabled(false);
-
-
-    setCentralWidget(centrWidget);
-
-    //qDebug() << centrWidget;
-    //qDebug() << centralWidget();
-
-    //qDebug() << mdiArea;
-
-
-    tmr->start(1);
-
-    ui->tabWidget->setCurrentIndex(1);
-}
-//--------------------------------------------------------------------------------------------------------------------------------------------
 
 //Вывод на печать из меню работы с отчетом
 //--------------------------------------------------------------------------------------------------------------------------------------------
-void MainWindow::on_act_print_triggered()
+void MainWindow::on_btn_print_clicked()
 {
     QPrinter printer;
     //print(&printer);
@@ -683,3 +650,4 @@ void MainWindow::on_act_create_ord_triggered()
 
     ui->comboBox_9->setCurrentIndex(2);
 }
+

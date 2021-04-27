@@ -25,8 +25,7 @@ public:
 private slots:
     void on_act_home_triggered();
     void on_act_orders_triggered();
-    void on_act_print_triggered();
-    void on_act_editOrd_triggered();
+    void on_act_create_ord_triggered();
 
     void SigDBConnect(QString name, QString type);
     void SigDBLog(QString log, QString pass);
@@ -35,10 +34,7 @@ private slots:
     void UpdateDB();
 
     void on_PB_wOpened_clicked();
-    void on_PB_wNew_clicked();
-
-    void CreateMenu();
-    void ReturnEdit();    
+    void on_PB_wNew_clicked();    
 
     void print(QPrinter * printer);   
 
@@ -52,9 +48,9 @@ private slots:
 
     void FocusToolBtn();
 
-    void on_pushButton_clicked();
+    void on_pushButton_clicked();    
 
-    void on_act_create_ord_triggered();
+    void on_btn_print_clicked();
 
 private:
     Ui::MainWindow *ui;    
@@ -73,11 +69,7 @@ private:
 
     QTimer *tmr;
 
-    QMdiArea * mdiArea;
-
-    QMenu *report, *menuOp, *menuCl, *menuDi;
-
-    QWidget *centrWidget;
+    QMenu *report, *menuOp, *menuCl, *menuDi;    
 
     QWidgetAction *actionOp, *actionCl,  *actionDi;
 

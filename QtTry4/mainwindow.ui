@@ -27,7 +27,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1077,7 +1077,7 @@
            <enum>QTabWidget::West</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tab_5">
            <attribute name="title">
@@ -2254,6 +2254,57 @@ line-height: 0.5;
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="tab_7">
+           <attribute name="title">
+            <string>История</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_8">
+           <attribute name="title">
+            <string>Отчет</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_24">
+              <item>
+               <spacer name="horizontalSpacer_25">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_print">
+                <property name="minimumSize">
+                 <size>
+                  <width>45</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>45</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>PushButton</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QMdiArea" name="mdiArea"/>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -2284,15 +2335,8 @@ line-height: 0.5;
     <property name="title">
      <string>Поддержка</string>
     </property>
-    <widget class="QMenu" name="menu_2">
-     <property name="title">
-      <string>Печать...</string>
-     </property>
-     <addaction name="act_editOrd"/>
-    </widget>
     <addaction name="act_home"/>
     <addaction name="act_orders"/>
-    <addaction name="menu_2"/>
     <addaction name="act_create_ord"/>
    </widget>
    <addaction name="menu"/>
@@ -2305,24 +2349,6 @@ line-height: 0.5;
   <action name="act_orders">
    <property name="text">
     <string>Заявки</string>
-   </property>
-  </action>
-  <action name="act_editOrd">
-   <property name="text">
-    <string>Редактировать отчет</string>
-   </property>
-  </action>
-  <action name="act_print">
-   <property name="text">
-    <string>Печать</string>
-   </property>
-   <property name="visible">
-    <bool>true</bool>
-   </property>
-  </action>
-  <action name="act_return">
-   <property name="text">
-    <string>Возврат</string>
    </property>
   </action>
   <action name="act_create_ord">

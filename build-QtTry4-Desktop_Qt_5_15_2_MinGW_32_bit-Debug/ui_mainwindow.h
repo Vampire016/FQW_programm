@@ -19,6 +19,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -41,9 +42,6 @@ class Ui_MainWindow
 public:
     QAction *act_home;
     QAction *act_orders;
-    QAction *act_editOrd;
-    QAction *act_print;
-    QAction *act_return;
     QAction *act_create_ord;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout_22;
@@ -193,9 +191,15 @@ public:
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QSpacerItem *horizontalSpacer_24;
+    QWidget *tab_7;
+    QWidget *tab_8;
+    QVBoxLayout *verticalLayout_7;
+    QHBoxLayout *horizontalLayout_24;
+    QSpacerItem *horizontalSpacer_25;
+    QPushButton *btn_print;
+    QMdiArea *mdiArea;
     QMenuBar *menubar;
     QMenu *menu;
-    QMenu *menu_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -208,13 +212,6 @@ public:
         act_home->setObjectName(QString::fromUtf8("act_home"));
         act_orders = new QAction(MainWindow);
         act_orders->setObjectName(QString::fromUtf8("act_orders"));
-        act_editOrd = new QAction(MainWindow);
-        act_editOrd->setObjectName(QString::fromUtf8("act_editOrd"));
-        act_print = new QAction(MainWindow);
-        act_print->setObjectName(QString::fromUtf8("act_print"));
-        act_print->setVisible(true);
-        act_return = new QAction(MainWindow);
-        act_return->setObjectName(QString::fromUtf8("act_return"));
         act_create_ord = new QAction(MainWindow);
         act_create_ord->setObjectName(QString::fromUtf8("act_create_ord"));
         centralwidget = new QWidget(MainWindow);
@@ -1142,6 +1139,35 @@ public:
         verticalLayout_5->addWidget(scrollArea);
 
         tabWidget_2->addTab(tab_6, QString());
+        tab_7 = new QWidget();
+        tab_7->setObjectName(QString::fromUtf8("tab_7"));
+        tabWidget_2->addTab(tab_7, QString());
+        tab_8 = new QWidget();
+        tab_8->setObjectName(QString::fromUtf8("tab_8"));
+        verticalLayout_7 = new QVBoxLayout(tab_8);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setObjectName(QString::fromUtf8("horizontalLayout_24"));
+        horizontalSpacer_25 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_25);
+
+        btn_print = new QPushButton(tab_8);
+        btn_print->setObjectName(QString::fromUtf8("btn_print"));
+        btn_print->setMinimumSize(QSize(45, 45));
+        btn_print->setMaximumSize(QSize(45, 45));
+
+        horizontalLayout_24->addWidget(btn_print);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_24);
+
+        mdiArea = new QMdiArea(tab_8);
+        mdiArea->setObjectName(QString::fromUtf8("mdiArea"));
+
+        verticalLayout_7->addWidget(mdiArea);
+
+        tabWidget_2->addTab(tab_8, QString());
 
         horizontalLayout_2->addWidget(tabWidget_2);
 
@@ -1158,21 +1184,17 @@ public:
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu->setCursor(QCursor(Qt::ArrowCursor));
-        menu_2 = new QMenu(menu);
-        menu_2->setObjectName(QString::fromUtf8("menu_2"));
         MainWindow->setMenuBar(menubar);
 
         menubar->addAction(menu->menuAction());
         menu->addAction(act_home);
         menu->addAction(act_orders);
-        menu->addAction(menu_2->menuAction());
         menu->addAction(act_create_ord);
-        menu_2->addAction(act_editOrd);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(3);
-        tabWidget_2->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1183,9 +1205,6 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         act_home->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\274\320\276\320\271", nullptr));
         act_orders->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\270", nullptr));
-        act_editOrd->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\276\321\202\321\207\320\265\321\202", nullptr));
-        act_print->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214", nullptr));
-        act_return->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\267\320\262\321\200\320\260\321\202", nullptr));
         act_create_ord->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \320\267\320\260\321\217\320\262\320\272\321\203", nullptr));
         groupBox->setTitle(QString());
 #if QT_CONFIG(tooltip)
@@ -1285,9 +1304,11 @@ public:
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\260", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_7), QCoreApplication::translate("MainWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217", nullptr));
+        btn_print->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_8), QCoreApplication::translate("MainWindow", "\320\236\321\202\321\207\320\265\321\202", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 4", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\264\320\264\320\265\321\200\320\266\320\272\320\260", nullptr));
-        menu_2->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\207\320\260\321\202\321\214...", nullptr));
     } // retranslateUi
 
 };
