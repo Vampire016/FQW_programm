@@ -106,6 +106,7 @@ public:
     {
         if (PrintOrder->objectName().isEmpty())
             PrintOrder->setObjectName(QString::fromUtf8("PrintOrder"));
+        PrintOrder->setWindowModality(Qt::NonModal);
         PrintOrder->setEnabled(true);
         PrintOrder->resize(780, 1080);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -115,6 +116,7 @@ public:
         PrintOrder->setSizePolicy(sizePolicy);
         PrintOrder->setMinimumSize(QSize(780, 1080));
         PrintOrder->setMaximumSize(QSize(780, 1127));
+        PrintOrder->setContextMenuPolicy(Qt::DefaultContextMenu);
         line_2 = new QFrame(PrintOrder);
         line_2->setObjectName(QString::fromUtf8("line_2"));
         line_2->setGeometry(QRect(50, 1040, 131, 16));

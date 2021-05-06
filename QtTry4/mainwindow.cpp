@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Скрытие вкладок таб бара
     //--------------------------------------------------------------------------------------------------------------------------------------------
     QTabBar *tabBar = ui->tabWidget->findChild<QTabBar *>();
-    tabBar->hide();
+    tabBar->hide();    
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Создание объектов запросов
@@ -33,14 +33,18 @@ MainWindow::MainWindow(QWidget *parent)
     qmodel_super = new QSqlQueryModel;
     qmodel_appoin = new QSqlQueryModel;
     qmodel_id = new QSqlQueryModel;
+    qmodel_ordId = new QSqlQueryModel;
+    filOrd = new QSqlQueryModel;
 
-    createOrd = new QSqlQuery(db);
+    btnSave = new QSqlQuery(db);
+    createOrd = new QSqlQuery(db);    
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Таймер
     //--------------------------------------------------------------------------------------------------------------------------------------------
     tmr = new QTimer();
     counterUpdate = 0;
+    saveTmr = new QTimer();
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Бланк отчета
@@ -64,23 +68,29 @@ MainWindow::MainWindow(QWidget *parent)
     menuOp = new QMenu(this);
     menuCl = new QMenu(this);
     menuDi = new QMenu(this);
+    menuFi = new QMenu(this);
     calendarOp = new ClickableCalendar();
     calendarCl = new ClickableCalendar();
     calendarDi = new ClickableCalendar();
+    calendarFi = new ClickableCalendar();
     actionOp = new QWidgetAction(this);
     actionCl = new QWidgetAction(this);
     actionDi = new QWidgetAction(this);
+    actionFi = new QWidgetAction(this);
 
     actionOp->setDefaultWidget(calendarOp);
     actionCl->setDefaultWidget(calendarCl);
     actionDi->setDefaultWidget(calendarDi);
+    actionFi->setDefaultWidget(calendarFi);
     menuOp->addAction(actionOp);
     menuCl->addAction(actionCl);
     menuDi->addAction(actionDi);
+    menuFi->addAction(actionFi);
 
     ui->toolButton_Opened->setMenu(menuOp);
     ui->toolButton_Decision->setMenu(menuDi);
     ui->toolButton_Closed->setMenu(menuCl);
+    ui->toolButton_Filter->setMenu(menuFi);
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -93,38 +103,55 @@ MainWindow::MainWindow(QWidget *parent)
     connect(sw, SIGNAL(DBLog(QString, QString)), this, SLOT(SigDBLog(QString, QString)));
     connect(this, SIGNAL(RevDBLog(bool)), sw, SLOT(LogOrNot(bool)));
     connect(tmr, SIGNAL(timeout()), this, SLOT(UpdateDB()));    
-    connect(ui->tableView, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableView_clicked(const QModelIndex &)));    
+    connect(ui->tableView, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableView_clicked(const QModelIndex &)));
     connect(ui->tab_6, SIGNAL(clicked(QMouseEvent *)), this, SLOT(ClearFocusLE()));
     connect(calendarOp, SIGNAL(clickedDate()), this, SLOT(FocusDateOp()));
     connect(calendarCl, SIGNAL(clickedDate()), this, SLOT(FocusDateCl()));
     connect(calendarDi, SIGNAL(clickedDate()), this, SLOT(FocusDateDi()));
+    connect(calendarFi, SIGNAL(clickedDate()), this, SLOT(FocusDateFi()));
     connect(ui->toolButton_Opened, SIGNAL(clicked()), this, SLOT(FocusToolBtn()));
+    connect(saveTmr, SIGNAL(timeout()), this, SLOT(updEditOrd()));
 
     //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
     //connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
     //qDebug() << ui->tab_6->focusWidget();
 
+    connect(ui->tableView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(twiceClickOnTableRow(const QModelIndex &)));
+    connect(ui->comboBox_var_1, SIGNAL(currentIndexChanged(QString)), this, SLOT(Var_2_changed()));
+
+
+    //ui->tableView->clicked()
+
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Фильтр заявок (пока не работает)
     //--------------------------------------------------------------------------------------------------------------------------------------------
-    QStringList var1 = {"---", "Не"};
-    QStringList var2 = {"---", "Не"};
+    QStringList var0 = {"---", "Не"};
 
-    ui->comboBox->addItems(var1);
-    ui->comboBox_2->addItems(var2);
+    QStringList var1 = {"Все", "Заголовок", "Описание", "Статус", "Приоритет", "Категория", "Тип", "Источник запроса", "Последние изменение",
+                        "Инициатор запроса", "Наблюдатель", "Назначено", "Дата Открытия", "Дата Закрытия", "Дата решения", "Дата изменения", "ID"};
+
+    var2_1 = new QStringList {"Содержит", "Не содержит"};
+    var2_2 = new QStringList {"Равен", "Не равен"};
+    var2_3 = new QStringList {"Содержит", "Не содержит", "Равна", "Не равна", "До", "После"};
+    var2_4 = new QStringList {"Равен", "Не равен", "Содержит", "Не содержит"};
+
+    ui->comboBox_var_0->addItems(var0);
+    ui->comboBox_var_0->setDisabled(true);
+    ui->comboBox_var_1->addItems(var1);
+    ui->lineEdit_find->hide();
+    ui->toolButton_Filter->hide();
 
 
-
-    modelVar2 = (QStandardItemModel*) ui->comboBox_2->model();
-    modelVar2->item(1)->setSelectable(false);
+    /*
+    modelVar2 = (QStandardItemModel*) ui->comboBox_var_1->model();
+    modelVar2->item(1)->setSelectable(false);*/
     //modelVar2->item(1)->
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
     QStringList type = {"Инцендент", "Запрос"};
-
     /*
     QStringList Status = {};
     QStringList Priory = {};
@@ -138,13 +165,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox_5->addItems(type);
     ui->comboBox_5->setCurrentIndex(0);
 
+
+
     ui->comboBox_6->setModel(qmodel_categ);
+
     ui->comboBox_7->setModel(qmodel_stat);
     ui->comboBox_8->setModel(qmodel_reqS);
     ui->comboBox_9->setModel(qmodel_piory);
     ui->comboBox_10->setModel(qmodel_creator);
     ui->comboBox_11->setModel(qmodel_super);
-    ui->comboBox_12->setModel(qmodel_appoin);    
+    ui->comboBox_12->setModel(qmodel_appoin);
+    ui->comboBox_13->setModel(qmodel_creator);
+
+    tabBar_2 = ui->tabWidget_2->findChild<QTabBar *>();
 
 
     //mdiArea для отчета
@@ -152,9 +185,20 @@ MainWindow::MainWindow(QWidget *parent)
     ui->mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     ui->mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     auto flags = PrOrd->windowFlags();
-    flags.setFlag(Qt::MSWindowsFixedSizeDialogHint).setFlag(Qt::WindowCloseButtonHint, false);
-    ui->mdiArea->addSubWindow(PrOrd, flags & ~Qt::WindowCloseButtonHint);
+    flags.setFlag(Qt::MSWindowsFixedSizeDialogHint);
+    //PrOrd->setWindowFlags(Qt::CustomizeWindowHint);
+    ui->mdiArea->addSubWindow(PrOrd, flags/* & ~Qt::WindowCloseButtonHint*/);
+    //ui->mdiArea->setWindowFlag(Qt::WindowSystemMenuHint, false);
+
+    qDebug() << PrOrd->windowFlags();
+    //qDebug() << ui->mdiArea->windowFlags();
+
     //--------------------------------------------------------------------------------------------------------------------------------------------
+
+    leList.operator<<(ui->lineEdit).operator<<(ui->lineEdit_6);
+    cbList.operator<<(ui->comboBox_6).operator<<(ui->comboBox_7).operator<<(ui->comboBox_8).operator<<(ui->comboBox_10);
+    lableList.operator<<(ui->label).operator<<(ui->label_11).operator<<(ui->label_7).operator<<(ui->label_8).operator<<(ui->label_9).operator<<(ui->label_14);
+
 }
 
 MainWindow::~MainWindow()
@@ -176,7 +220,7 @@ void MainWindow::on_act_orders_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
 
-    ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
+    //ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
     ui->tableView->setFocusPolicy(Qt::NoFocus);
 
     ui->tableView->verticalHeader()->setVisible(false);
@@ -184,8 +228,89 @@ void MainWindow::on_act_orders_triggered()
     ui->tableView->setModel(qmodel);
     ui->tableView->resizeRowsToContents();
     ui->tableView->setColumnWidth(1, 270);
+
+    ui->comboBox_var_1->setCurrentIndex(0);
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+void MainWindow::Var_2_changed()
+{
+
+    ui->comboBox_var_2->clear();
+
+    if(ui->comboBox_var_1->currentIndex() == 0)
+    {
+        ui->comboBox_var_2->setDisabled(true);
+        ui->comboBox_var_3->setDisabled(true);
+        ui->lineEdit_find->show();
+        ui->lineEdit_find->setDisabled(true);
+        ui->toolButton_Filter->hide();
+        ui->comboBox_var_3->show();
+    }
+    else if(ui->comboBox_var_1->currentIndex() > 0 && ui->comboBox_var_1->currentIndex() < 3)
+    {
+        ui->comboBox_var_2->setDisabled(false);
+        ui->comboBox_var_3->setDisabled(false);
+        ui->comboBox_var_2->addItems(*var2_1);
+        ui->comboBox_var_3->hide();
+        ui->lineEdit_find->show();
+        ui->lineEdit_find->setDisabled(false);
+    }
+    else if(ui->comboBox_var_1->currentIndex() > 2 && ui->comboBox_var_1->currentIndex() < 12)
+    {
+        ui->comboBox_var_2->setDisabled(false);
+        ui->comboBox_var_3->setDisabled(false);
+        ui->comboBox_var_2->addItems(*var2_2);
+        ui->lineEdit_find->hide();
+        ui->toolButton_Filter->hide();
+        ui->comboBox_var_3->show();
+
+        QStringList sub_var_2 = {"`Status`", "Priority", "`Categories`", "`Types`", "RequestSource", "Users", "Users", "Users", "Users"};
+        QStringList sub_var = {"SName", "PName", "`C+SC`", "TName", "RName", "FullName", "FullName", "FullName", "FullName"};
+        QString cond = "WHERE Users.FullName <> 'Почтовый робот';";
+
+        if(ui->comboBox_var_1->currentIndex() < 10)
+        {
+            filOrd->setQuery("SELECT " + sub_var.at(ui->comboBox_var_1->currentIndex() - 3) + " FROM " + sub_var_2.at(ui->comboBox_var_1->currentIndex() - 3) + ";");
+        }
+        else
+        {
+            filOrd->setQuery("SELECT " + sub_var.at(ui->comboBox_var_1->currentIndex() - 3) + " FROM " + sub_var_2.at(ui->comboBox_var_1->currentIndex() - 3) + " " + cond);
+        }
+
+        ui->comboBox_var_3->setModel(filOrd);
+    }
+    else if(ui->comboBox_var_1->currentIndex() > 11 && ui->comboBox_var_1->currentIndex() < 16)
+    {
+        ui->comboBox_var_2->setDisabled(false);
+        ui->comboBox_var_3->setDisabled(false);
+        ui->lineEdit_find->setDisabled(false);
+        ui->comboBox_var_2->addItems(*var2_3);
+        ui->comboBox_var_3->hide();
+        ui->lineEdit_find->show();
+        ui->toolButton_Filter->show();
+
+
+
+    }
+    else
+    {
+        ui->comboBox_var_2->setDisabled(false);
+        ui->comboBox_var_3->setDisabled(false);
+        ui->lineEdit_find->setDisabled(false);
+        ui->comboBox_var_2->addItems(*var2_4);
+        ui->lineEdit_find->show();
+        ui->toolButton_Filter->hide();
+    };
+}
+
+
+void MainWindow::on_pushButton_search_clicked()
+{
+    qDebug() << ui->comboBox_var_3->model();
+}
+
 
 //Отображение главного окна после успешной авторизации
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -250,9 +375,11 @@ void MainWindow::SigDBLog(QString log, QString pass)
                 QString s1 = query.value(4).toString();
                 QString s2 = query.value(5).toString();
 
+
                 if(log == s1 && pass == s2)
                 {
                     emit RevDBLog(true);
+                    curUser = query.value(0).toInt();
                     tmr->start(1);
                     return;
                 }
@@ -270,10 +397,14 @@ void MainWindow::UpdateDB()
 {
     counterUpdate++;
 
-    qDebug() << "Update #" + QVariant(counterUpdate).toString();
+    qDebug() << "Update #" + QVariant(counterUpdate).toString() + "   Current User ID: " + QVariant(curUser).toString();
 
     qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName, `Edit`.DateEdit, `Create`.DateOpen, Priority.PName, createUser.FullName AS Инициатор, workUser.FullName AS `Кто назначен`, Categories.`C+SC` "
-"FROM Users AS workUser INNER JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork ORDER BY Orders.id DESC;");
+"FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork ORDER BY Orders.id DESC;");
+
+    /*qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName, `Edit`.DateEdit, `Create`.DateOpen, Priority.PName, createUser.FullName AS `Инициатор`, workUser.FullName AS `Кто назначен`, Categories.`C+SC` "
+"FROM Users AS editUser INNER JOIN (`Types` INNER JOIN (Categories INNER JOIN (`Status` INNER JOIN (RequestSource INNER JOIN (Priority INNER JOIN ((((Orders INNER JOIN `Control` ON Orders.id = `Control`.id) INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) "
+"LEFT JOIN (Users AS workUser INNER JOIN `Work` ON workUser.id = `Work`.WhoWork) ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON RequestSource.id = Orders.RequestSource) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON `Types`.id = Orders.`Type`) ON editUser.id = `Edit`.WhoEdit ORDER BY Orders.id DESC;");*/
 
     qmodel_c1->setQuery("SELECT "
 "ABS(SUM(NOT Status.SName = 'Закрыто')) AS cOpened, "
@@ -454,10 +585,10 @@ void MainWindow::on_btn_print_clicked()
     QPixmap pix = QPixmap::grabWidget(PrOrd);
 
 
-    QPrintPreviewDialog preview(&printer);
+    QPrintDialog dialog(&printer);
 
 
-    if(preview.exec() == QDialog::Accepted)
+    if(dialog.exec() == QDialog::Accepted)
     {/*
         painter.setWindow(PrOrd->rect());
         PrOrd->render(&painter);*/
@@ -485,10 +616,10 @@ void MainWindow::print(QPrinter * printer)
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::onTableView_clicked(const QModelIndex &index)
 {
-    /*ui->tableView->selectRow(ui->tableView->currentIndex().row());
+    ui->tableView->selectRow(ui->tableView->currentIndex().row());
 
     qDebug() << index;
-    qDebug() << ui->tableView->currentIndex().row();*/
+    //qDebug() << ui->tableView->currentIndex().row();
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -539,6 +670,11 @@ void MainWindow::FocusDateDi()
 {
     ui->lineEdit_4->setText(calendarDi->selectedDate().toString(QString("yyyy.MM.dd")) + " 12:00:00");
 }
+
+void MainWindow::FocusDateFi()
+{
+    ui->lineEdit_find->setText(calendarFi->selectedDate().toString(QString("yyyy.MM.dd")));
+}
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
 void MainWindow::FocusToolBtn()
@@ -547,87 +683,133 @@ void MainWindow::FocusToolBtn()
 }
 
 
-//Добавление текущей даты и времени в поле последние изменение (пока только на меня) (Реализовано на Си)
+//Создание новой заявки
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_clicked()
 {
+    if(ui->lineEdit->text() != "" && ui->lineEdit_6->text() != "" && ui->comboBox_6->currentIndex() != 0 && ui->comboBox_7->currentIndex() != 0
+            && ui->comboBox_8->currentIndex() != 0 && ui->comboBox_10->currentIndex() != 0)
+    {
+        QMessageBox::StandardButton create;
+        create = QMessageBox::question(this, "Запись заявки", "Вы действительно хотите внести сформированную заявку в базу данных?", QMessageBox::Yes|QMessageBox::No);
 
-    time_t     now = time(0);
-    struct tm  tstruct;
-    char       buf[80];
-    tstruct = *localtime(&now);
+        if(create == QMessageBox::Yes)
+        {
+            time_t     now = time(0);
+            struct tm  tstruct;
+            char       buf[80];
+            tstruct = *localtime(&now);
 
-    strftime(buf, sizeof(buf), "%Y.%m.%d %X", &tstruct);
-    //strftime(buf, sizeof(buf), "%X", &tstruct);
+            strftime(buf, sizeof(buf), "%Y.%m.%d %X", &tstruct);
 
-    QString str(buf);
-/*
-    qmodel_c2->setQuery("SELECT Users.FullName FROM Users");
-    qmodel_c2->query().first();
-
-    ui->label_17->setText(str + " на " + qmodel_c2->query().value(0).toString());
-*/
+            QString str(buf);
 
 
 
-    qmodel_id->setQuery("Select max(Orders.id), max(`Create`.id), max(`Edit`.id), max(`Work`.id), max(`Categories`.id), max(Priority.id), max(RequestSource.id), max(`Status`.id) "
-                        "From `Categories`, `Create`, `Edit`, Orders, Priority, RequestSource, `Status`, `Work`");
-    qmodel_id->query().first();
+            qmodel_id->setQuery("Select max(Orders.id), max(`Create`.id), max(`Edit`.id), max(`Work`.id), max(`Categories`.id), max(Priority.id), max(RequestSource.id), max(`Status`.id), max(`Control`.id) "
+            "From `Categories`, `Create`, `Edit`, Orders, Priority, RequestSource, `Status`, `Work`, `Control`");
+            qmodel_id->query().first();
 
-    QSqlQuery creOrd(db);
+            QSqlQuery creOrd(db);
 
-    //qDebug() << creOrd.exec("Select * From `Work`");
-    //qDebug() << createOrd->exec();
 
-    creOrd.prepare("INSERT INTO Orders (id, `Category`, `Priory`, `Status`, `Title`, `Description`, RequestSource) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    creOrd.addBindValue(1 + qmodel_id->query().value(0).toInt());
-    creOrd.addBindValue(1 + ui->comboBox_6->currentIndex());
-    creOrd.addBindValue(1 + ui->comboBox_9->currentIndex());
-    creOrd.addBindValue(1 + ui->comboBox_7->currentIndex());
-    creOrd.addBindValue(ui->lineEdit_6->text());
-    creOrd.addBindValue(ui->textEdit->toPlainText());
-    creOrd.addBindValue(1 + ui->comboBox_8->currentIndex());
-    creOrd.exec();
+            creOrd.prepare("INSERT INTO Orders (id, `Category`, `Priory`, `Status`, `Title`, `Description`, RequestSource, `Type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            creOrd.addBindValue(1 + qmodel_id->query().value(0).toInt());
+            creOrd.addBindValue(ui->comboBox_6->currentIndex());
+            creOrd.addBindValue(1 + ui->comboBox_9->currentIndex());
+            creOrd.addBindValue(ui->comboBox_7->currentIndex());
+            creOrd.addBindValue(ui->lineEdit_6->text());
+            creOrd.addBindValue(ui->textEdit->toPlainText());
+            creOrd.addBindValue(ui->comboBox_8->currentIndex());
+            creOrd.addBindValue(1 + ui->comboBox_5->currentIndex());
+            creOrd.exec();
 
-    creOrd.prepare("INSERT INTO `Create` (id, `DateOpen`, WhoCreate) VALUES (?, ?, ?)");
-    creOrd.addBindValue(1 + qmodel_id->query().value(1).toInt());
-    creOrd.addBindValue(ui->lineEdit->text());
-    creOrd.addBindValue(1 + ui->comboBox_10->currentIndex());
-    creOrd.exec();
+            creOrd.prepare("INSERT INTO `Create` (id, `DateOpen`, WhoCreate) VALUES (?, ?, ?)");
+            creOrd.addBindValue(1 + qmodel_id->query().value(1).toInt());
+            creOrd.addBindValue(ui->lineEdit->text());
+            creOrd.addBindValue(ui->comboBox_10->currentIndex());
+            creOrd.exec();
 
-    creOrd.prepare("INSERT INTO `Edit` (id, `DateEdit`, WhoEdit) VALUES (?, ?, ?)");
-    creOrd.addBindValue(1 + qmodel_id->query().value(2).toInt());
-    creOrd.addBindValue(str);
-    creOrd.addBindValue(1 + ui->comboBox_10->currentIndex());
-    creOrd.exec();
+            creOrd.prepare("INSERT INTO `Edit` (id, `DateEdit`, WhoEdit) VALUES (?, ?, ?)");
+            creOrd.addBindValue(1 + qmodel_id->query().value(2).toInt());
+            creOrd.addBindValue(str);
+            creOrd.addBindValue(curUser);
+            creOrd.exec();
 
-    creOrd.prepare("INSERT INTO `Work` (id, WhoWork) VALUES (?, ?)");
-    creOrd.addBindValue(1 + qmodel_id->query().value(3).toInt());
-    creOrd.addBindValue(1 + ui->comboBox_12->currentIndex());
-    creOrd.exec();
+            creOrd.prepare("INSERT INTO `Work` (id, WhoWork) VALUES (?, ?)");
+            creOrd.addBindValue(1 + qmodel_id->query().value(3).toInt());
+            if(ui->comboBox_12->currentIndex() == 0)
+            {
+                creOrd.addBindValue(QVariant(QVariant::Int));
+            }
+            else
+            {
+                creOrd.addBindValue(ui->comboBox_12->currentIndex());
+            };
+            creOrd.exec();
+
+            creOrd.prepare("INSERT INTO `Control` (id, WhoControlling) VALUES (?, ?)");
+            creOrd.addBindValue(1 + qmodel_id->query().value(8).toInt());
+            if(ui->comboBox_11->currentIndex() == 0)
+            {
+                creOrd.addBindValue(QVariant(QVariant::Int));
+            }
+            else
+            {
+                creOrd.addBindValue(ui->comboBox_11->currentIndex());
+            };
+            creOrd.exec();
+
+            tmr->start(0);
+            emit ui->act_orders->triggered();
+        }
+    }
+    else
+    {
+        QMessageBox::critical(this, "Формирование заявки", "Одно или несколько обязательных полей пусты!\n\nПожалуйста, проверь введенные данные.\n\n(Поля \"Наблюдатель\", \"Назначено\" и \"Описание\" не являются обязательными)");
+        //return;
+    }
+
+    for (int i = 0; i< 2; i++)
+    {
+        if(leList.at(i)->text() == "")
+        {
+            lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }
+        else
+        {
+            lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");
+        }
+    }
+    for (int i = 0; i< 4; i++)
+    {
+        if(cbList.at(i)->currentIndex() == 0)
+        {
+            lableList.at(2 + i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }
+        else
+        {
+            lableList.at(2 + i)->setStyleSheet("background-color: rgb(181, 181, 181);");
+        }
+    }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
 void MainWindow::on_act_create_ord_triggered()
 {
-    QTabBar *tabBar_2 = ui->tabWidget_2->findChild<QTabBar *>();
     tabBar_2->hide();
-
-
 
     ui->tabWidget->setCurrentIndex(3);
     ui->tabWidget_2->setCurrentIndex(1);
 
     ui->label_idZayavki->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Формирование новой заявки</span></p></body></html>");
 
-    qmodel_categ->setQuery("SELECT `C+SC` From `Categories`");
-
-    qmodel_stat->setQuery("SELECT SName FROM `Status`");
-    qmodel_reqS->setQuery("SELECT RName FROM RequestSource");
+    qmodel_categ->setQuery("SELECT NULL FROM `Categories` UNION SELECT `C+SC` From `Categories`");
+    qmodel_stat->setQuery("SELECT NULL FROM `Status` UNION SELECT SName FROM `Status`");
+    qmodel_reqS->setQuery("SELECT NULL FROM RequestSource UNION SELECT RName FROM RequestSource");
     qmodel_piory->setQuery("SELECT PName FROM Priority");
-    qmodel_creator->setQuery("SELECT FullName FROM Users");
-
-    qmodel_super->setQuery("SELECT FullName FROM Users WHERE FullName <> 'Почтовый робот'");
+    qmodel_creator->setQuery("SELECT NULL FROM Users UNION SELECT FullName FROM Users");
+    qmodel_super->setQuery("SELECT NULL FROM Users UNION SELECT FullName FROM Users WHERE FullName <> 'Почтовый робот'");
     qmodel_appoin->setQuery(qmodel_super->query());
 
     ui->label_2->hide();
@@ -642,7 +824,7 @@ void MainWindow::on_act_create_ord_triggered()
     ui->pushButton_3->hide();
     ui->toolButton_Decision->hide();
     ui->toolButton_Closed->hide();
-    ui->comboBox_13->hide();
+    ui->comboBox_13->hide();    
 
     ui->lineEdit->clear();
     ui->lineEdit_6->clear();
@@ -651,3 +833,223 @@ void MainWindow::on_act_create_ord_triggered()
     ui->comboBox_9->setCurrentIndex(2);
 }
 
+void MainWindow::twiceClickOnTableRow(const QModelIndex &index)
+{
+    id = qmodel->index(index.row(), 0).data().toString();
+
+    qmodel_ordId->setQuery("SELECT Orders.id, Orders.Title, Orders.`Status`, `Edit`.DateEdit, `Create`.DateOpen, `Work`.DateClose, `Create`.WhoCreate, `Edit`.WhoEdit, `Work`.WhoWork, Orders.Priory, Orders.Category, Orders.RequestSource, Orders.`Description`, Orders.`Type`, `Work`.DateDecision, `Control`.WhoControlling, editUser.FullName "
+"FROM (((Orders INNER JOIN `Control` ON Orders.id = `Control`.id) INNER JOIN `Create` ON Orders.id = `Create`.id) INNER JOIN (Users AS editUser INNER JOIN `Edit` ON editUser.id = `Edit`.WhoEdit) ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id WHERE Orders.id = " + id);
+    qmodel_ordId->query().first();
+
+    qmodel_categ->setQuery("SELECT NULL FROM `Categories` UNION SELECT `C+SC` FROM `Categories`");
+    qmodel_categ->setQuery("SELECT `C+SC`, id FROM `Categories` ORDER BY id");
+    qmodel_stat->setQuery("SELECT NULL FROM `Status` UNION SELECT SName FROM `Status`");
+    qmodel_reqS->setQuery("SELECT NULL FROM RequestSource UNION SELECT RName FROM RequestSource");
+    qmodel_piory->setQuery("SELECT PName FROM Priority");
+    qmodel_creator->setQuery("SELECT NULL FROM Users UNION SELECT FullName FROM Users");
+    qmodel_super->setQuery("SELECT NULL FROM Users UNION SELECT FullName FROM Users WHERE FullName <> 'Почтовый робот'");
+    qmodel_appoin->setQuery(qmodel_super->query());
+
+    tabBar_2->show();
+
+    ui->label_2->show();
+    ui->label_3->show();
+    ui->label_4->show();
+    ui->label_5->show();
+    ui->label_17->show();
+    ui->lineEdit_4->show();
+    ui->lineEdit_5->show();
+    ui->pushButton->show();
+    ui->pushButton_2->show();
+    ui->pushButton_3->show();
+    ui->toolButton_Decision->show();
+    ui->toolButton_Closed->show();
+    ui->comboBox_13->show();
+    ui->pushButton->hide();
+
+    ui->textEdit->clear(); ui->lineEdit->clear(); ui->lineEdit_4->clear(); ui->lineEdit_5->clear(); ui->lineEdit_6->clear();
+
+
+    //ui->tableView->setModel(qmodel_ordId);
+
+
+    ui->tabWidget->setCurrentIndex(3);
+    ui->tabWidget_2->setCurrentIndex(0);
+    ui->label_idZayavki->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Заявка - ID  " + id + "  (ITOsoba LLC)</span></p></body></html>");
+    ui->lineEdit->setText(QDateTime::fromString(qmodel_ordId->index(0, 4).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_4->setText(QDateTime::fromString(qmodel_ordId->index(0, 14).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_5->setText(QDateTime::fromString(qmodel_ordId->index(0, 5).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->comboBox_13->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+    ui->label_17->setText(QDateTime::fromString(qmodel_ordId->index(0, 3).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss") + "  на  " + qmodel_ordId->index(0, 16).data().toString());
+    ui->comboBox_5->setCurrentIndex(qmodel_ordId->index(0, 13).data().toInt() - 1);    
+    ui->comboBox_6->setCurrentIndex(qmodel_ordId->index(0, 10).data().toInt());
+    ui->comboBox_7->setCurrentIndex(qmodel_ordId->index(0, 2).data().toInt());
+    ui->comboBox_8->setCurrentIndex(qmodel_ordId->index(0, 11).data().toInt());
+    ui->comboBox_9->setCurrentIndex(qmodel_ordId->index(0, 9).data().toInt() - 1);
+    ui->comboBox_10->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+    ui->comboBox_11->setCurrentIndex(qmodel_ordId->index(0, 15).data().toInt());
+    ui->comboBox_12->setCurrentIndex(qmodel_ordId->index(0, 8).data().toInt());
+    ui->lineEdit_6->setText(qmodel_ordId->index(0, 1).data().toString());
+    ui->textEdit->setText(qmodel_ordId->index(0, 12).data().toString());
+
+
+    //qDebug() << qmodel_ordId->index(0, 4).data().toString();
+    //qDebug() << QDateTime::fromString(qmodel_ordId->index(0, 4).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy-MM-dd HH:mm:ss");
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{    
+    if(ui->lineEdit->text() != "" && ui->lineEdit_6->text() != "" && ui->comboBox_6->currentIndex() != 0 && ui->comboBox_7->currentIndex() != 0
+            && ui->comboBox_8->currentIndex() != 0 && ui->comboBox_10->currentIndex() != 0)
+    {
+        QMessageBox::StandardButton create;
+        create = QMessageBox::question(this, "Запись заявки", "Вы действительно хотите внести изменения в заявку?", QMessageBox::Yes|QMessageBox::No);
+
+        if(create == QMessageBox::Yes)
+        {
+            time_t     now = time(0);
+            struct tm  tstruct;
+            char       buf[80];
+            tstruct = *localtime(&now);
+            strftime(buf, sizeof(buf), "%Y.%m.%d %X", &tstruct);
+            QString str(buf);
+
+
+            QSqlQuery updOrd(db);
+
+            updOrd.prepare("UPDATE Orders SET `Category`=:1, `Priory`=:2, `Status`=:3, `Title`=:4, `Description`=:5, RequestSource=:6, `Type`=:7 WHERE Orders.id = " + id);
+            updOrd.bindValue(":1", ui->comboBox_6->currentIndex());
+            updOrd.bindValue(":2", ui->comboBox_9->currentIndex() + 1);
+            updOrd.bindValue(":3", ui->comboBox_7->currentIndex());
+            updOrd.bindValue(":4", ui->lineEdit_6->text());
+            updOrd.bindValue(":5", ui->textEdit->toPlainText());
+            updOrd.bindValue(":6", ui->comboBox_8->currentIndex());
+            updOrd.bindValue(":7", ui->comboBox_5->currentIndex() + 1);
+            updOrd.exec();
+
+            updOrd.prepare("UPDATE `Create` SET `DateOpen`=:1, WhoCreate=:2 WHERE `Create`.id = " + id);
+            updOrd.bindValue(":1", ui->lineEdit->text());
+            updOrd.bindValue(":2", ui->comboBox_10->currentIndex());
+            updOrd.exec();
+
+            updOrd.prepare("UPDATE `Edit` SET `DateEdit`=:1, WhoEdit=:2 WHERE `Edit`.id = " + id);
+            updOrd.bindValue(":1", str);
+            updOrd.bindValue(":2", curUser);
+            updOrd.exec();
+
+            updOrd.prepare("UPDATE `Control` SET `WhoControlling`=:1 WHERE `Control`.id = " + id);
+            if(ui->comboBox_11->currentIndex() == 0)
+            {
+                updOrd.bindValue(":1", QVariant(QVariant::Int));
+            }
+            else
+            {
+                updOrd.bindValue(":1", ui->comboBox_11->currentIndex());
+            };
+            updOrd.exec();
+
+            updOrd.prepare("UPDATE `Work` SET `DateClose`=:1, WhoWork=:2, `DateDecision`=:3 WHERE `Work`.id = " + id);
+            if(ui->lineEdit_5->text() == "")
+            {
+                updOrd.bindValue(":1", QVariant(QVariant::DateTime));
+            }
+            else
+            {
+                updOrd.bindValue(":1", ui->lineEdit_5->text());
+            };
+            if(ui->comboBox_12->currentIndex() == 0)
+            {
+                updOrd.bindValue(":2", QVariant(QVariant::Int));
+            }
+            else
+            {
+                updOrd.bindValue(":2", ui->comboBox_12->currentIndex());
+            };
+            if(ui->lineEdit_4->text() == "")
+            {
+                updOrd.bindValue(":3", QVariant(QVariant::DateTime));
+            }
+            else
+            {
+                updOrd.bindValue(":3", ui->lineEdit_4->text());
+            };
+            updOrd.exec();
+
+            saveTmr->start(500);
+        }
+    }
+    else
+    {
+        QMessageBox::critical(this, "Редактирование заявки", "Одно или несколько обязательных полей пусты!\n\nПожалуйста, проверь введенные данные.\n\n(Поля \"Наблюдатель\", \"Назначено\", \"Описание\", \"Дата решения\" и \"Дата закрытия\" не являются обязательными)");
+        //return;
+    }
+
+    for (int i = 0; i< 2; i++)
+    {
+        if(leList.at(i)->text() == "")
+        {
+            lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }
+        else
+        {
+            lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");
+        }
+    }
+    for (int i = 0; i< 4; i++)
+    {
+        if(cbList.at(i)->currentIndex() == 0)
+        {
+            lableList.at(2 + i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }
+        else
+        {
+            lableList.at(2 + i)->setStyleSheet("background-color: rgb(181, 181, 181);");
+        }
+    }
+}
+
+void MainWindow::updEditOrd()
+{    
+    qmodel_ordId->setQuery("SELECT Orders.id, Orders.Title, Orders.`Status`, `Edit`.DateEdit, `Create`.DateOpen, `Work`.DateClose, `Create`.WhoCreate, `Edit`.WhoEdit, `Work`.WhoWork, Orders.Priory, Orders.Category, Orders.RequestSource, Orders.`Description`, Orders.`Type`, `Work`.DateDecision, `Control`.WhoControlling, editUser.FullName "
+"FROM (((Orders INNER JOIN `Control` ON Orders.id = `Control`.id) INNER JOIN `Create` ON Orders.id = `Create`.id) INNER JOIN (Users AS editUser INNER JOIN `Edit` ON editUser.id = `Edit`.WhoEdit) ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id WHERE Orders.id = " + id);
+
+    ui->label_idZayavki->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Заявка - ID  " + id + "  (ITOsoba LLC)</span></p></body></html>");
+    ui->lineEdit->setText(QDateTime::fromString(qmodel_ordId->index(0, 4).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_4->setText(QDateTime::fromString(qmodel_ordId->index(0, 14).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_5->setText(QDateTime::fromString(qmodel_ordId->index(0, 5).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->comboBox_13->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+    ui->label_17->setText(QDateTime::fromString(qmodel_ordId->index(0, 3).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss") + "  на  " + qmodel_ordId->index(0, 16).data().toString());
+    ui->comboBox_5->setCurrentIndex(qmodel_ordId->index(0, 13).data().toInt() - 1);
+    ui->comboBox_6->setCurrentIndex(qmodel_ordId->index(0, 10).data().toInt());
+    ui->comboBox_7->setCurrentIndex(qmodel_ordId->index(0, 2).data().toInt());
+    ui->comboBox_8->setCurrentIndex(qmodel_ordId->index(0, 11).data().toInt());
+    ui->comboBox_9->setCurrentIndex(qmodel_ordId->index(0, 9).data().toInt() - 1);
+    ui->comboBox_10->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+    ui->comboBox_11->setCurrentIndex(qmodel_ordId->index(0, 15).data().toInt());
+    ui->comboBox_12->setCurrentIndex(qmodel_ordId->index(0, 8).data().toInt());
+    ui->lineEdit_6->setText(qmodel_ordId->index(0, 1).data().toString());
+    ui->textEdit->setText(qmodel_ordId->index(0, 12).data().toString());
+
+    saveTmr->stop();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QMessageBox::StandardButton del;
+    del = QMessageBox::question(this, "Удаление заявки", "Внимание!!!\n\nДанные по заявке  \"ID " + id + "\"  будут удалены безвозвратно!\n\nВы действительно хотите удалить заявку?", QMessageBox::Yes|QMessageBox::No);
+
+    if(del == QMessageBox::Yes)
+    {
+        QSqlQuery delOrd(db);
+
+        delOrd.exec("DELETE FROM `Create` WHERE id = " + id);
+        delOrd.exec("DELETE FROM `Work` WHERE id = " + id);
+        delOrd.exec("DELETE FROM `Edit` WHERE id = " + id);
+        delOrd.exec("DELETE FROM `Control` WHERE id = " + id);
+        delOrd.exec("DELETE FROM `Orders` WHERE id = " + id);
+
+        tmr->start(0);
+        emit ui->act_orders->triggered();
+    }
+}

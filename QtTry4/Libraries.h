@@ -61,6 +61,7 @@
 #include <QLabel>
 #include <QCalendarWidget>
 #include <QToolButton>
+#include <QComboBox>
 //---------------------------------------------------------------------------------
 
 

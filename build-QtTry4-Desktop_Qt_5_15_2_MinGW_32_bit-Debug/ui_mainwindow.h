@@ -103,10 +103,13 @@ public:
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_3;
     QGroupBox *groupBox_2;
-    QComboBox *comboBox;
-    QComboBox *comboBox_2;
-    QComboBox *comboBox_3;
-    QComboBox *comboBox_4;
+    QComboBox *comboBox_var_0;
+    QComboBox *comboBox_var_1;
+    QComboBox *comboBox_var_2;
+    QComboBox *comboBox_var_3;
+    QLineEdit *lineEdit_find;
+    QToolCalendar *toolButton_Filter;
+    QPushButton *pushButton_search;
     QTableView *tableView;
     QWidget *tab_3;
     QWidget *tab_4;
@@ -580,19 +583,28 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         groupBox_2 = new QGroupBox(tab_2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setMinimumSize(QSize(0, 70));
-        comboBox = new QComboBox(groupBox_2);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(10, 20, 71, 22));
-        comboBox_2 = new QComboBox(groupBox_2);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(90, 20, 221, 22));
-        comboBox_3 = new QComboBox(groupBox_2);
-        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
-        comboBox_3->setGeometry(QRect(320, 20, 69, 22));
-        comboBox_4 = new QComboBox(groupBox_2);
-        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
-        comboBox_4->setGeometry(QRect(400, 20, 211, 22));
+        groupBox_2->setMinimumSize(QSize(0, 90));
+        comboBox_var_0 = new QComboBox(groupBox_2);
+        comboBox_var_0->setObjectName(QString::fromUtf8("comboBox_var_0"));
+        comboBox_var_0->setGeometry(QRect(10, 20, 71, 22));
+        comboBox_var_1 = new QComboBox(groupBox_2);
+        comboBox_var_1->setObjectName(QString::fromUtf8("comboBox_var_1"));
+        comboBox_var_1->setGeometry(QRect(90, 20, 221, 22));
+        comboBox_var_2 = new QComboBox(groupBox_2);
+        comboBox_var_2->setObjectName(QString::fromUtf8("comboBox_var_2"));
+        comboBox_var_2->setGeometry(QRect(320, 20, 141, 22));
+        comboBox_var_3 = new QComboBox(groupBox_2);
+        comboBox_var_3->setObjectName(QString::fromUtf8("comboBox_var_3"));
+        comboBox_var_3->setGeometry(QRect(470, 20, 361, 22));
+        lineEdit_find = new QLineEdit(groupBox_2);
+        lineEdit_find->setObjectName(QString::fromUtf8("lineEdit_find"));
+        lineEdit_find->setGeometry(QRect(470, 20, 361, 22));
+        toolButton_Filter = new QToolCalendar(groupBox_2);
+        toolButton_Filter->setObjectName(QString::fromUtf8("toolButton_Filter"));
+        toolButton_Filter->setGeometry(QRect(840, 20, 25, 22));
+        pushButton_search = new QPushButton(groupBox_2);
+        pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
+        pushButton_search->setGeometry(QRect(10, 60, 75, 23));
 
         verticalLayout_3->addWidget(groupBox_2);
 
@@ -642,7 +654,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 921, 707));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -46, 921, 707));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label_idZayavki = new QLabel(scrollAreaWidgetContents);
@@ -667,7 +679,9 @@ public:
         sizePolicy3.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy3);
         label->setMinimumSize(QSize(90, 45));
-        label->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);\n"
+"\n"
+""));
 
         horizontalLayout_3->addWidget(label);
 
@@ -1193,8 +1207,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1244,6 +1258,8 @@ public:
         label_btn_Overdue->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\201\321\200\320\276\321\207\320\265\320\275\320\276", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
         groupBox_2->setTitle(QString());
+        toolButton_Filter->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        pushButton_search->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));

@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>PrintOrder</class>
  <widget class="QWidget" name="PrintOrder">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -30,6 +33,9 @@
     <width>780</width>
     <height>1127</height>
    </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>

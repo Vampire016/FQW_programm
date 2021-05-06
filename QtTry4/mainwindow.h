@@ -45,6 +45,7 @@ private slots:
     void FocusDateOp();
     void FocusDateCl();
     void FocusDateDi();
+    void FocusDateFi();
 
     void FocusToolBtn();
 
@@ -52,34 +53,54 @@ private slots:
 
     void on_btn_print_clicked();
 
+    void twiceClickOnTableRow(const QModelIndex &);
+
+    void on_pushButton_2_clicked();
+
+    void updEditOrd();
+
+    void on_pushButton_3_clicked();
+
+    void Var_2_changed();
+
+    void on_pushButton_search_clicked();
+
 private:
     Ui::MainWindow *ui;    
 
     QSqlDatabase db;
 
     QSqlQueryModel* qmodel, * qmodel_c1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_piory, * qmodel_creator,
-    * qmodel_super, * qmodel_appoin, * qmodel_id;
+    * qmodel_super, * qmodel_appoin, * qmodel_id, *qmodel_ordId, *filOrd;
 
-    QSqlQuery *createOrd;
+    QSqlQuery *createOrd, *btnSave;
 
     QStandardItemModel *modelVar2;
 
     SecondWindow *sw;
     PrintOrder *PrOrd;
 
-    QTimer *tmr;
+    QTimer *tmr, *saveTmr;
 
-    QMenu *report, *menuOp, *menuCl, *menuDi;    
+    QMenu *report, *menuOp, *menuCl, *menuDi, *menuFi;
 
-    QWidgetAction *actionOp, *actionCl,  *actionDi;
+    QWidgetAction *actionOp, *actionCl,  *actionDi, *actionFi;
 
-    ClickableCalendar *calendarOp, *calendarCl, *calendarDi;
+    ClickableCalendar *calendarOp, *calendarCl, *calendarDi, *calendarFi;
 
     QToolButton *curToolBtn;
 
+    QTabBar *tabBar_2;
+
+    QList<QLineEdit*> leList;
+    QList<QComboBox*> cbList;
+    QList<QLabel*> lableList;
+
 
     bool subWflags, conect;
-    int counterUpdate;    
+    int counterUpdate, curUser;
+    QString id;
+    QStringList *var2_1, *var2_2, *var2_3, *var2_4;
 
 signals:
     void RevDBConnect(bool conect);

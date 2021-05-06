@@ -13,11 +13,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
 //Список возможных для соединения видов БД
 //--------------------------------------------------------------------------------------------------------------------------------------------
     dbTypes = new QStringList();
-    /*
-    dbTypes->insert(0, "");
-    dbTypes->insert(1, "mySQL");
-    dbTypes->insert(2, "MS Access");
-    */
+
     dbTypes->operator<<("").operator<<("mySQL").operator<<("MS Access");
 
     ui->comboBox->addItems(*dbTypes);

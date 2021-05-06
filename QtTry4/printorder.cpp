@@ -10,6 +10,18 @@ PrintOrder::PrintOrder(QWidget *parent) :
 
     this->setBtn(0);
 
+
+    this->setWindowFlag(Qt::WindowMinimizeButtonHint, false);
+    this->setWindowFlag(Qt::WindowMinMaxButtonsHint, false);
+    this->setWindowFlag(Qt::WindowSystemMenuHint, false);
+    this->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    this->setWindowFlag(Qt::WindowFullscreenButtonHint, false);
+
+
+
+    qDebug() << this->windowFlags();
+
+
     //Добавление на бланк отчета логотип организации
     //--------------------------------------------------------------------------------------------------------------------------------------------
     logo = new QPixmap;
