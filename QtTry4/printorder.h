@@ -26,11 +26,14 @@ private:
 
     QPixmap *logo;
 
+    QSqlQueryModel *qmodel_filReport;
+
     int btn;
 
 private slots:
     void inputReject();
     void clearFocusEd();
+    void fillReport(int id);
 
 protected:
     void mousePressEvent (QMouseEvent *);

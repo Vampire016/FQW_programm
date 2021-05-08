@@ -38,7 +38,7 @@ private slots:
 
     void print(QPrinter * printer);   
 
-    void onTableView_clicked(const QModelIndex &);
+    void onTableView_clicked();
 
     void ClearFocusLE();
 
@@ -46,6 +46,7 @@ private slots:
     void FocusDateCl();
     void FocusDateDi();
     void FocusDateFi();
+    void FocusDateFi_2();
 
     void FocusToolBtn();
 
@@ -62,16 +63,29 @@ private slots:
     void on_pushButton_3_clicked();
 
     void Var_2_changed();
+    void Var_2_1_changed();
 
     void on_pushButton_search_clicked();
+
+    void on_pushButton_twsSearch_add_clicked();
+
+    void on_pushButton_twsSearch_del_clicked();
+
+    void on_PB_wInWork_clicked();
+
+    void on_PB_wSolved_clicked();
+
+    void on_PB_wAwaits_clicked();
+
+    void on_PB_wOverdue_clicked();
 
 private:
     Ui::MainWindow *ui;    
 
     QSqlDatabase db;
 
-    QSqlQueryModel* qmodel, * qmodel_c1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_piory, * qmodel_creator,
-    * qmodel_super, * qmodel_appoin, * qmodel_id, *qmodel_ordId, *filOrd;
+    QSqlQueryModel* qmodel, * qmodel_c1, * qmodel_c1_1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_piory, * qmodel_creator,
+    * qmodel_super, * qmodel_appoin, * qmodel_id, *qmodel_ordId, *filOrd, *filOrd_1;
 
     QSqlQuery *createOrd, *btnSave;
 
@@ -82,11 +96,11 @@ private:
 
     QTimer *tmr, *saveTmr;
 
-    QMenu *report, *menuOp, *menuCl, *menuDi, *menuFi;
+    QMenu *report, *menuOp, *menuCl, *menuDi, *menuFi, *menuFi_2;
 
-    QWidgetAction *actionOp, *actionCl,  *actionDi, *actionFi;
+    QWidgetAction *actionOp, *actionCl,  *actionDi, *actionFi, *actionFi_2;
 
-    ClickableCalendar *calendarOp, *calendarCl, *calendarDi, *calendarFi;
+    ClickableCalendar *calendarOp, *calendarCl, *calendarDi, *calendarFi, *calendarFi_2;
 
     QToolButton *curToolBtn;
 
@@ -97,14 +111,22 @@ private:
     QList<QLabel*> lableList;
 
 
-    bool subWflags, conect;
-    int counterUpdate, curUser;
-    QString id;
-    QStringList *var2_1, *var2_2, *var2_3, *var2_4;
+    bool subWflags, conect, btnVis;
+    int counterUpdate, curUser, cbVar_1, cbVar_2, cbVar_3, cbVar_0_1, cbVar_1_1, cbVar_2_1, cbVar_3_1;
+    QString id, leFind, leFind_1;
+    QStringList *var0_0, *var1, *var1_1, *var1_2, *var2_1, *var2_2, *var2_3, *var2_4;
+
+    int var_2, var_2_2;
+    QString str_1, str_1_1;
+    QString str_2, str_2_1;
+    QString str_3, str_3_1;
+    QString str_4, str_4_1;
+    QString str_and;
 
 signals:
     void RevDBConnect(bool conect);
     void RevDBLog(bool logIn);
+    void fillReportSig(int id);
 
 };
 #endif // MAINWINDOW_H

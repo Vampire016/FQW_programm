@@ -3,5 +3,17 @@
         <file>img/IT-Osoba_Logo.png</file>
         <file>img/IT-Osoba_Logo_150x88.png</file>
         <file>img/calendar.png</file>
+        <file>img/Search.png</file>
+        <file>img/Plus.png</file>
+        <file>img/Cross.png</file>
+        <file>img/clip.png</file>
+        <file>img/pen.png</file>
+        <file>img/print.png</file>
+        <file>img/reload4.png</file>
+        <file>img/settings.png</file>
+        <file>img/trash.png</file>
+        <file>img/user.png</file>
+        <file>img/add_green.png</file>
+        <file>img/add_round.png</file>
     </qresource>
 </RCC>

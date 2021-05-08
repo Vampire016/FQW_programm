@@ -62,27 +62,28 @@ public:
     QLabel *label_BordName_4;
     QLineEdit *lineEdit_bordName_4;
     QLabel *label_DataZayavitel_2;
-    QHBoxLayout *horizontalLayout_15;
-    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_8;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_BordName_6;
     QLineEdit *lineEdit_bordName_6;
-    QHBoxLayout *horizontalLayout_10;
-    QLabel *label_BordName_7;
-    QLineEdit *lineEdit_TechName;
+    QHBoxLayout *horizontalLayout_15;
+    QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_BordName_8;
     QLineEdit *lineEdit_bordName_8;
-    QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_12;
     QLabel *label_BordName_9;
     QLineEdit *lineEdit_bordName_9;
+    QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_13;
     QLabel *label_BordName_10;
     QLineEdit *lineEdit_bordName_10;
     QHBoxLayout *horizontalLayout_14;
     QLabel *label_BordName_11;
     QLineEdit *lineEdit_bordName_11;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *label_BordName_7;
+    QLineEdit *lineEdit_TechName;
     QLabel *label_DataZayavitel_5;
     QTextEdit *textEdit;
     QLabel *label_DataZayavitel_4;
@@ -119,22 +120,22 @@ public:
         PrintOrder->setContextMenuPolicy(Qt::DefaultContextMenu);
         line_2 = new QFrame(PrintOrder);
         line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setGeometry(QRect(50, 1040, 131, 16));
+        line_2->setGeometry(QRect(80, 1040, 151, 16));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
         line_4 = new QFrame(PrintOrder);
         line_4->setObjectName(QString::fromUtf8("line_4"));
-        line_4->setGeometry(QRect(550, 1040, 130, 16));
+        line_4->setGeometry(QRect(600, 1040, 151, 16));
         line_4->setFrameShape(QFrame::HLine);
         line_4->setFrameShadow(QFrame::Sunken);
         line_5 = new QFrame(PrintOrder);
         line_5->setObjectName(QString::fromUtf8("line_5"));
-        line_5->setGeometry(QRect(250, 1040, 131, 16));
+        line_5->setGeometry(QRect(320, 1040, 131, 16));
         line_5->setFrameShape(QFrame::HLine);
         line_5->setFrameShadow(QFrame::Sunken);
         layoutWidget = new QWidget(PrintOrder);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 762, 971));
+        layoutWidget->setGeometry(QRect(10, 10, 762, 981));
         verticalLayout_7 = new QVBoxLayout(layoutWidget);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
@@ -360,10 +361,8 @@ public:
 
         verticalLayout_7->addWidget(label_DataZayavitel_2);
 
-        horizontalLayout_15 = new QHBoxLayout();
-        horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         label_BordName_6 = new QLabel(layoutWidget);
@@ -378,40 +377,20 @@ public:
         lineEdit_bordName_6 = new QLineEdit(layoutWidget);
         lineEdit_bordName_6->setObjectName(QString::fromUtf8("lineEdit_bordName_6"));
         lineEdit_bordName_6->setMinimumSize(QSize(230, 16));
-        lineEdit_bordName_6->setMaximumSize(QSize(400, 16));
+        lineEdit_bordName_6->setMaximumSize(QSize(800, 16));
         lineEdit_bordName_6->setStyleSheet(QString::fromUtf8("background: transparent;"));
-        lineEdit_bordName_6->setMaxLength(50);
+        lineEdit_bordName_6->setMaxLength(110);
         lineEdit_bordName_6->setFrame(false);
 
         horizontalLayout_9->addWidget(lineEdit_bordName_6);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_9);
+        verticalLayout_8->addLayout(horizontalLayout_9);
 
-        horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        label_BordName_7 = new QLabel(layoutWidget);
-        label_BordName_7->setObjectName(QString::fromUtf8("label_BordName_7"));
-        sizePolicy.setHeightForWidth(label_BordName_7->sizePolicy().hasHeightForWidth());
-        label_BordName_7->setSizePolicy(sizePolicy);
-        label_BordName_7->setMinimumSize(QSize(150, 16));
-        label_BordName_7->setMaximumSize(QSize(65, 16));
-
-        horizontalLayout_10->addWidget(label_BordName_7);
-
-        lineEdit_TechName = new QLineEdit(layoutWidget);
-        lineEdit_TechName->setObjectName(QString::fromUtf8("lineEdit_TechName"));
-        lineEdit_TechName->setMinimumSize(QSize(120, 16));
-        lineEdit_TechName->setMaximumSize(QSize(400, 16));
-        lineEdit_TechName->setStyleSheet(QString::fromUtf8("background: transparent;"));
-        lineEdit_TechName->setMaxLength(40);
-        lineEdit_TechName->setFrame(false);
-
-        horizontalLayout_10->addWidget(lineEdit_TechName);
-
-
-        verticalLayout_3->addLayout(horizontalLayout_10);
-
+        horizontalLayout_15 = new QHBoxLayout();
+        horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         label_BordName_8 = new QLabel(layoutWidget);
@@ -436,11 +415,6 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_11);
 
-
-        horizontalLayout_15->addLayout(verticalLayout_3);
-
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         label_BordName_9 = new QLabel(layoutWidget);
@@ -463,8 +437,13 @@ public:
         horizontalLayout_12->addWidget(lineEdit_bordName_9);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_12);
+        verticalLayout_3->addLayout(horizontalLayout_12);
 
+
+        horizontalLayout_15->addLayout(verticalLayout_3);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
         label_BordName_10 = new QLabel(layoutWidget);
@@ -495,17 +474,17 @@ public:
         label_BordName_11->setObjectName(QString::fromUtf8("label_BordName_11"));
         sizePolicy.setHeightForWidth(label_BordName_11->sizePolicy().hasHeightForWidth());
         label_BordName_11->setSizePolicy(sizePolicy);
-        label_BordName_11->setMinimumSize(QSize(45, 16));
+        label_BordName_11->setMinimumSize(QSize(140, 16));
         label_BordName_11->setMaximumSize(QSize(45, 16));
 
         horizontalLayout_14->addWidget(label_BordName_11);
 
         lineEdit_bordName_11 = new QLineEdit(layoutWidget);
         lineEdit_bordName_11->setObjectName(QString::fromUtf8("lineEdit_bordName_11"));
-        lineEdit_bordName_11->setMinimumSize(QSize(245, 16));
+        lineEdit_bordName_11->setMinimumSize(QSize(150, 16));
         lineEdit_bordName_11->setMaximumSize(QSize(400, 16));
         lineEdit_bordName_11->setStyleSheet(QString::fromUtf8("background: transparent;"));
-        lineEdit_bordName_11->setMaxLength(50);
+        lineEdit_bordName_11->setMaxLength(40);
         lineEdit_bordName_11->setFrame(false);
 
         horizontalLayout_14->addWidget(lineEdit_bordName_11);
@@ -517,7 +496,34 @@ public:
         horizontalLayout_15->addLayout(verticalLayout_6);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_15);
+        verticalLayout_8->addLayout(horizontalLayout_15);
+
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
+        label_BordName_7 = new QLabel(layoutWidget);
+        label_BordName_7->setObjectName(QString::fromUtf8("label_BordName_7"));
+        sizePolicy.setHeightForWidth(label_BordName_7->sizePolicy().hasHeightForWidth());
+        label_BordName_7->setSizePolicy(sizePolicy);
+        label_BordName_7->setMinimumSize(QSize(150, 16));
+        label_BordName_7->setMaximumSize(QSize(65, 16));
+
+        horizontalLayout_10->addWidget(label_BordName_7);
+
+        lineEdit_TechName = new QLineEdit(layoutWidget);
+        lineEdit_TechName->setObjectName(QString::fromUtf8("lineEdit_TechName"));
+        lineEdit_TechName->setMinimumSize(QSize(120, 16));
+        lineEdit_TechName->setMaximumSize(QSize(800, 16));
+        lineEdit_TechName->setStyleSheet(QString::fromUtf8("background: transparent;"));
+        lineEdit_TechName->setMaxLength(40);
+        lineEdit_TechName->setFrame(false);
+
+        horizontalLayout_10->addWidget(lineEdit_TechName);
+
+
+        verticalLayout_8->addLayout(horizontalLayout_10);
+
+
+        verticalLayout_7->addLayout(verticalLayout_8);
 
         label_DataZayavitel_5 = new QLabel(layoutWidget);
         label_DataZayavitel_5->setObjectName(QString::fromUtf8("label_DataZayavitel_5"));
@@ -599,7 +605,7 @@ public:
 
         layoutWidget1 = new QWidget(PrintOrder);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 1050, 722, 20));
+        layoutWidget1->setGeometry(QRect(10, 1050, 761, 20));
         horizontalLayout_19 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
         horizontalLayout_19->setContentsMargins(0, 0, 0, 0);
@@ -618,7 +624,7 @@ public:
         label_SubBordName->setObjectName(QString::fromUtf8("label_SubBordName"));
         sizePolicy.setHeightForWidth(label_SubBordName->sizePolicy().hasHeightForWidth());
         label_SubBordName->setSizePolicy(sizePolicy);
-        label_SubBordName->setMinimumSize(QSize(120, 16));
+        label_SubBordName->setMinimumSize(QSize(160, 16));
         label_SubBordName->setMaximumSize(QSize(100, 16));
 
         horizontalLayout_16->addWidget(label_SubBordName);
@@ -655,7 +661,7 @@ public:
         label_SubTechName->setObjectName(QString::fromUtf8("label_SubTechName"));
         sizePolicy.setHeightForWidth(label_SubTechName->sizePolicy().hasHeightForWidth());
         label_SubTechName->setSizePolicy(sizePolicy);
-        label_SubTechName->setMinimumSize(QSize(180, 16));
+        label_SubTechName->setMinimumSize(QSize(160, 16));
         label_SubTechName->setMaximumSize(QSize(100, 16));
 
         horizontalLayout_18->addWidget(label_SubTechName);
@@ -683,11 +689,11 @@ public:
         label_BordName_4->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\236\321\202\320\264\320\265\320\273:</span></p></body></html>", nullptr));
         label_DataZayavitel_2->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">\320\224\320\265\321\202\320\260\320\273\320\270 \320\267\320\260\321\217\320\262\320\272\320\270</span></p></body></html>", nullptr));
         label_BordName_6->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265:</span></p></body></html>", nullptr));
-        label_BordName_7->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\242\320\265\321\205\320\275\320\270\321\207\320\265\321\201\320\272\320\270\320\271 \321\201\320\277\320\265\321\206\320\270\320\260\320\273\320\270\321\201\321\202:</span></p></body></html>", nullptr));
         label_BordName_8->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\236\320\261\321\201\320\273\321\203\320\266\320\270\320\262\320\260\320\275\320\270\320\265:</span></p></body></html>", nullptr));
         label_BordName_9->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\224\320\260\321\202\320\260/\320\222\321\200\320\265\320\274\321\217 \320\276\321\202\320\272\321\200\321\213\321\202\320\270\321\217:</span></p></body></html>", nullptr));
         label_BordName_10->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\227\320\260\320\277\320\270\321\201\321\214:</span></p></body></html>", nullptr));
-        label_BordName_11->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\222\321\213\321\205\320\276\320\264:</span></p></body></html>", nullptr));
+        label_BordName_11->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\224\320\260\321\202\320\260/\320\222\321\200\320\265\320\274\321\217 \321\200\320\265\321\210\320\265\320\275\320\270\321\217:</span></p></body></html>", nullptr));
+        label_BordName_7->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\242\320\265\321\205\320\275\320\270\321\207\320\265\321\201\320\272\320\270\320\271 \321\201\320\277\320\265\321\206\320\270\320\260\320\273\320\270\321\201\321\202:</span></p></body></html>", nullptr));
         label_DataZayavitel_5->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">\320\236\320\277\320\270\321\201\320\260\320\275\320\270\320\265 \320\262\321\213\320\267\320\276\320\262\320\260</span></p></body></html>", nullptr));
         label_DataZayavitel_4->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">\320\240\320\265\321\210\320\265\320\275\320\270\321\217</span></p></body></html>", nullptr));
         label_2->setText(QCoreApplication::translate("PrintOrder", "<html><head/><body><p><span style=\" font-weight:600;\">\320\236\320\277\320\270\321\201\320\260\320\275\320\270\320\265 \321\200\320\265\321\210\320\265\320\275\320\270\321\217:</span></p></body></html>", nullptr));

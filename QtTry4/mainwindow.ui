@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1128</width>
     <height>768</height>
    </rect>
   </property>
@@ -26,8 +26,11 @@
    <layout class="QHBoxLayout" name="horizontalLayout_22">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -159,6 +162,9 @@
                  </property>
                  <property name="toolTip">
                   <string/>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
                  </property>
                  <property name="text">
                   <string>0</string>
@@ -996,7 +1002,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>90</height>
+              <height>60</height>
              </size>
             </property>
             <property name="title">
@@ -1005,7 +1011,7 @@
             <widget class="QComboBox" name="comboBox_var_0">
              <property name="geometry">
               <rect>
-               <x>10</x>
+               <x>50</x>
                <y>20</y>
                <width>71</width>
                <height>22</height>
@@ -1015,37 +1021,46 @@
             <widget class="QComboBox" name="comboBox_var_1">
              <property name="geometry">
               <rect>
-               <x>90</x>
+               <x>130</x>
                <y>20</y>
                <width>221</width>
                <height>22</height>
               </rect>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
             </widget>
             <widget class="QComboBox" name="comboBox_var_2">
              <property name="geometry">
               <rect>
-               <x>320</x>
+               <x>360</x>
                <y>20</y>
                <width>141</width>
                <height>22</height>
               </rect>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
             </widget>
             <widget class="QComboBox" name="comboBox_var_3">
              <property name="geometry">
               <rect>
-               <x>470</x>
+               <x>510</x>
                <y>20</y>
                <width>361</width>
                <height>22</height>
               </rect>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
             </widget>
             <widget class="QLineEdit" name="lineEdit_find">
              <property name="geometry">
               <rect>
-               <x>470</x>
+               <x>510</x>
                <y>20</y>
                <width>361</width>
                <height>22</height>
@@ -1055,11 +1070,14 @@
             <widget class="QToolCalendar" name="toolButton_Filter">
              <property name="geometry">
               <rect>
-               <x>840</x>
+               <x>880</x>
                <y>20</y>
                <width>25</width>
                <height>22</height>
               </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="text">
               <string>...</string>
@@ -1068,14 +1086,163 @@
             <widget class="QPushButton" name="pushButton_search">
              <property name="geometry">
               <rect>
-               <x>10</x>
-               <y>60</y>
-               <width>75</width>
-               <height>23</height>
+               <x>920</x>
+               <y>20</y>
+               <width>70</width>
+               <height>22</height>
               </rect>
              </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: gold;</string>
+             </property>
              <property name="text">
-              <string>PushButton</string>
+              <string> Поиск   </string>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resource/img/Search.png</normaloff>:/resource/img/Search.png</iconset>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_var_0_0">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>50</y>
+               <width>71</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_var_1_1">
+             <property name="geometry">
+              <rect>
+               <x>130</x>
+               <y>50</y>
+               <width>221</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_var_2_2">
+             <property name="geometry">
+              <rect>
+               <x>360</x>
+               <y>50</y>
+               <width>141</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_var_3_3">
+             <property name="geometry">
+              <rect>
+               <x>510</x>
+               <y>50</y>
+               <width>361</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="lineEdit_find_2">
+             <property name="geometry">
+              <rect>
+               <x>510</x>
+               <y>50</y>
+               <width>361</width>
+               <height>22</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QToolCalendar" name="toolButton_Filter_2">
+             <property name="geometry">
+              <rect>
+               <x>880</x>
+               <y>50</y>
+               <width>25</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_twsSearch_add">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>20</y>
+               <width>22</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resource/img/Plus.png</normaloff>:/resource/img/Plus.png</iconset>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_twsSearch_del">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>50</y>
+               <width>22</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resourses.qrc">
+               <normaloff>:/resource/img/Cross.png</normaloff>:/resource/img/Cross.png</iconset>
              </property>
             </widget>
            </widget>
@@ -1164,9 +1331,9 @@
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-46</y>
-                 <width>921</width>
-                 <height>707</height>
+                 <y>-44</y>
+                 <width>1025</width>
+                 <height>711</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout">
@@ -2210,11 +2377,33 @@ line-height: 0.5;
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>90</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: gold;</string>
+                    </property>
                     <property name="text">
-                     <string>Добавить</string>
+                     <string>Добавить  </string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resourses.qrc">
+                      <normaloff>:/resource/img/add_round.png</normaloff>:/resource/img/add_round.png</iconset>
                     </property>
                    </widget>
                   </item>
@@ -2253,21 +2442,71 @@ line-height: 0.5;
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButton_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>90</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: gold;</string>
+                    </property>
                     <property name="text">
-                     <string>Сохранить</string>
+                     <string>Сохранить  </string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resourses.qrc">
+                      <normaloff>:/resource/img/pen.png</normaloff>:/resource/img/pen.png</iconset>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButton_3">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>90</width>
+                      <height>25</height>
+                     </size>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: gold;</string>
+                    </property>
                     <property name="text">
-                     <string>Удалить</string>
+                     <string>Удалить  </string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resourses.qrc">
+                      <normaloff>:/resource/img/trash.png</normaloff>:/resource/img/trash.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>16</width>
+                      <height>16</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -2356,7 +2595,7 @@ line-height: 0.5;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
+     <width>1128</width>
      <height>21</height>
     </rect>
    </property>
@@ -2414,6 +2653,8 @@ line-height: 0.5;
    <header>qtoolcalendar.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resourses.qrc"/>
+ </resources>
  <connections/>
 </ui>

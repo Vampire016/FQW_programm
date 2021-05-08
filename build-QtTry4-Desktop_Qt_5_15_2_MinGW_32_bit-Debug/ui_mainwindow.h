@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
@@ -110,6 +111,14 @@ public:
     QLineEdit *lineEdit_find;
     QToolCalendar *toolButton_Filter;
     QPushButton *pushButton_search;
+    QComboBox *comboBox_var_0_0;
+    QComboBox *comboBox_var_1_1;
+    QComboBox *comboBox_var_2_2;
+    QComboBox *comboBox_var_3_3;
+    QLineEdit *lineEdit_find_2;
+    QToolCalendar *toolButton_Filter_2;
+    QPushButton *pushButton_twsSearch_add;
+    QPushButton *pushButton_twsSearch_del;
     QTableView *tableView;
     QWidget *tab_3;
     QWidget *tab_4;
@@ -208,7 +217,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1024, 768);
+        MainWindow->resize(1128, 768);
         MainWindow->setMinimumSize(QSize(0, 0));
         MainWindow->setAutoFillBackground(false);
         act_home = new QAction(MainWindow);
@@ -223,6 +232,7 @@ public:
         horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setStyleSheet(QString::fromUtf8(""));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         verticalLayout_2 = new QVBoxLayout(tab);
@@ -273,6 +283,7 @@ public:
         font.setWeight(75);
         PB_wOpened->setFont(font);
         PB_wOpened->setCursor(QCursor(Qt::PointingHandCursor));
+        PB_wOpened->setStyleSheet(QString::fromUtf8(""));
         splitter->addWidget(PB_wOpened);
         splitter_3->addWidget(splitter);
         splitter_2 = new QSplitter(splitter_3);
@@ -583,28 +594,84 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         groupBox_2 = new QGroupBox(tab_2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setMinimumSize(QSize(0, 90));
+        groupBox_2->setMinimumSize(QSize(0, 60));
         comboBox_var_0 = new QComboBox(groupBox_2);
         comboBox_var_0->setObjectName(QString::fromUtf8("comboBox_var_0"));
-        comboBox_var_0->setGeometry(QRect(10, 20, 71, 22));
+        comboBox_var_0->setGeometry(QRect(50, 20, 71, 22));
         comboBox_var_1 = new QComboBox(groupBox_2);
         comboBox_var_1->setObjectName(QString::fromUtf8("comboBox_var_1"));
-        comboBox_var_1->setGeometry(QRect(90, 20, 221, 22));
+        comboBox_var_1->setGeometry(QRect(130, 20, 221, 22));
+        comboBox_var_1->setCursor(QCursor(Qt::PointingHandCursor));
         comboBox_var_2 = new QComboBox(groupBox_2);
         comboBox_var_2->setObjectName(QString::fromUtf8("comboBox_var_2"));
-        comboBox_var_2->setGeometry(QRect(320, 20, 141, 22));
+        comboBox_var_2->setGeometry(QRect(360, 20, 141, 22));
+        comboBox_var_2->setCursor(QCursor(Qt::PointingHandCursor));
         comboBox_var_3 = new QComboBox(groupBox_2);
         comboBox_var_3->setObjectName(QString::fromUtf8("comboBox_var_3"));
-        comboBox_var_3->setGeometry(QRect(470, 20, 361, 22));
+        comboBox_var_3->setGeometry(QRect(510, 20, 361, 22));
+        comboBox_var_3->setCursor(QCursor(Qt::PointingHandCursor));
         lineEdit_find = new QLineEdit(groupBox_2);
         lineEdit_find->setObjectName(QString::fromUtf8("lineEdit_find"));
-        lineEdit_find->setGeometry(QRect(470, 20, 361, 22));
+        lineEdit_find->setGeometry(QRect(510, 20, 361, 22));
         toolButton_Filter = new QToolCalendar(groupBox_2);
         toolButton_Filter->setObjectName(QString::fromUtf8("toolButton_Filter"));
-        toolButton_Filter->setGeometry(QRect(840, 20, 25, 22));
+        toolButton_Filter->setGeometry(QRect(880, 20, 25, 22));
+        toolButton_Filter->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_search = new QPushButton(groupBox_2);
         pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
-        pushButton_search->setGeometry(QRect(10, 60, 75, 23));
+        pushButton_search->setGeometry(QRect(920, 20, 70, 22));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(pushButton_search->sizePolicy().hasHeightForWidth());
+        pushButton_search->setSizePolicy(sizePolicy2);
+        pushButton_search->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_search->setLayoutDirection(Qt::RightToLeft);
+        pushButton_search->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/resource/img/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_search->setIcon(icon);
+        comboBox_var_0_0 = new QComboBox(groupBox_2);
+        comboBox_var_0_0->setObjectName(QString::fromUtf8("comboBox_var_0_0"));
+        comboBox_var_0_0->setGeometry(QRect(50, 50, 71, 22));
+        comboBox_var_0_0->setCursor(QCursor(Qt::PointingHandCursor));
+        comboBox_var_1_1 = new QComboBox(groupBox_2);
+        comboBox_var_1_1->setObjectName(QString::fromUtf8("comboBox_var_1_1"));
+        comboBox_var_1_1->setGeometry(QRect(130, 50, 221, 22));
+        comboBox_var_1_1->setCursor(QCursor(Qt::PointingHandCursor));
+        comboBox_var_2_2 = new QComboBox(groupBox_2);
+        comboBox_var_2_2->setObjectName(QString::fromUtf8("comboBox_var_2_2"));
+        comboBox_var_2_2->setGeometry(QRect(360, 50, 141, 22));
+        comboBox_var_2_2->setCursor(QCursor(Qt::PointingHandCursor));
+        comboBox_var_3_3 = new QComboBox(groupBox_2);
+        comboBox_var_3_3->setObjectName(QString::fromUtf8("comboBox_var_3_3"));
+        comboBox_var_3_3->setGeometry(QRect(510, 50, 361, 22));
+        comboBox_var_3_3->setCursor(QCursor(Qt::PointingHandCursor));
+        lineEdit_find_2 = new QLineEdit(groupBox_2);
+        lineEdit_find_2->setObjectName(QString::fromUtf8("lineEdit_find_2"));
+        lineEdit_find_2->setGeometry(QRect(510, 50, 361, 22));
+        toolButton_Filter_2 = new QToolCalendar(groupBox_2);
+        toolButton_Filter_2->setObjectName(QString::fromUtf8("toolButton_Filter_2"));
+        toolButton_Filter_2->setGeometry(QRect(880, 50, 25, 22));
+        toolButton_Filter_2->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_twsSearch_add = new QPushButton(groupBox_2);
+        pushButton_twsSearch_add->setObjectName(QString::fromUtf8("pushButton_twsSearch_add"));
+        pushButton_twsSearch_add->setGeometry(QRect(20, 20, 22, 22));
+        sizePolicy2.setHeightForWidth(pushButton_twsSearch_add->sizePolicy().hasHeightForWidth());
+        pushButton_twsSearch_add->setSizePolicy(sizePolicy2);
+        pushButton_twsSearch_add->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/resource/img/Plus.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_twsSearch_add->setIcon(icon1);
+        pushButton_twsSearch_del = new QPushButton(groupBox_2);
+        pushButton_twsSearch_del->setObjectName(QString::fromUtf8("pushButton_twsSearch_del"));
+        pushButton_twsSearch_del->setGeometry(QRect(20, 50, 22, 22));
+        sizePolicy2.setHeightForWidth(pushButton_twsSearch_del->sizePolicy().hasHeightForWidth());
+        pushButton_twsSearch_del->setSizePolicy(sizePolicy2);
+        pushButton_twsSearch_del->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/resource/img/Cross.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_twsSearch_del->setIcon(icon2);
 
         verticalLayout_3->addWidget(groupBox_2);
 
@@ -639,11 +706,11 @@ public:
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         scrollArea = new QScrollArea(tab_6);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
-        scrollArea->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
+        scrollArea->setSizePolicy(sizePolicy3);
         scrollArea->setMinimumSize(QSize(600, 0));
         scrollArea->setAutoFillBackground(false);
         scrollArea->setStyleSheet(QString::fromUtf8(""));
@@ -654,16 +721,13 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, -46, 921, 707));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -44, 1025, 711));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label_idZayavki = new QLabel(scrollAreaWidgetContents);
         label_idZayavki->setObjectName(QString::fromUtf8("label_idZayavki"));
-        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_idZayavki->sizePolicy().hasHeightForWidth());
-        label_idZayavki->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_idZayavki->sizePolicy().hasHeightForWidth());
+        label_idZayavki->setSizePolicy(sizePolicy2);
         label_idZayavki->setMinimumSize(QSize(0, 30));
         label_idZayavki->setMaximumSize(QSize(6000, 30));
         label_idZayavki->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
@@ -676,8 +740,8 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         label = new QLabel(scrollAreaWidgetContents);
         label->setObjectName(QString::fromUtf8("label"));
-        sizePolicy3.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy2);
         label->setMinimumSize(QSize(90, 45));
         label->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);\n"
 "\n"
@@ -687,8 +751,8 @@ public:
 
         lineEdit = new QLineEdit(scrollAreaWidgetContents);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        sizePolicy3.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy2);
         lineEdit->setMinimumSize(QSize(185, 25));
         lineEdit->setMaximumSize(QSize(185, 16777215));
         lineEdit->setCursor(QCursor(Qt::IBeamCursor));
@@ -705,8 +769,8 @@ public:
 
         label_2 = new QLabel(scrollAreaWidgetContents);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        sizePolicy3.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy2);
         label_2->setMinimumSize(QSize(100, 45));
         label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -730,8 +794,8 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         label_3 = new QLabel(scrollAreaWidgetContents);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy3.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy2);
         label_3->setMinimumSize(QSize(90, 45));
         label_3->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -739,8 +803,8 @@ public:
 
         label_17 = new QLabel(scrollAreaWidgetContents);
         label_17->setObjectName(QString::fromUtf8("label_17"));
-        sizePolicy3.setHeightForWidth(label_17->sizePolicy().hasHeightForWidth());
-        label_17->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_17->sizePolicy().hasHeightForWidth());
+        label_17->setSizePolicy(sizePolicy2);
         label_17->setMinimumSize(QSize(320, 25));
 
         horizontalLayout_10->addWidget(label_17);
@@ -756,8 +820,8 @@ public:
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         label_4 = new QLabel(scrollAreaWidgetContents);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy2);
         label_4->setMinimumSize(QSize(90, 45));
         label_4->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -765,8 +829,8 @@ public:
 
         lineEdit_4 = new QLineEdit(scrollAreaWidgetContents);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        sizePolicy3.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
-        lineEdit_4->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
+        lineEdit_4->setSizePolicy(sizePolicy2);
         lineEdit_4->setMinimumSize(QSize(185, 25));
         lineEdit_4->setCursor(QCursor(Qt::IBeamCursor));
 
@@ -780,8 +844,8 @@ public:
 
         label_5 = new QLabel(scrollAreaWidgetContents);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy2);
         label_5->setMinimumSize(QSize(100, 45));
         label_5->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -812,8 +876,8 @@ public:
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         label_6 = new QLabel(scrollAreaWidgetContents);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy2);
         label_6->setMinimumSize(QSize(90, 45));
         label_6->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -821,8 +885,8 @@ public:
 
         comboBox_5 = new QComboBox(scrollAreaWidgetContents);
         comboBox_5->setObjectName(QString::fromUtf8("comboBox_5"));
-        sizePolicy3.setHeightForWidth(comboBox_5->sizePolicy().hasHeightForWidth());
-        comboBox_5->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(comboBox_5->sizePolicy().hasHeightForWidth());
+        comboBox_5->setSizePolicy(sizePolicy2);
         comboBox_5->setMinimumSize(QSize(130, 0));
         comboBox_5->setMaximumSize(QSize(110, 16777215));
         comboBox_5->setCursor(QCursor(Qt::PointingHandCursor));
@@ -835,8 +899,8 @@ public:
 
         label_7 = new QLabel(scrollAreaWidgetContents);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        sizePolicy3.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy2);
         label_7->setMinimumSize(QSize(100, 45));
         label_7->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -861,8 +925,8 @@ public:
         horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
         label_8 = new QLabel(scrollAreaWidgetContents);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        sizePolicy3.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
-        label_8->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
+        label_8->setSizePolicy(sizePolicy2);
         label_8->setMinimumSize(QSize(90, 45));
         label_8->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -870,8 +934,8 @@ public:
 
         comboBox_7 = new QComboBox(scrollAreaWidgetContents);
         comboBox_7->setObjectName(QString::fromUtf8("comboBox_7"));
-        sizePolicy3.setHeightForWidth(comboBox_7->sizePolicy().hasHeightForWidth());
-        comboBox_7->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(comboBox_7->sizePolicy().hasHeightForWidth());
+        comboBox_7->setSizePolicy(sizePolicy2);
         comboBox_7->setMinimumSize(QSize(215, 0));
         comboBox_7->setMaximumSize(QSize(215, 16777215));
         comboBox_7->setCursor(QCursor(Qt::PointingHandCursor));
@@ -880,8 +944,8 @@ public:
 
         label_9 = new QLabel(scrollAreaWidgetContents);
         label_9->setObjectName(QString::fromUtf8("label_9"));
-        sizePolicy3.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
+        label_9->setSizePolicy(sizePolicy2);
         label_9->setMinimumSize(QSize(100, 45));
         label_9->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -906,8 +970,8 @@ public:
         horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
         label_10 = new QLabel(scrollAreaWidgetContents);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        sizePolicy3.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
-        label_10->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
+        label_10->setSizePolicy(sizePolicy2);
         label_10->setMinimumSize(QSize(90, 45));
         label_10->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -915,8 +979,8 @@ public:
 
         comboBox_9 = new QComboBox(scrollAreaWidgetContents);
         comboBox_9->setObjectName(QString::fromUtf8("comboBox_9"));
-        sizePolicy3.setHeightForWidth(comboBox_9->sizePolicy().hasHeightForWidth());
-        comboBox_9->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(comboBox_9->sizePolicy().hasHeightForWidth());
+        comboBox_9->setSizePolicy(sizePolicy2);
         comboBox_9->setMinimumSize(QSize(110, 0));
         comboBox_9->setMaximumSize(QSize(110, 16777215));
         comboBox_9->setCursor(QCursor(Qt::PointingHandCursor));
@@ -936,8 +1000,8 @@ public:
         horizontalLayout_21->setObjectName(QString::fromUtf8("horizontalLayout_21"));
         label_13 = new QLabel(scrollAreaWidgetContents);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        sizePolicy3.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
-        label_13->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
+        label_13->setSizePolicy(sizePolicy2);
         label_13->setMinimumSize(QSize(90, 45));
         label_13->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -1058,8 +1122,8 @@ public:
         horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
         label_11 = new QLabel(scrollAreaWidgetContents);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        sizePolicy3.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
-        label_11->setSizePolicy(sizePolicy3);
+        sizePolicy2.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
+        label_11->setSizePolicy(sizePolicy2);
         label_11->setMinimumSize(QSize(90, 45));
         label_11->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
 
@@ -1112,7 +1176,15 @@ public:
 
         pushButton = new QPushButton(scrollAreaWidgetContents);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy2);
+        pushButton->setMinimumSize(QSize(90, 25));
         pushButton->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton->setLayoutDirection(Qt::RightToLeft);
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/resource/img/add_round.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon3);
 
         horizontalLayout_17->addWidget(pushButton);
 
@@ -1131,13 +1203,30 @@ public:
 
         pushButton_2 = new QPushButton(scrollAreaWidgetContents);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy2);
+        pushButton_2->setMinimumSize(QSize(90, 25));
         pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_2->setLayoutDirection(Qt::RightToLeft);
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/resource/img/pen.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_2->setIcon(icon4);
 
         horizontalLayout_23->addWidget(pushButton_2);
 
         pushButton_3 = new QPushButton(scrollAreaWidgetContents);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy2);
+        pushButton_3->setMinimumSize(QSize(90, 25));
         pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_3->setLayoutDirection(Qt::RightToLeft);
+        pushButton_3->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/resource/img/trash.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_3->setIcon(icon5);
+        pushButton_3->setIconSize(QSize(16, 16));
 
         horizontalLayout_23->addWidget(pushButton_3);
 
@@ -1192,7 +1281,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1024, 21));
+        menubar->setGeometry(QRect(0, 0, 1128, 21));
         menubar->setCursor(QCursor(Qt::PointingHandCursor));
         menubar->setFocusPolicy(Qt::NoFocus);
         menu = new QMenu(menubar);
@@ -1207,7 +1296,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         tabWidget_2->setCurrentIndex(1);
 
 
@@ -1259,7 +1348,10 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
         groupBox_2->setTitle(QString());
         toolButton_Filter->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
-        pushButton_search->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_search->setText(QCoreApplication::translate("MainWindow", " \320\237\320\276\320\270\321\201\320\272   ", nullptr));
+        toolButton_Filter_2->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        pushButton_twsSearch_add->setText(QString());
+        pushButton_twsSearch_del->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));
@@ -1316,9 +1408,9 @@ public:
         label_16->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\235\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\276</span></p></body></html>", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\227\320\260\320\263\320\276\320\273\320\276\320\262\320\276\320\272</span></p></body></html>", nullptr));
         label_12->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\236\320\277\320\270\321\201\320\260\320\275\320\270\320\265</span></p></body></html>", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214  ", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214  ", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214  ", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\260", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_7), QCoreApplication::translate("MainWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217", nullptr));
         btn_print->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
