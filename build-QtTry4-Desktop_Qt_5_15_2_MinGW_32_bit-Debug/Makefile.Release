@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextr
 INCPATH       = -I..\QtTry4 -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\include -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtPrintSupport -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtWidgets -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtGui -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtANGLE -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtSql -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtCore -Irelease -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        -LD:\Programs\QT_3\5.15.2\mingw81_32\lib -lwwwidgets4 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Programs\QT_3\5.15.2\mingw81_32\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -136,24 +136,21 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resourses.cpp
 release/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/rcc.exe \
-		../QtTry4/img/calendar.png \
-		../QtTry4/img/add_green.png \
-		../QtTry4/img/clip.png \
 		../QtTry4/img/print.png \
-		../QtTry4/img/reload4.png \
+		../QtTry4/img/clip.png \
+		../QtTry4/img/calendar.png \
+		../QtTry4/img/Cross.png \
+		../QtTry4/img/add_round.png \
+		../QtTry4/img/IT-Osoba_Logo.png \
+		../QtTry4/img/trash.png \
 		../QtTry4/img/Plus.png \
 		../QtTry4/img/Search.png \
-		../QtTry4/img/add_round.png \
-		../QtTry4/img/toLast.png \
-		../QtTry4/img/trash.png \
-		../QtTry4/img/Cross.png \
-		../QtTry4/img/sign-out.png \
-		../QtTry4/img/toFirst.png \
-		../QtTry4/img/pen.png \
-		../QtTry4/img/settings.png \
+		../QtTry4/img/IT-Osoba_Logo_150x88.png \
 		../QtTry4/img/user.png \
-		../QtTry4/img/next.png \
-		../QtTry4/img/back.png
+		../QtTry4/img/reload4.png \
+		../QtTry4/img/pen.png \
+		../QtTry4/img/add_green.png \
+		../QtTry4/img/settings.png
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\rcc.exe -name resourses ..\QtTry4\resourses.qrc -o release\qrc_resourses.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -334,22 +331,6 @@ release/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -550,22 +531,6 @@ release/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -767,22 +732,6 @@ release/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -993,22 +942,6 @@ release/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1209,22 +1142,6 @@ release/moc_qtoolcalendar.cpp: ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1425,22 +1342,6 @@ release/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1777,22 +1678,6 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1988,22 +1873,6 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2222,22 +2091,6 @@ release/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickable
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2436,22 +2289,6 @@ release/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidg
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2651,22 +2488,6 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2706,6 +2527,8 @@ release/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h
@@ -2881,22 +2704,6 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2935,17 +2742,15 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		../QtTry4/clickablecalendar.h \
 		../QtTry4/qtoolcalendar.h \
 		ui_mainwindow.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QLocale \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QAction \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsView \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsview.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qscrollarea.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGroupBox \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgroupbox.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
@@ -2960,6 +2765,7 @@ release/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QScrollArea \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qscrollarea.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSplitter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qsplitter.h \
@@ -3138,22 +2944,6 @@ release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -3185,6 +2975,8 @@ release/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
@@ -3367,22 +3159,6 @@ release/qtoolcalendar.o: ../QtTry4/qtoolcalendar.cpp ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -3581,22 +3357,6 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -3628,6 +3388,8 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
@@ -3640,9 +3402,7 @@ release/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QProcess \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qprocess.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\secondwindow.o ..\QtTry4\secondwindow.cpp
 
 release/qrc_resourses.o: release/qrc_resourses.cpp 
