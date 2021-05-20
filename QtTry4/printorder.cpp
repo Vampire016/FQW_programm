@@ -27,7 +27,7 @@ PrintOrder::PrintOrder(QWidget *parent) :
     //Добавление на бланк отчета логотип организации
     //--------------------------------------------------------------------------------------------------------------------------------------------
     logo = new QPixmap;
-    logo->load(":/resource/img/IT-Osoba_Logo_150x88.png");
+    logo->load("E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4/img/IT-Osoba_Logo_150x88.png");
 
     int w = ui->img_logo->width();
     int h = ui->img_logo->height();
