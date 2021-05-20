@@ -1,5 +1,6 @@
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
+#include <QProcess>
 
 
 SecondWindow::SecondWindow(QWidget *parent) :
@@ -10,18 +11,28 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     conect = false;
 
+    ui->groupBox_2->hide();
+
+    mLogo.setFileName("E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4/img/OsobaLogo.gif");
+    mLogo.setSpeed(100);
+    mLogo.setScaledSize(QSize(150,98));
+    ui->label_mLogo->setMovie(&mLogo);
+    mLogo.start();
+
 //Список возможных для соединения видов БД
 //--------------------------------------------------------------------------------------------------------------------------------------------
     dbTypes = new QStringList();
-    /*
-    dbTypes->insert(0, "");
-    dbTypes->insert(1, "mySQL");
-    dbTypes->insert(2, "MS Access");
-    */
-    dbTypes->operator<<("").operator<<("mySQL").operator<<("MS Access");
+
+    //dbTypes->operator<<("").operator<<("mySQL (Localhost)").operator<<("mySQL (Server)");
+    dbTypes->operator<<("").operator<<("mySQL");
 
     ui->comboBox->addItems(*dbTypes);
+
+    ui->label_4->hide();
+    ui->lineEdit_2->hide();
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(IndexChanged()));
 
     if (!conect)
     {
@@ -72,7 +83,7 @@ void SecondWindow::LogOrNot(bool logIn)
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void SecondWindow::on_pushButton_clicked()
 {    
-        emit DBConnect(ui->lineEdit->text(), ui->comboBox->currentText());
+        emit DBConnect(ui->lineEdit->text(), ui->comboBox->currentText(), ui->lineEdit_2->text());
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -97,9 +108,41 @@ void SecondWindow::ConOrNot(bool conect)
     {
         ui->LogIN->setEnabled(true);
         ui->lineEdit->clear();
-        ui->lineEdit->setEnabled(false);
-        ui->pushButton->setEnabled(false);
         this->conect = conect;
+
+        ui->groupBox->hide();
+        ui->groupBox_2->show();
     }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+void SecondWindow::logOut()
+{
+    QProcess process;
+    process.startDetached("QtTry4.exe",QStringList());
+
+    qApp->quit();
+}
+
+void SecondWindow::on_btnReturn_clicked()
+{
+    emit RevCon();
+
+    ui->groupBox->show();
+    ui->groupBox_2->hide();
+
+    ui->login->clear();
+    ui->password->clear();
+
+    ui->comboBox->setCurrentIndex(0);
+}
+
+void SecondWindow::IndexChanged()
+{
+    //qDebug() << "Sig";
+    if(ui->comboBox->currentIndex() == 2){
+        ui->lineEdit_2->setEnabled(true);
+    }else{
+        ui->lineEdit_2->setEnabled(false);
+    }
+}

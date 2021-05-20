@@ -40,6 +40,8 @@
 #include <QList>
 #include <QStandardItemModel>
 #include <QListWidgetItem>
+#include <QGraphicsScene>
+#include <QMovie>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки
@@ -61,6 +63,7 @@
 #include <QLabel>
 #include <QCalendarWidget>
 #include <QToolButton>
+#include <QComboBox>
 //---------------------------------------------------------------------------------
 
 

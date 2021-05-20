@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -Wextra -Wextra
 INCPATH       = -I..\QtTry4 -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\include -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtPrintSupport -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtWidgets -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtGui -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtANGLE -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtSql -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtCore -Idebug -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        -LD:\Programs\QT_3\5.15.2\mingw81_32\lib -lwwwidgets4d D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Programs\QT_3\5.15.2\mingw81_32\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -137,8 +137,23 @@ compiler_rcc_clean:
 debug/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/rcc.exe \
 		../QtTry4/img/calendar.png \
-		../QtTry4/img/IT-Osoba_Logo.png \
-		../QtTry4/img/IT-Osoba_Logo_150x88.png
+		../QtTry4/img/add_green.png \
+		../QtTry4/img/clip.png \
+		../QtTry4/img/print.png \
+		../QtTry4/img/reload4.png \
+		../QtTry4/img/Plus.png \
+		../QtTry4/img/Search.png \
+		../QtTry4/img/add_round.png \
+		../QtTry4/img/toLast.png \
+		../QtTry4/img/trash.png \
+		../QtTry4/img/Cross.png \
+		../QtTry4/img/sign-out.png \
+		../QtTry4/img/toFirst.png \
+		../QtTry4/img/pen.png \
+		../QtTry4/img/settings.png \
+		../QtTry4/img/user.png \
+		../QtTry4/img/next.png \
+		../QtTry4/img/back.png
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\rcc.exe -name resourses ..\QtTry4\resourses.qrc -o debug\qrc_resourses.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -304,6 +319,37 @@ debug/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -322,7 +368,6 @@ debug/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -330,6 +375,8 @@ debug/moc_clickablecalendar.cpp: ../QtTry4/clickablecalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		debug/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\clickablecalendar.h -o debug\moc_clickablecalendar.cpp
@@ -488,6 +535,37 @@ debug/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -506,7 +584,6 @@ debug/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -514,6 +591,8 @@ debug/moc_clickablewidget.cpp: ../QtTry4/clickablewidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		debug/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\clickablewidget.h -o debug\moc_clickablewidget.cpp
@@ -673,6 +752,37 @@ debug/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -691,7 +801,6 @@ debug/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -699,19 +808,13 @@ debug/moc_mainwindow.cpp: ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstylepainter.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStyleOptionTabV3 \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
@@ -875,6 +978,37 @@ debug/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -893,7 +1027,6 @@ debug/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -901,6 +1034,8 @@ debug/moc_printorder.cpp: ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		debug/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\printorder.h -o debug\moc_printorder.cpp
@@ -1059,6 +1194,37 @@ debug/moc_qtoolcalendar.cpp: ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1077,7 +1243,6 @@ debug/moc_qtoolcalendar.cpp: ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -1085,6 +1250,8 @@ debug/moc_qtoolcalendar.cpp: ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		debug/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\qtoolcalendar.h -o debug\moc_qtoolcalendar.cpp
@@ -1243,6 +1410,37 @@ debug/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1261,7 +1459,6 @@ debug/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -1269,6 +1466,8 @@ debug/moc_secondwindow.cpp: ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		debug/moc_predefs.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/moc.exe
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/build-QtTry4-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -ID:/Programs/QT_3/5.15.2/mingw81_32/mkspecs/win32-g++ -IE:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4 -ID:/Programs/QT_3/5.15.2/mingw81_32/include -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtPrintSupport -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtANGLE -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql -ID:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore -I. -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -ID:/QT/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -ID:/QT/Tools/mingw810_32/i686-w64-mingw32/include ..\QtTry4\secondwindow.h -o debug\moc_secondwindow.cpp
@@ -1563,6 +1762,37 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1581,7 +1811,6 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -1589,6 +1818,8 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		../QtTry4/Libraries.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
@@ -1742,6 +1973,37 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1760,14 +2022,15 @@ ui_mainwindow.h: ../QtTry4/mainwindow.ui \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h
 	D:\Programs\QT_3\5.15.2\mingw81_32\bin\uic.exe ..\QtTry4\mainwindow.ui -o ui_mainwindow.h
 
 ui_printorder.h: ../QtTry4/printorder.ui \
@@ -1944,6 +2207,37 @@ debug/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickableca
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -1962,14 +2256,15 @@ debug/clickablecalendar.o: ../QtTry4/clickablecalendar.cpp ../QtTry4/clickableca
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\clickablecalendar.o ..\QtTry4\clickablecalendar.cpp
 
 debug/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidget.h \
@@ -2126,6 +2421,37 @@ debug/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidget
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2144,14 +2470,15 @@ debug/clickablewidget.o: ../QtTry4/clickablewidget.cpp ../QtTry4/clickablewidget
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\clickablewidget.o ..\QtTry4\clickablewidget.cpp
 
 debug/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
@@ -2309,6 +2636,37 @@ debug/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2327,7 +2685,6 @@ debug/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -2335,19 +2692,13 @@ debug/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstylepainter.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStyleOptionTabV3 \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
@@ -2355,8 +2706,6 @@ debug/main.o: ../QtTry4/main.cpp ../QtTry4/mainwindow.h \
 		../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h
@@ -2517,6 +2866,37 @@ debug/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2535,7 +2915,6 @@ debug/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -2543,37 +2922,30 @@ debug/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		../QtTry4/printorder.h \
 		../QtTry4/qtabwidget_v.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStylePainter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstylepainter.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QStyleOptionTabV3 \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QIcon \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QString \
 		../QtTry4/clickablewidget.h \
 		../QtTry4/clickablecalendar.h \
 		../QtTry4/qtoolcalendar.h \
 		ui_mainwindow.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QLocale \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QAction \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsView \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qscrollarea.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGroupBox \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgroupbox.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
@@ -2583,14 +2955,11 @@ debug/mainwindow.o: ../QtTry4/mainwindow.cpp ../QtTry4/mainwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QHeaderView \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qheaderview.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QMenuBar \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qmenubar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QScrollArea \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qscrollarea.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QSplitter \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qsplitter.h \
@@ -2754,6 +3123,37 @@ debug/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2772,7 +3172,6 @@ debug/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -2780,12 +3179,12 @@ debug/printorder.o: ../QtTry4/printorder.cpp ../QtTry4/printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		ui_printorder.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
@@ -2953,6 +3352,37 @@ debug/qtoolcalendar.o: ../QtTry4/qtoolcalendar.cpp ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -2971,14 +3401,15 @@ debug/qtoolcalendar.o: ../QtTry4/qtoolcalendar.cpp ../QtTry4/qtoolcalendar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcalendarwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qtoolcalendar.o ..\QtTry4\qtoolcalendar.cpp
 
 debug/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
@@ -3135,6 +3566,37 @@ debug/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QList \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QStandardItemModel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qstandarditemmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QListWidgetItem \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistwidget.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGraphicsScene \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgraphicsscene.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/QMovie \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qmovie.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimagereader.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qimageiohandler.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qplugin.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qpointer.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonobject.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qjsonvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborvalue.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcborcommon.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/quuid.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QDebug \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/QSqlError \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtSql/qsqlerror.h \
@@ -3153,7 +3615,6 @@ debug/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QTabBar \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QLabel \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QCalendarWidget \
@@ -3161,26 +3622,15 @@ debug/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QToolButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qtoolbutton.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		ui_secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QVariant \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QGroupBox \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgroupbox.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
@@ -3190,7 +3640,9 @@ debug/secondwindow.o: ../QtTry4/secondwindow.cpp ../QtTry4/secondwindow.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
-		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/QProcess \
+		D:/Programs/QT_3/5.15.2/mingw81_32/include/QtCore/qprocess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\secondwindow.o ..\QtTry4\secondwindow.cpp
 
 debug/qrc_resourses.o: debug/qrc_resourses.cpp 
