@@ -42,3 +42,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resourses.qrc
 
+win32:CONFIG(release, debug|release): LIBS += -LD:/Programs/QT_3/5.15.2/mingw81_32/lib/ -lwwwidgets4
+else:win32:CONFIG(debug, debug|release): LIBS += -LD:/Programs/QT_3/5.15.2/mingw81_32/lib/ -lwwwidgets4d
+
+INCLUDEPATH += D:/Programs/QT_3/5.15.2/mingw81_32/include
+DEPENDPATH += D:/Programs/QT_3/5.15.2/mingw81_32/include
