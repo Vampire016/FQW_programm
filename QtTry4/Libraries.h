@@ -40,8 +40,6 @@
 #include <QList>
 #include <QStandardItemModel>
 #include <QListWidgetItem>
-#include <QGraphicsScene>
-#include <QMovie>
 //---------------------------------------------------------------------------------
 
 //Библиотеки отладки
