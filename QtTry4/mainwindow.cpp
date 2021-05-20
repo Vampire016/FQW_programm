@@ -176,7 +176,7 @@ void MainWindow::on_act_orders_triggered()
 {
     ui->tabWidget->setCurrentIndex(1);
 
-    ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
+    //ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
     ui->tableView->setFocusPolicy(Qt::NoFocus);
 
     ui->tableView->verticalHeader()->setVisible(false);
@@ -298,6 +298,7 @@ void MainWindow::UpdateDB()
     ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: limegreen}");
     //--------------------------------------------------------------------------------------------------------------------------------------------
     */
+
 
 
     if(ui->PB_wOpened->text() == "0")
@@ -485,10 +486,10 @@ void MainWindow::print(QPrinter * printer)
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::onTableView_clicked(const QModelIndex &index)
 {
-    /*ui->tableView->selectRow(ui->tableView->currentIndex().row());
+    ui->tableView->selectRow(ui->tableView->currentIndex().row());
 
     qDebug() << index;
-    qDebug() << ui->tableView->currentIndex().row();*/
+    qDebug() << ui->tableView->currentIndex().row();
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
