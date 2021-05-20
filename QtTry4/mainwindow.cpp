@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     qmodel_c2 = new QSqlQueryModel;
     qmodel_categ = new QSqlQueryModel;
     qmodel_stat = new QSqlQueryModel;
+    qmodel_stats = new QSqlQueryModel;
     qmodel_reqS = new QSqlQueryModel;
     qmodel_piory = new QSqlQueryModel;
     qmodel_creator = new QSqlQueryModel;
@@ -37,7 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
     qmodel_ordId = new QSqlQueryModel;
     filOrd = new QSqlQueryModel;
     filOrd_1 = new QSqlQueryModel;
+    countOrd = new QSqlQueryModel;
 
+    qmodel_u_func = new QSqlQueryModel;
+    qmodel_u_rules = new QSqlQueryModel;
 
     btnSave = new QSqlQuery(db);
     createOrd = new QSqlQuery(db);    
@@ -56,18 +60,33 @@ MainWindow::MainWindow(QWidget *parent)
     subWflags = true;
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
+    //Внешний вид TableView и загрузка моделей
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    queryMode = 1;
+
     ui->tableView->setFocusPolicy(Qt::NoFocus);
     ui->tableView->verticalHeader()->setVisible(false);
-    ui->tableView->setModel(qmodel);    
+    ui->tableView->setStyleSheet("QHeaderView::section { background: rgb(181,181,181);}");
+    ui->tableView->setModel(qmodel);
+
+    ui->tableView_2->setFocusPolicy(Qt::NoFocus);
+    ui->tableView_2->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->tableView_2->verticalHeader()->setVisible(false);
+    ui->tableView_2->setStyleSheet("QHeaderView::section { background: rgb(181,181,181);}");
+    ui->tableView_2->setModel(qmodel_stats);
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
     //Валидатор значений для полей дата/время
     //--------------------------------------------------------------------------------------------------------------------------------------------
     QRegExp r_date_time("(19[0-9][0-9]|20[0-9][0-9])\\.(0[1-9]|[1][0-2])\\.(0[1-9]|[12][0-9]|3[01])\\ (0[1-9]|1[0-9]|2[0-3])\\:([0-5][0-9])\\:([0-5][0-9])");
-    QRegExpValidator *valida = new QRegExpValidator(r_date_time, this);
+    QRegExpValidator *valida = new QRegExpValidator(r_date_time, this);    
 
     ui->lineEdit->setValidator(valida);
     ui->lineEdit_4->setValidator(valida);
     ui->lineEdit_5->setValidator(valida);
+    ui->lineEdit_u_validF->setValidator(valida);
+    ui->lineEdit_u_validU->setValidator(valida);
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
     //Кнопки вывода календаря (наверное можно компактнее)
@@ -77,33 +96,45 @@ MainWindow::MainWindow(QWidget *parent)
     menuDi = new QMenu(this);
     menuFi = new QMenu(this);
     menuFi_2 = new QMenu(this);
+    menuVF = new QMenu(this);
+    menuVU = new QMenu(this);
     calendarOp = new ClickableCalendar();
     calendarCl = new ClickableCalendar();
     calendarDi = new ClickableCalendar();
     calendarFi = new ClickableCalendar();
     calendarFi_2 = new ClickableCalendar();
+    calendarVF = new ClickableCalendar();
+    calendarVU = new ClickableCalendar();
     actionOp = new QWidgetAction(this);
     actionCl = new QWidgetAction(this);
     actionDi = new QWidgetAction(this);
     actionFi = new QWidgetAction(this);
     actionFi_2 = new QWidgetAction(this);
+    actionVF = new QWidgetAction(this);
+    actionVU = new QWidgetAction(this);
 
     actionOp->setDefaultWidget(calendarOp);
     actionCl->setDefaultWidget(calendarCl);
     actionDi->setDefaultWidget(calendarDi);
     actionFi->setDefaultWidget(calendarFi);
     actionFi_2->setDefaultWidget(calendarFi_2);
+    actionVF->setDefaultWidget(calendarVF);
+    actionVU->setDefaultWidget(calendarVU);
     menuOp->addAction(actionOp);
     menuCl->addAction(actionCl);
     menuDi->addAction(actionDi);
     menuFi->addAction(actionFi);
     menuFi_2->addAction(actionFi_2);
+    menuVF->addAction(actionVF);
+    menuVU->addAction(actionVU);
 
     ui->toolButton_Opened->setMenu(menuOp);
     ui->toolButton_Decision->setMenu(menuDi);
     ui->toolButton_Closed->setMenu(menuCl);
     ui->toolButton_Filter->setMenu(menuFi);
     ui->toolButton_Filter_2->setMenu(menuFi_2);
+    ui->toolButton_u_validF->setMenu(menuVF);
+    ui->toolButton_u_validU->setMenu(menuVU);
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -111,7 +142,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Блок соединений
     //--------------------------------------------------------------------------------------------------------------------------------------------
     connect(sw, SIGNAL(ShowMain()), this, SLOT(reciveSignal()));
-    connect(sw, SIGNAL(DBConnect(QString, QString)), this, SLOT(SigDBConnect(QString, QString)));
+    connect(sw, SIGNAL(DBConnect(QString, QString, QString)), this, SLOT(SigDBConnect(QString, QString, QString)));
     connect(this, SIGNAL(RevDBConnect(bool)), sw, SLOT(ConOrNot(bool)));
     connect(sw, SIGNAL(DBLog(QString, QString)), this, SLOT(SigDBLog(QString, QString)));
     connect(this, SIGNAL(RevDBLog(bool)), sw, SLOT(LogOrNot(bool)));
@@ -123,20 +154,22 @@ MainWindow::MainWindow(QWidget *parent)
     connect(calendarDi, SIGNAL(clickedDate()), this, SLOT(FocusDateDi()));
     connect(calendarFi, SIGNAL(clickedDate()), this, SLOT(FocusDateFi()));
     connect(calendarFi_2, SIGNAL(clickedDate()), this, SLOT(FocusDateFi_2()));
+    connect(calendarVF, SIGNAL(clickedDate()), this, SLOT(FocusDateVF()));
+    connect(calendarVU, SIGNAL(clickedDate()), this, SLOT(FocusDateVU()));
     connect(ui->toolButton_Opened, SIGNAL(clicked()), this, SLOT(FocusToolBtn()));
     connect(saveTmr, SIGNAL(timeout()), this, SLOT(updEditOrd()));
-
-    //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
-    //connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
-    //qDebug() << ui->tab_6->focusWidget();
-
     connect(ui->tableView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(twiceClickOnTableRow(const QModelIndex &)));
     connect(ui->comboBox_var_1, SIGNAL(currentIndexChanged(QString)), this, SLOT(Var_2_changed()));
     connect(ui->comboBox_var_1_1, SIGNAL(currentIndexChanged(QString)), this, SLOT(Var_2_1_changed()));
     connect(this, SIGNAL(fillReportSig(int)), PrOrd, SLOT(fillReport(int)));
+    connect(this, SIGNAL(reload()), sw, SLOT(logOut()));
+    connect(ui->comboBox_pages, SIGNAL(currentIndexChanged(int)), this, SLOT(countPagesChanges()));
 
 
     //ui->tableView->clicked()
+    //connect(ui->tabWidget_2, SIGNAL(tabBarClicked()), ui->lineEdit, SLOT());
+    //connect(ui->tab_6, SIGNAL(returnPressed(QKeyEvent *)), this, SLOT(ClearFocusLE()));
+    //qDebug() << ui->tab_6->focusWidget();
 
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -156,7 +189,7 @@ MainWindow::MainWindow(QWidget *parent)
     str_and = "";
 
     QStringList var0 = {"---", "Не"};    
-    QStringList var0_1 = {"И", "ИЛИ"};
+    QStringList var0_1 = {"И", "ИЛИ"};    
 
 
     var0_0 = new QStringList {" ) AND", " ) OR"};
@@ -166,6 +199,10 @@ MainWindow::MainWindow(QWidget *parent)
     var1_1 = new QStringList {"*", "Orders.Title", "Orders.Description", "Orders.`Status`", "Orders.Priory", "Orders.Category", "Orders.`Type`",
                               "Orders.RequestSource", "`Edit`.WhoEdit", "`Create`.WhoCreate", "`Control`.WhoControlling", "`Work`.WhoWork",
                               "`Create`.DateOpen", "`Work`.DateClose", "`Work`.DateDecision", "`Edit`.DateEdit", "Orders.id"};
+    var1_u = new QStringList {"Все", "Имя", "Имя профиля", "e-mail", "Телефон", "Мобильный тел.", "Телефон 2", "Мобильный тел. 2", "Описание", "Профиль доступа",
+                              "Должность", "Активен (статус)", "Активен с...", "Активен до..."};
+    var1_1_u = new QStringList {"*", "Users.FullName", "Users.`Login`", "Users.Email", "Users.Phone", "Users.Phone_m", "Users.Phone2", "Users.Phone2_m",
+                                "Users.`Description`", "Users.`Rights`", "Users.`Function`", "Users.`Active`", "Users.Valid_from", "Users.Valid_until"};
     var1_2 = new QStringList {"LIKE", "NOT LIKE", "=", "<>", "<", ">"};
 
     var2_1 = new QStringList {"Содержит", "Не содержит"};
@@ -173,11 +210,18 @@ MainWindow::MainWindow(QWidget *parent)
     var2_3 = new QStringList {"Содержит", "Не содержит", "Равна", "Не равна", "До", "После"};
     var2_4 = new QStringList {"Содержит", "Не содержит", "Равен", "Не равен"};
 
+    Limit_s = new QStringList {"5", "10", "15", "20", "30", "40", "50", "100", "250", "500", "1000", "2500", "5000", "9999"};
+    Limit_bef = "15";
+    Limit = "15";
+    multiplier_f = 1;
+    multiplier_s = 1;
+    ui->comboBox_pages->addItems(*Limit_s);
+    ui->comboBox_pages->setCurrentIndex(2);
+
     ui->comboBox_var_0->addItems(var0);
     ui->comboBox_var_0_0->addItems(var0_1);
     ui->comboBox_var_0->setDisabled(true);
-    ui->comboBox_var_1->addItems(*var1);
-    ui->comboBox_var_1_1->addItems(*var1);
+
     ui->lineEdit_find->hide();
     ui->toolButton_Filter->hide();
 
@@ -197,22 +241,13 @@ MainWindow::MainWindow(QWidget *parent)
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+    //Заполнение ComboBox-ов моделями данных
+    //--------------------------------------------------------------------------------------------------------------------------------------------
     QStringList type = {"Инцендент", "Запрос"};
-    /*
-    QStringList Status = {};
-    QStringList Priory = {};
-    QStringList Category = {};
-    QStringList RequestSours = {};
-    QStringList Creator = {};
-    QStringList Supervisor = {};
-    QStringList Appointed = {};
-    */
+    QStringList active = {"Нет", "Да"};
 
     ui->comboBox_5->addItems(type);
     ui->comboBox_5->setCurrentIndex(0);
-
-
 
     ui->comboBox_6->setModel(qmodel_categ);
 
@@ -224,7 +259,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox_12->setModel(qmodel_appoin);
     ui->comboBox_13->setModel(qmodel_creator);
 
+    ui->comboBox_u_active->addItems(active);
+    ui->comboBox_u_func->setModel(qmodel_u_func);
+    ui->comboBox_u_rules->setModel(qmodel_u_rules);
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    //Отключение вкладок TabBar-ов
+    //--------------------------------------------------------------------------------------------------------------------------------------------
     tabBar_2 = ui->tabWidget_2->findChild<QTabBar *>();
+    tabBar_3 = ui->tabWidget_3->findChild<QTabBar *>();
+    tabBar_3->hide();
+    //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
     //mdiArea для отчета
@@ -239,12 +285,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug() << PrOrd->windowFlags();
     //qDebug() << ui->mdiArea->windowFlags();
-
     //--------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
     leList.operator<<(ui->lineEdit).operator<<(ui->lineEdit_6);
     cbList.operator<<(ui->comboBox_6).operator<<(ui->comboBox_7).operator<<(ui->comboBox_8).operator<<(ui->comboBox_10);
     lableList.operator<<(ui->label).operator<<(ui->label_11).operator<<(ui->label_7).operator<<(ui->label_8).operator<<(ui->label_9).operator<<(ui->label_14);
+
+    leList2.operator<<(ui->lineEdit_u_login).operator<<(ui->lineEdit_u_secName).operator<<(ui->lineEdit_u_name).operator<<(ui->lineEdit_u_password).operator<<(ui->lineEdit_u_pass_valid).operator<<(ui->lineEdit_u_phone);
+    lableList2.operator<<(ui->label_u_login).operator<<(ui->label_u_secName).operator<<(ui->label_u_name).operator<<(ui->label_u_password).operator<<(ui->label_u_pass_valid).operator<<(ui->label_u_phone);
 
 }
 
@@ -265,27 +315,16 @@ void MainWindow::on_act_home_triggered()
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_act_orders_triggered()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
     queryMode = 1;
     multiplier_f = 1;
 
-<<<<<<< HEAD
-    //ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->tableView->setFocusPolicy(Qt::NoFocus);
-=======
     ui->comboBox_var_1->clear();
     ui->comboBox_var_1_1->clear();
     ui->comboBox_var_1->addItems(*var1);
     ui->comboBox_var_1_1->addItems(*var1);
->>>>>>> 54806f89d0e45761bd5f47c45d138df273804283
 
     ui->pushButton_twsSearch_del->click();
 
-=======
->>>>>>> parent of 54806f8 (beta 0.4.5)
-=======
->>>>>>> parent of 54806f8 (beta 0.4.5)
     ui->tabWidget->setCurrentIndex(1);    
 
     ui->tableView->setColumnWidth(1, 400);
@@ -297,18 +336,25 @@ void MainWindow::on_act_orders_triggered()
     {
         lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");
     }
+
+    ui->pushButton_search->click();
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Занесение вариантов выбора в фильтр 1
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::Var_2_changed()
 {
     ui->comboBox_var_2->clear();
+    multiplier_f = 1;
 
+    if(queryMode == 1){
     if(ui->comboBox_var_1->currentIndex() == 0)
     {
         ui->comboBox_var_2->setDisabled(true);
         ui->comboBox_var_3->setDisabled(true);
+        ui->lineEdit_find->clear();
         ui->lineEdit_find->show();
         ui->lineEdit_find->setDisabled(true);
         ui->toolButton_Filter->hide();
@@ -320,6 +366,7 @@ void MainWindow::Var_2_changed()
         ui->comboBox_var_3->setDisabled(false);
         ui->comboBox_var_2->addItems(*var2_1);
         ui->comboBox_var_3->hide();
+        ui->lineEdit_find->clear();
         ui->lineEdit_find->show();
         ui->lineEdit_find->setDisabled(false);
     }
@@ -354,6 +401,7 @@ void MainWindow::Var_2_changed()
         ui->lineEdit_find->setDisabled(false);
         ui->comboBox_var_2->addItems(*var2_3);
         ui->comboBox_var_3->hide();
+        ui->lineEdit_find->clear();
         ui->lineEdit_find->show();
         ui->toolButton_Filter->show();
     }
@@ -363,20 +411,83 @@ void MainWindow::Var_2_changed()
         ui->comboBox_var_3->setDisabled(false);
         ui->lineEdit_find->setDisabled(false);
         ui->comboBox_var_2->addItems(*var2_4);
+        ui->lineEdit_find->clear();
         ui->lineEdit_find->show();
         ui->toolButton_Filter->hide();
     };
+    }else if(queryMode == 2){
+        if(ui->comboBox_var_1->currentIndex() == 0)
+        {
+            ui->comboBox_var_2->setDisabled(true);
+            ui->comboBox_var_3->setDisabled(true);
+            ui->lineEdit_find->clear();
+            ui->lineEdit_find->show();
+            ui->lineEdit_find->setDisabled(true);
+            ui->toolButton_Filter->hide();
+            ui->comboBox_var_3->show();
+        }
+        else if(ui->comboBox_var_1->currentIndex() > 0 && ui->comboBox_var_1->currentIndex() < 9)
+        {
+            ui->comboBox_var_2->setDisabled(false);
+            ui->comboBox_var_3->setDisabled(false);
+            ui->comboBox_var_2->addItems(*var2_1);
+            ui->comboBox_var_3->hide();
+            ui->lineEdit_find->clear();
+            ui->lineEdit_find->show();
+            ui->lineEdit_find->setDisabled(false);
+            ui->toolButton_Filter->hide();
+        }else if(ui->comboBox_var_1->currentIndex() > 8 && ui->comboBox_var_1->currentIndex() < 12)
+        {
+            ui->comboBox_var_2->setDisabled(false);
+            ui->comboBox_var_3->setDisabled(false);
+            ui->comboBox_var_2->addItems(*var2_2);
+            ui->lineEdit_find->hide();
+            ui->toolButton_Filter->hide();
+            ui->comboBox_var_3->show();
+
+            QStringList sub_var_2 = {"`Rights`", "`Functions`"};
+            QStringList sub_var = {"`Name`", "`FName`", };
+            QStringList active = {"`Нет`", "`Да`"};
+
+            if(ui->comboBox_var_1->currentIndex() == 11){
+                ui->comboBox_var_3->setModel(ui->comboBox_u_active->model());
+            }else{
+                filOrd->setQuery("SELECT " + sub_var.at(ui->comboBox_var_1->currentIndex() - 9) + " FROM " + sub_var_2.at(ui->comboBox_var_1->currentIndex() - 9) + ";");
+                ui->comboBox_var_3->setModel(filOrd);
+            }
+
+
+        }
+        else
+        {
+            ui->comboBox_var_2->setDisabled(false);
+            ui->comboBox_var_3->setDisabled(false);
+            ui->lineEdit_find->setDisabled(false);
+            ui->comboBox_var_2->addItems(*var2_3);
+            ui->comboBox_var_3->hide();
+            ui->lineEdit_find->clear();
+            ui->lineEdit_find->show();
+            ui->toolButton_Filter->show();
+        };
+    }
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Занесение вариантов выбора в фильтр 2
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::Var_2_1_changed()
 {
+    //qDebug() << "Signal";
     ui->comboBox_var_2_2->clear();
+    multiplier_f = 1;
 
+    if(queryMode == 1){
     if(ui->comboBox_var_1_1->currentIndex() == 0)
     {
         ui->comboBox_var_2_2->setDisabled(true);
         ui->comboBox_var_3_3->setDisabled(true);
+        ui->lineEdit_find_2->clear();
         ui->lineEdit_find_2->show();
         ui->lineEdit_find_2->setDisabled(true);
         ui->toolButton_Filter_2->hide();
@@ -388,6 +499,7 @@ void MainWindow::Var_2_1_changed()
         ui->comboBox_var_3_3->setDisabled(false);
         ui->comboBox_var_2_2->addItems(*var2_1);
         ui->comboBox_var_3_3->hide();
+        ui->lineEdit_find_2->clear();
         ui->lineEdit_find_2->show();
         ui->lineEdit_find_2->setDisabled(false);
     }
@@ -422,6 +534,7 @@ void MainWindow::Var_2_1_changed()
         ui->lineEdit_find_2->setDisabled(false);
         ui->comboBox_var_2_2->addItems(*var2_3);
         ui->comboBox_var_3_3->hide();
+        ui->lineEdit_find_2->clear();
         ui->lineEdit_find_2->show();
         ui->toolButton_Filter_2->show();
     }
@@ -431,12 +544,71 @@ void MainWindow::Var_2_1_changed()
         ui->comboBox_var_3_3->setDisabled(false);
         ui->lineEdit_find_2->setDisabled(false);
         ui->comboBox_var_2_2->addItems(*var2_4);
+        ui->lineEdit_find_2->clear();
         ui->lineEdit_find_2->show();
         ui->toolButton_Filter_2->hide();
     };
+    }else if(queryMode == 2){
+        if(ui->comboBox_var_1_1->currentIndex() == 0)
+        {
+            ui->comboBox_var_2_2->setDisabled(true);
+            ui->comboBox_var_3_3->setDisabled(true);
+            ui->lineEdit_find_2->clear();
+            ui->lineEdit_find_2->show();
+            ui->lineEdit_find_2->setDisabled(true);
+            ui->toolButton_Filter_2->hide();
+            ui->comboBox_var_3_3->show();
+        }
+        else if(ui->comboBox_var_1_1->currentIndex() > 0 && ui->comboBox_var_1_1->currentIndex() < 9)
+        {
+            ui->comboBox_var_2_2->setDisabled(false);
+            ui->comboBox_var_3_3->setDisabled(false);
+            ui->comboBox_var_2_2->addItems(*var2_1);
+            ui->comboBox_var_3_3->hide();
+            ui->lineEdit_find_2->clear();
+            ui->lineEdit_find_2->show();
+            ui->lineEdit_find_2->setDisabled(false);
+            ui->toolButton_Filter_2->hide();
+        }else if(ui->comboBox_var_1_1->currentIndex() > 8 && ui->comboBox_var_1_1->currentIndex() < 12)
+        {
+            ui->comboBox_var_2_2->setDisabled(false);
+            ui->comboBox_var_3_3->setDisabled(false);
+            ui->comboBox_var_2_2->addItems(*var2_2);
+            ui->lineEdit_find_2->hide();
+            ui->toolButton_Filter_2->hide();
+            ui->comboBox_var_3_3->show();
+
+            QStringList sub_var_2 = {"`Rights`", "`Functions`"};
+            QStringList sub_var = {"`Name`", "`FName`" };
+            QStringList active = {"`Нет`", "`Да`"};
+
+            if(ui->comboBox_var_1_1->currentIndex() == 11){
+                ui->comboBox_var_3_3->setModel(ui->comboBox_u_active->model());
+
+            }else{
+                filOrd_1->setQuery("SELECT " + sub_var.at(ui->comboBox_var_1_1->currentIndex() - 9) + " FROM " + sub_var_2.at(ui->comboBox_var_1_1->currentIndex() - 9) + ";");
+                ui->comboBox_var_3_3->setModel(filOrd_1);
+            }
+
+        }
+        else
+        {
+            ui->comboBox_var_2_2->setDisabled(false);
+            ui->comboBox_var_3_3->setDisabled(false);
+            ui->lineEdit_find_2->setDisabled(false);
+            ui->comboBox_var_2_2->addItems(*var2_3);
+            ui->comboBox_var_3_3->hide();
+            ui->lineEdit_find_2->clear();
+            ui->lineEdit_find_2->show();
+            ui->toolButton_Filter_2->show();
+        };
+    }
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Клик по кнопке "Поиск" в окне вывода заявок
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_search_clicked()
 {    
     cbVar_1 = ui->comboBox_var_1->currentIndex();
@@ -444,14 +616,34 @@ void MainWindow::on_pushButton_search_clicked()
     cbVar_3 = ui->comboBox_var_3->currentIndex();
     leFind = ui->lineEdit_find->text();
 
-    if(ui->pushButton_twsSearch_del->isVisible()){
-    cbVar_0_1 = ui->comboBox_var_0_0->currentIndex();
-    cbVar_1_1 = ui->comboBox_var_1_1->currentIndex();
-    cbVar_2_1 = ui->comboBox_var_2_2->currentIndex();
-    cbVar_3_1 = ui->comboBox_var_3_3->currentIndex();
-    leFind_1 = ui->lineEdit_find_2->text();}
+    multiplier_s = multiplier_f;
+/*
+    if(countOrd->index(0,0).data().toInt() - (QVariant(ui->comboBox_pages->currentText()).toInt() * multiplier_s) < 0){
+        offset = "0";
+    }else{
+        offset = QVariant(countOrd->index(0,0).data().toInt() - (QVariant(ui->comboBox_pages->currentText()).toInt() * multiplier_s)).toString();}
 
-    if(ui->pushButton_twsSearch_del->isVisible()) {
+    if(countOrd->index(0,0).data().toInt() - lTo >= 0){
+        Limit = ui->comboBox_pages->currentText();
+    }else{
+        Limit = QVariant(abs(countOrd->index(0,0).data().toInt() - lTo)).toString();
+    }
+*/
+    Limit = Limit_bef;
+
+    lFrom = (1 + (QVariant(ui->comboBox_pages->currentText()).toInt() * (multiplier_s - 1)));
+
+    offset = QVariant(QVariant(ui->comboBox_pages->currentText()).toInt() * (multiplier_s - 1)).toString();
+
+    if(queryMode == 1){
+
+    if(ui->pushButton_twsSearch_del->isVisible()){
+        cbVar_0_1 = ui->comboBox_var_0_0->currentIndex();
+        cbVar_1_1 = ui->comboBox_var_1_1->currentIndex();
+        cbVar_2_1 = ui->comboBox_var_2_2->currentIndex();
+        cbVar_3_1 = ui->comboBox_var_3_3->currentIndex();
+        leFind_1 = ui->lineEdit_find_2->text();
+
         btnVis = true;
         str_and = var0_0->at(cbVar_0_1);
 
@@ -483,8 +675,6 @@ void MainWindow::on_pushButton_search_clicked()
         str_4_1 = "";
         str_and = "";}
 
-
-
     if(cbVar_1 > 11 && cbVar_1 < 16){
         if(cbVar_2 > 1){
             leFind = QDateTime::fromString(ui->lineEdit_find->text(), "yyyy.MM.dd").toString("yyyy-MM-dd");}
@@ -506,8 +696,81 @@ void MainWindow::on_pushButton_search_clicked()
         }else{
         str_3 = "'%" + leFind + "%'";}}
 
+    }else if(queryMode == 2){
+
+        if(ui->pushButton_twsSearch_del->isVisible()){
+            cbVar_0_1 = ui->comboBox_var_0_0->currentIndex();
+            cbVar_1_1 = ui->comboBox_var_1_1->currentIndex();
+            cbVar_2_1 = ui->comboBox_var_2_2->currentIndex();
+            cbVar_3_1 = ui->comboBox_var_3_3->currentIndex();
+            leFind_1 = ui->lineEdit_find_2->text();
+
+            btnVis = true;
+            str_and = var0_0->at(cbVar_0_1);
+
+            if(cbVar_1_1 > 11){
+                if(cbVar_2_1 > 1){
+                    leFind_1 = QDateTime::fromString(ui->lineEdit_find_2->text(), "yyyy.MM.dd").toString("yyyy-MM-dd");}
+                    str_4_1 = "";
+                if(cbVar_2_1 == 4){
+                    str_4_1 = " 00:00:00'";
+                }else if(cbVar_2_1 == 5){
+                    str_4_1 = " 23:59:59'";}
+            }else{
+                if(cbVar_2_1 == 2 || cbVar_2_1 == 3){
+                    str_4_1 = "'";
+                }else{
+                str_4_1 = "";}}
+
+            if(cbVar_1_1 == 9){
+                str_3_1 = "'" + ui->comboBox_var_3_3->currentText() + "'";
+            }else if (cbVar_1_1 == 11){
+                str_3_1 = QVariant(cbVar_3_1).toString();
+            }else if(cbVar_1_1 == 10){
+                str_3_1 = QVariant(cbVar_3_1 + 1).toString();
+            }else if(cbVar_1_1 > 11 && (cbVar_2_1 > 3)){
+                str_3_1 = "'" + leFind_1;
+            }else{
+                str_3_1 = "'%" + leFind_1 + "%'";
+            }
+        }else{
+            btnVis = false;
+            str_1_1 = "";
+            str_2_1 = "";
+            str_3_1 = "";
+            str_4_1 = "";
+            str_and = "";}
+
+        if(cbVar_1 > 11){
+            if(cbVar_2 > 1){
+                leFind = QDateTime::fromString(ui->lineEdit_find->text(), "yyyy.MM.dd").toString("yyyy-MM-dd");}
+                str_4 = "";
+            if(cbVar_2 == 4){
+                str_4 = " 00:00:00'";
+            }else if(cbVar_2 == 5){
+                str_4 = " 23:59:59'";}
+        }else{
+            if(cbVar_2 == 2 || cbVar_2 == 3){
+                str_4 = "'";
+            }else{
+            str_4 = "";}}
+
+        if(cbVar_1 == 9){
+            str_3 = "'" + ui->comboBox_var_3->currentText() + "'";
+        }else if (cbVar_1 == 11){
+            str_3 = QVariant(cbVar_3).toString();
+        }else if(cbVar_1 == 10){
+            str_3 = QVariant(cbVar_3 + 1).toString();
+        }else if(cbVar_1 > 11 && (cbVar_2 > 3)){
+            str_3 = "'" + leFind;
+        }else{
+            str_3 = "'%" + leFind + "%'";
+        }
+    }
+
     tmr->start(1);
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
 //Отображение главного окна после успешной авторизации
@@ -520,7 +783,7 @@ void MainWindow::reciveSignal()
 
 //Соединение с БД
 //--------------------------------------------------------------------------------------------------------------------------------------------
-void MainWindow::SigDBConnect(QString name, QString type)
+void MainWindow::SigDBConnect(QString name, QString type, QString ip)
 {
     if(type == "MS Access")
     {
@@ -528,15 +791,33 @@ void MainWindow::SigDBConnect(QString name, QString type)
         db.setDatabaseName(name);
     }
 
-    if(type == "mySQL")
-    {/*
-        db = QSqlDatabase::addDatabase("QMYSQL");   \
-        db.setHostName("localhost");                |
-        db.setDatabaseName(name);                    > не установлен плагин :(
-        db.setUserName("root");                     |
-        db.setPassword("root");                     /
-    */
+    if(type == "mySQL (Localhost)")
+    {
+        db = QSqlDatabase::addDatabase("QODBC");
+        db.setHostName("localhost");
+        db.setDatabaseName(name);
+        db.setUserName("root");
+        db.setPassword("root");
+    }
 
+    if(type == "mySQL (Server)")
+    {
+        db = QSqlDatabase::addDatabase("QODBC");
+        db.setHostName(ip);
+        db.setDatabaseName(name);
+        db.setUserName("root");
+        db.setPassword("root");
+
+        /*
+        db = QSqlDatabase::addDatabase("QMYSQL");
+        db.setHostName(ip);
+        db.setDatabaseName(name);
+        db.setUserName("root");
+        db.setPassword("root");*/
+    }
+
+    if(type == "mySQL")
+    {
         db = QSqlDatabase::addDatabase("QODBC");
         db.setHostName("localhost");
         db.setDatabaseName(name);
@@ -552,8 +833,13 @@ void MainWindow::SigDBConnect(QString name, QString type)
     else
     {
         conect = true;
-        emit RevDBConnect(conect);
+        emit RevDBConnect(conect);        
     }
+}
+
+void MainWindow::RevCon()
+{
+    conect = false;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -579,6 +865,13 @@ void MainWindow::SigDBLog(QString log, QString pass)
                     emit RevDBLog(true);
                     curUser = query.value(0).toInt();
                     tmr->start(1);
+
+                    if(query.value(6).toString() != "") {
+                        ui->pushButton_5->setText("  " + query.value(1).toString() + " (" + query.value(6).toString() + ")");
+                    }else{
+                        ui->pushButton_5->setText("  " + query.value(1).toString() + " ( n/a )");
+                    }
+
                     return;
                 }
             }
@@ -610,10 +903,30 @@ void MainWindow::UpdateDB()
 
 
 
+    qmodel_stats->setQuery("SELECT `Status`.SName AS `Orders`, COUNT(Orders.`Status`) AS `Amount` FROM Orders LEFT JOIN `Status` ON Orders.`Status` = `Status`.id");
+    qmodel_stats->query().first();
+
+
+    if(queryMode == 1){
+
+        countOrd->setQuery("Select Count(Orders.id) From Orders;");
+        countOrd->query().first();
+
+
+
     if((cbVar_1 == 0 && btnVis == false) || (btnVis && (cbVar_1 == 0 || cbVar_1_1 == 0))) {
         qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName AS `Status`, `Edit`.DateEdit AS `Last edit`, `Create`.DateOpen AS `Date Open`, Priority.PName AS `Priority`, createUser.FullName AS `Initiator`, workUser.FullName AS `Appointed`, Categories.`C+SC` AS `Category` "
-        "FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork ORDER BY Orders.id DESC;");}
-    else{
+        "FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork "
+        "ORDER BY Orders.id DESC;");
+        qmodel->query().first();
+        countRows = qmodel->rowCount();
+
+        qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName AS `Status`, `Edit`.DateEdit AS `Last edit`, `Create`.DateOpen AS `Date Open`, Priority.PName AS `Priority`, createUser.FullName AS `Initiator`, workUser.FullName AS `Appointed`, Categories.`C+SC` AS `Category` "
+        "FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork "
+        "ORDER BY Orders.id DESC LIMIT " + Limit + " OFFSET " + offset + ";");
+
+        qmodel->query().first();
+    }else{
         str_1 = var1_1->at(cbVar_1);
         if(cbVar_1 < 3 || cbVar_1 > 11){
         var_2 = cbVar_2;
@@ -635,13 +948,114 @@ void MainWindow::UpdateDB()
             }
             str_2_1 = var1_2->at(var_2_2);
         }
-
         qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName AS `Status`, `Edit`.DateEdit AS `Last edit`, `Create`.DateOpen AS `Date Open`, Priority.PName AS `Priority`, createUser.FullName AS `Initiator`, workUser.FullName AS `Appointed`, Categories.`C+SC` AS `Category` "
     "FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork "
     "WHERE ( " + str_1 + " " + str_2 + " " + str_3 + str_4 + str_and + " " + str_1_1 + " " + str_2_1 + " " + str_3_1 + str_4_1 + " ) ORDER BY Orders.id DESC;");
+        qmodel->query().first();
+        countRows = qmodel->rowCount();
+
+        qmodel->setQuery("SELECT Orders.id, Orders.Title, `Status`.SName AS `Status`, `Edit`.DateEdit AS `Last edit`, `Create`.DateOpen AS `Date Open`, Priority.PName AS `Priority`, createUser.FullName AS `Initiator`, workUser.FullName AS `Appointed`, Categories.`C+SC` AS `Category` "
+    "FROM Users AS workUser RIGHT JOIN (Categories INNER JOIN (`Status` INNER JOIN (Priority INNER JOIN (((Orders INNER JOIN (Users AS createUser INNER JOIN `Create` ON createUser.id = `Create`.WhoCreate) ON Orders.id = `Create`.id) INNER JOIN `Edit` ON Orders.id = `Edit`.id) INNER JOIN `Work` ON Orders.id = `Work`.id) ON Priority.id = Orders.Priory) ON `Status`.id = Orders.`Status`) ON Categories.id = Orders.Category) ON workUser.id = `Work`.WhoWork "
+    "WHERE ( " + str_1 + " " + str_2 + " " + str_3 + str_4 + str_and + " " + str_1_1 + " " + str_2_1 + " " + str_3_1 + str_4_1 + " ) ORDER BY Orders.id DESC LIMIT " + Limit + " OFFSET " + offset + ";");
+
+        qmodel->query().first();
         }
+    }else if(queryMode == 2){
+
+        countOrd->setQuery("Select Count(Users.id) From Users;");
+        countOrd->query().first();
 
 
+        if((cbVar_1 == 0 && btnVis == false) || (btnVis && (cbVar_1 == 0 || cbVar_1_1 == 0))) {
+            str_2 = ""; str_2_1 = ""; str_3 = ""; str_3_1 = "";
+            qmodel->setQuery("SELECT Users.`Login` AS `Profile name`, Users.FullName AS `Name`, Users.Email AS `e-mail`, Users.Phone AS `Phone`, Users.Phone_m AS `Mobile phone`, IF(users.`Active` = 1, 'Да', 'Нет') AS `Active`, Users.`Rights` AS `Rights` "
+            "FROM Users "
+            "ORDER BY Users.id ASC;");
+            qmodel->query().first();
+            countRows = qmodel->rowCount();
+
+            qmodel->setQuery("SELECT Users.`Login` AS `Profile name`, Users.FullName AS `Name`, Users.Email AS `e-mail`, Users.Phone AS `Phone`, Users.Phone_m AS `Mobile phone`, IF(users.`Active` = 1, 'Да', 'Нет') AS `Active`, Users.`Rights` AS `Rights` "
+            "FROM Users "
+            "ORDER BY Users.id ASC LIMIT " + Limit + " OFFSET " + offset + ";");
+
+            qmodel->query().first();            
+        }else{
+            str_1 = var1_1_u->at(cbVar_1);
+            var_2 = cbVar_2;
+            if(cbVar_1 < 12 ){
+            if(cbVar_1 == 10 || cbVar_1 == 11){
+                var_2 += 2;}
+                str_2 = var1_2->at(var_2);
+            }else if ((cbVar_1 > 11) && (cbVar_2 == 2 || cbVar_2 == 3)){
+                var_2 = var_2 - 2;
+                str_2 = var1_2->at(var_2);
+            }else if((cbVar_1 > 11) && (cbVar_2 <2 || cbVar_2> 3)){
+                str_2 = var1_2->at(var_2);
+            }
+
+
+            if(btnVis) {
+                str_1_1 = "( " + var1_1_u->at(cbVar_1_1);
+                var_2_2 = cbVar_2_1;
+                if(cbVar_1_1 < 12){
+                if(cbVar_1_1 == 10 || cbVar_1_1 == 11){
+                    var_2_2 += 2;}
+                    str_2_1 = var1_2->at(var_2_2);
+                }else if ((cbVar_1_1 > 11) && (cbVar_2_1 == 2 || cbVar_2_1 == 3)){
+                    var_2_2 = var_2_2 - 2;
+                    str_2_1 = var1_2->at(var_2_2);
+                }else if((cbVar_1_1 > 11) && (cbVar_2_1 <2 || cbVar_2_1> 3)){
+                    str_2_1 = var1_2->at(var_2_2);
+                }
+            }
+            qmodel->setQuery("SELECT Users.`Login` AS `Profile name`, Users.FullName AS `Name`, Users.Email AS `e-mail`, Users.Phone AS `Phone`, Users.Phone_m AS `Mobile phone`, IF(users.`Active` = 1, 'Да', 'Нет') AS `Active`, Users.`Rights` AS `Rights` "
+            "FROM Users "
+            "WHERE (" + str_1 + " " + str_2 + " " + str_3 + str_4 + str_and + " " + str_1_1 + " " + str_2_1 + " " + str_3_1 + str_4_1 + " ) ORDER BY Users.id ASC;");
+            qmodel->query().first();
+            countRows = qmodel->rowCount();
+
+            qmodel->setQuery("SELECT Users.`Login` AS `Profile name`, Users.FullName AS `Name`, Users.Email AS `e-mail`, Users.Phone AS `Phone`, Users.Phone_m AS `Mobile phone`, IF(users.`Active` = 1, 'Да', 'Нет') AS `Active`, Users.`Rights` AS `Rights` "
+            "FROM Users "
+            "WHERE (" + str_1 + " " + str_2 + " " + str_3 + str_4 + str_and + " " + str_1_1 + " " + str_2_1 + " " + str_3_1 + str_4_1 + " ) ORDER BY Users.id ASC LIMIT " + Limit + " OFFSET " + offset + ";");
+
+            qmodel->query().first();           
+        }
+/*
+        qDebug() << "#####################";
+        qDebug() << str_1;
+        qDebug() << str_2;
+        qDebug() << str_3;
+        qDebug() << str_4;
+        qDebug() << str_and;
+        qDebug() << str_1_1;
+        qDebug() << str_2_1;
+        qDebug() << str_3_1;
+        qDebug() << str_4_1;
+        qDebug() << "#####################";
+*/
+    }
+
+
+    if((countRows - (QVariant(Limit).toInt() * multiplier_s)) >= 0){
+        lTo = countRows - (countRows - (QVariant(Limit).toInt() * multiplier_s));
+    }else{
+        lTo = countRows;
+    }
+
+    //lTo = ((countOrd->index(0,0).data().toInt() - lFrom) + lFrom);
+
+    if(countRows < lFrom){
+        multiplier_f = 1;
+        ui->pushButton_search->click();
+    }
+
+
+    ui->label_pages->setText("c " + QVariant(lFrom).toString() + " по " + QVariant(lTo).toString() + " из " + QVariant(countRows).toString());
+
+    //qDebug() << ui->comboBox_pages->currentText();
+    //qDebug() << offset;
+
+    ui->tableView->setColumnWidth(1, 400);
     ui->tableView->resizeRowsToContents();
 
 
@@ -676,7 +1090,6 @@ void MainWindow::UpdateDB()
     ui->PB_wInWork->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color:   limegreen}");
     //--------------------------------------------------------------------------------------------------------------------------------------------
     */
-
 
 
     if(ui->PB_wOpened->text() == "0")
@@ -738,7 +1151,15 @@ void MainWindow::UpdateDB()
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wOpened_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_del->click();
 
@@ -752,9 +1173,20 @@ void MainWindow::on_PB_wOpened_clicked()
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Клик на кнопку "Новые"
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wNew_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_del->click();
 
@@ -766,11 +1198,22 @@ void MainWindow::on_PB_wNew_clicked()
 
     ui->pushButton_search->click();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Клик на кнопку "В работе"
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wInWork_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_add->click();
 
@@ -786,11 +1229,22 @@ void MainWindow::on_PB_wInWork_clicked()
 
     ui->pushButton_search->click();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Клик на кнопку "Решенные"
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wSolved_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_del->click();
 
@@ -802,11 +1256,22 @@ void MainWindow::on_PB_wSolved_clicked()
 
     ui->pushButton_search->click();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Клик на кнопку "Ожидающие"
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wAwaits_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_del->click();
 
@@ -818,10 +1283,16 @@ void MainWindow::on_PB_wAwaits_clicked()
 
     ui->pushButton_search->click();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//Клик на кнопку "Просроченые"
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_PB_wOverdue_clicked()
 {
+    queryMode = 1;
+    multiplier_f = 1;
+
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];
@@ -830,6 +1301,11 @@ void MainWindow::on_PB_wOverdue_clicked()
     QString str(buf);
 
     ui->tabWidget->setCurrentIndex(1);
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
 
     ui->pushButton_twsSearch_add->click();
 
@@ -845,6 +1321,7 @@ void MainWindow::on_PB_wOverdue_clicked()
 
     ui->pushButton_search->click();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
 /*
@@ -966,14 +1443,10 @@ void MainWindow::onTableView_clicked()
 {
     ui->tableView->selectRow(ui->tableView->currentIndex().row());
 
-<<<<<<< HEAD
-    qDebug() << index;
-    qDebug() << ui->tableView->currentIndex().row();
-=======
     //qDebug() << index;
->>>>>>> 54806f89d0e45761bd5f47c45d138df273804283
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 //Снятие фокуса с QLineEdit по щелчку мыши
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -989,6 +1462,7 @@ void MainWindow::ClearFocusLE()
     }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 //Добавление даты и времени с выпадающего календаря (реализовать с какого именно календаря, пока на каждый отдельно)
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -1032,7 +1506,18 @@ void MainWindow::FocusDateFi_2()
 {
     ui->lineEdit_find_2->setText(calendarFi_2->selectedDate().toString(QString("yyyy.MM.dd")));
 }
+
+void MainWindow::FocusDateVF()
+{
+    ui->lineEdit_u_validF->setText(calendarVF->selectedDate().toString(QString("yyyy.MM.dd")) + " 00:00:00");
+}
+
+void MainWindow::FocusDateVU()
+{
+    ui->lineEdit_u_validU->setText(calendarVU->selectedDate().toString(QString("yyyy.MM.dd")) + " 23:59:59");
+}
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 void MainWindow::FocusToolBtn()
 {
@@ -1152,6 +1637,9 @@ void MainWindow::on_pushButton_clicked()
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Переход в окно создания новой заявки
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_act_create_ord_triggered()
 {    
     for (int i = 0; i < 6; i++)
@@ -1194,13 +1682,18 @@ void MainWindow::on_act_create_ord_triggered()
 
     ui->comboBox_9->setCurrentIndex(2);
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Переход на конкретную заявку / пользователя
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::twiceClickOnTableRow(const QModelIndex &index)
-{    
+{
+    if(queryMode == 1){
     for (int i = 0; i < 6; i++)
     {
         lableList.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");
-    }
+    }    
 
     id = qmodel->index(index.row(), 0).data().toString();
 
@@ -1239,6 +1732,7 @@ void MainWindow::twiceClickOnTableRow(const QModelIndex &index)
 
     ui->tabWidget->setCurrentIndex(3);
     ui->tabWidget_2->setCurrentIndex(0);
+
     ui->label_idZayavki->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Заявка - ID  " + id + "  (ITOsoba LLC)</span></p></body></html>");
     ui->lineEdit->setText(QDateTime::fromString(qmodel_ordId->index(0, 4).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
     ui->lineEdit_4->setText(QDateTime::fromString(qmodel_ordId->index(0, 14).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
@@ -1257,8 +1751,49 @@ void MainWindow::twiceClickOnTableRow(const QModelIndex &index)
     ui->textEdit->setText(qmodel_ordId->index(0, 12).data().toString());
 
     emit fillReportSig(QVariant(id).toInt());
-}
+    }else if(queryMode == 2){
+        qmodel_ordId->setQuery("SELECT Users.FullName, Users.`Name`, Users.SecName, Users.`Login`, Users.`Password`, Users.`Rights`, Users.`Function`, Users.`Active`, Users.Valid_from, Users.Valid_until, Users.Email, Users.Phone,"
+        "Users.Phone_m, Users.Phone2, Users.Phone2_m, Users.`Description`, Users.`id` "
+        "FROM Users WHERE Users.FullName = '" + qmodel->index(index.row(), 1).data().toString() + "';");
+        qmodel_ordId->query().first();
 
+        qmodel_u_func->setQuery("SELECT NULL FROM `Functions` UNION SELECT FName From `Functions`");
+        qmodel_u_rules->setQuery("SELECT NULL FROM `Rights` UNION SELECT Name From `Rights`");
+
+        ui->tabWidget->setCurrentIndex(4);
+        ui->tabWidget_3->setCurrentIndex(0);
+
+        ui->label_u_pass_valid->hide();
+        ui->lineEdit_u_pass_valid->hide();
+        ui->pushButton_u_add->hide();
+        ui->pushButton_u_save->show();
+        ui->pushButton_u_del->show();
+
+        ui->label_Users->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Профиль пользователя: " + qmodel->index(index.row(), 0).data().toString() + " (" + qmodel->index(index.row(), 1).data().toString() + ")</span></p></body></html>");
+        ui->lineEdit_u_login->setText(qmodel_ordId->index(0, 3).data().toString());
+        ui->lineEdit_u_name->setText(qmodel_ordId->index(0, 1).data().toString());
+        ui->lineEdit_u_secName->setText(qmodel_ordId->index(0, 2).data().toString());
+        ui->lineEdit_u_password->setText(qmodel_ordId->index(0, 4).data().toString());
+        ui->comboBox_u_active->setCurrentIndex(qmodel_ordId->index(0, 7).data().toInt());
+        ui->lineEdit_u_email->setText(qmodel_ordId->index(0, 10).data().toString());
+        ui->lineEdit_u_validF->setText(QDateTime::fromString(qmodel_ordId->index(0, 8).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+        ui->lineEdit_u_validU->setText(QDateTime::fromString(qmodel_ordId->index(0, 9).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+        ui->lineEdit_u_phone->setText(qmodel_ordId->index(0, 11).data().toString());
+        ui->lineEdit_u_phone_m->setText(qmodel_ordId->index(0, 12).data().toString());
+        ui->lineEdit_u_phone2->setText(qmodel_ordId->index(0, 13).data().toString());
+        ui->lineEdit_u_phone2_m->setText(qmodel_ordId->index(0, 14).data().toString());
+        ui->textEdit_u_description->setPlainText(qmodel_ordId->index(0, 15).data().toString());
+        ui->comboBox_u_func->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+        ui->comboBox_u_rules->setCurrentText(qmodel_ordId->index(0, 5).data().toString());
+
+
+    }
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//Редактирование заявки
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_2_clicked()
 {    
     if(ui->lineEdit->text() != "" && ui->lineEdit_6->text() != "" && ui->comboBox_6->currentIndex() != 0 && ui->comboBox_7->currentIndex() != 0
@@ -1369,7 +1904,11 @@ void MainWindow::on_pushButton_2_clicked()
         }
     }
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Обновление полей после редактирования заявки
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::updEditOrd()
 {    
     qmodel_ordId->setQuery("SELECT Orders.id, Orders.Title, Orders.`Status`, `Edit`.DateEdit, `Create`.DateOpen, `Work`.DateClose, `Create`.WhoCreate, `Edit`.WhoEdit, `Work`.WhoWork, Orders.Priory, Orders.Category, Orders.RequestSource, Orders.`Description`, Orders.`Type`, `Work`.DateDecision, `Control`.WhoControlling, editUser.FullName "
@@ -1394,7 +1933,11 @@ void MainWindow::updEditOrd()
 
     saveTmr->stop();
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Удаление заявки
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_3_clicked()
 {
     QMessageBox::StandardButton del;
@@ -1414,11 +1957,15 @@ void MainWindow::on_pushButton_3_clicked()
         emit ui->act_orders->triggered();
     }
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Добавление второй линии запроса
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_twsSearch_add_clicked()
 {
     ui->pushButton_twsSearch_add->hide();
-    ui->groupBox_2->setMinimumHeight(90);
+    ui->groupBox_2->setMinimumHeight(110);
     ui->pushButton_twsSearch_del->show();
     ui->comboBox_var_0_0->show();
     ui->comboBox_var_1_1->show();
@@ -1426,13 +1973,24 @@ void MainWindow::on_pushButton_twsSearch_add_clicked()
     ui->comboBox_var_2_2->show();
     ui->comboBox_var_3_3->show();
 
+    ui->comboBox_pages->setGeometry(50, 80, 71, 22);
+    ui->pushButton_toFirst->setGeometry(130, 80, 22, 22);
+    ui->pushButton_back->setGeometry(160, 80, 22, 22);
+    ui->label_pages->setGeometry(190, 80, 100, 22);
+    ui->pushButton_next->setGeometry(300, 80, 22, 22);
+    ui->pushButton_toLast->setGeometry(330, 80, 22, 22);
+
     ui->pushButton_search->setGeometry(920, 50, 70, 22);
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+//Скрытие второй линии запроса
+//--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_pushButton_twsSearch_del_clicked()
 {
     ui->pushButton_twsSearch_add->show();
-    ui->groupBox_2->setMinimumHeight(60);
+    ui->groupBox_2->setMinimumHeight(80);
     ui->pushButton_twsSearch_del->hide();
     ui->comboBox_var_0_0->hide();
     ui->comboBox_var_1_1->hide();
@@ -1441,5 +1999,370 @@ void MainWindow::on_pushButton_twsSearch_del_clicked()
     ui->lineEdit_find_2->hide();
     ui->comboBox_var_3_3->hide();
 
+    ui->comboBox_pages->setGeometry(50, 50, 71, 22);
+    ui->pushButton_toFirst->setGeometry(130, 50, 22, 22);
+    ui->pushButton_back->setGeometry(160, 50, 22, 22);
+    ui->label_pages->setGeometry(190, 50, 100, 22);
+    ui->pushButton_next->setGeometry(300, 50, 22, 22);
+    ui->pushButton_toLast->setGeometry(330, 50, 22, 22);
+
     ui->pushButton_search->setGeometry(920, 20, 70, 22);
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//LogOut / перезапуск
+//--------------------------------------------------------------------------------------------------------------------------------------------
+void MainWindow::on_pushButton_4_clicked()
+{
+    tmr->stop();
+
+    db.close();
+    db.removeDatabase("QODBC");
+
+    emit reload();
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::on_action_u_create_triggered()
+{
+    ui->tabWidget->setCurrentIndex(4);
+    ui->tabWidget_3->setCurrentIndex(0);
+
+    ui->pushButton_u_save->hide();
+    ui->pushButton_u_del->hide();
+
+    ui->pushButton_u_add->show();
+    ui->label_u_pass_valid->show();
+    ui->lineEdit_u_pass_valid->show();
+
+
+    ui->label_Users->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Формирование профиля пользователя</span></p></body></html>");
+
+    qmodel_u_func->setQuery("SELECT NULL FROM `Functions` UNION SELECT FName From `Functions`");
+    qmodel_u_rules->setQuery("SELECT NULL FROM `Rights` UNION SELECT Name From `Rights`");
+
+    for (int i = 0; i< 6; i++) {
+        leList2.at(i)->clear();}
+    ui->lineEdit_u_phone2->clear();
+    ui->lineEdit_u_phone2_m->clear();
+    ui->lineEdit_u_phone_m->clear();
+    ui->lineEdit_u_validF->clear();
+    ui->lineEdit_u_validU->clear();
+    ui->lineEdit_u_email->clear();
+    ui->textEdit_u_description->clear();
+    ui->comboBox_u_active->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_u_add_clicked()
+{
+    //qDebug() << leList2.at(0)->text();
+
+    if(ui->lineEdit_u_login->text() != "" && ui->lineEdit_u_name->text() != "" && ui->lineEdit_u_secName->text() != "" && ui->lineEdit_u_password->text() != "" &&
+       ui->lineEdit_u_pass_valid->text() != "" && ui->lineEdit_u_phone->text().length() == 18){
+        if(ui->lineEdit_u_password->text() == ui->lineEdit_u_pass_valid->text()){
+            QMessageBox::StandardButton create;
+            create = QMessageBox::question(this, "Внесение пользователя", "Вы действительно хотите внести нового пользователя в систему?", QMessageBox::Yes|QMessageBox::No);
+
+            if(create == QMessageBox::Yes)
+            {
+                qmodel_id->setQuery("Select max(Users.id) "
+                "From Users");
+                qmodel_id->query().first();
+
+                QSqlQuery creUsr(db);
+
+
+                creUsr.prepare("INSERT INTO Users (id, `Name`, SecName, `Login`, `Password`, `Rights`, `Function`, `Active`, Valid_from, Valid_until, Email, "
+                               "Phone, Phone_m, Phone2, Phone2_m, `Description`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                creUsr.addBindValue(1 + qmodel_id->query().value(0).toInt());
+                creUsr.addBindValue(ui->lineEdit_u_name->text());
+                creUsr.addBindValue(ui->lineEdit_u_secName->text());
+                creUsr.addBindValue(ui->lineEdit_u_login->text());
+                creUsr.addBindValue(ui->lineEdit_u_password->text());
+                if(ui->comboBox_u_rules->currentIndex() == 0){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->comboBox_u_rules->currentText());
+                }
+                if(ui->comboBox_u_func->currentIndex() == 0){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->comboBox_u_func->currentIndex());
+                }
+                creUsr.addBindValue(ui->comboBox_u_active->currentIndex());
+                if(ui->lineEdit_u_validF->text() == ""){
+                    creUsr.addBindValue(QVariant(QVariant::DateTime));
+                }else{
+                    creUsr.addBindValue(QDateTime::fromString(ui->lineEdit_u_validF->text(), "yyyy.MM.dd hh:mm:ss").toString("yyyy-MM-dd hh:mm:ss"));
+                }
+                if(ui->lineEdit_u_validU->text() == ""){
+                    creUsr.addBindValue(QVariant(QVariant::DateTime));
+                }else{
+                    creUsr.addBindValue(QDateTime::fromString(ui->lineEdit_u_validU->text(), "yyyy.MM.dd hh:mm:ss").toString("yyyy-MM-dd hh:mm:ss"));
+                }
+                creUsr.addBindValue(ui->lineEdit_u_email->text());
+                if(ui->lineEdit_u_phone->text().length() != 18){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->lineEdit_u_phone->text());
+                }
+                if(ui->lineEdit_u_phone_m->text().length() != 18){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->lineEdit_u_phone_m->text());
+                }
+                if(ui->lineEdit_u_phone2->text().length() != 18){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->lineEdit_u_phone2->text());
+                }
+                if(ui->lineEdit_u_phone2_m->text().length() != 18){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->lineEdit_u_phone2_m->text());
+                }
+                if(ui->textEdit_u_description->toPlainText() == ""){
+                    creUsr.addBindValue(QVariant(QVariant::Int));
+                }else{
+                    creUsr.addBindValue(ui->textEdit_u_description->toPlainText());
+                }
+                creUsr.exec();
+
+                emit ui->action_users->triggered();
+            }
+        }else
+        {
+            QMessageBox::critical(this, "Внесение пользователя", "Поля \"Пароль\" и \"Подтверждение пароля\" не совпадают!\n\nПожалуйста, проверь введенные данные.)");
+        }
+    }else
+    {
+        QMessageBox::critical(this, "Внесение пользователя", "Одно или несколько обязательных полей пусты!\n\nПожалуйста, проверь введенные данные.)");
+    }
+
+    for (int i = 0; i< 5; i++) {
+        if(leList2.at(i)->text() == "") {
+            lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }else{
+            lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");}}
+
+    if(leList2.at(5)->text().length() < 18) {
+            lableList2.at(5)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }else {
+            lableList2.at(5)->setStyleSheet("background-color: rgb(181, 181, 181);");}
+
+    if(leList2.at(3)->text() != leList2.at(4)->text()) {
+        for (int i = 3; i< 5; i++) {
+            lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }
+    }
+}
+
+void MainWindow::on_action_users_triggered()
+{
+    queryMode = 2;
+    multiplier_f = 1;
+
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1_u);
+    ui->comboBox_var_1_1->addItems(*var1_u);
+
+    ui->pushButton_twsSearch_del->click();
+    ui->comboBox_var_1->setCurrentIndex(0);
+
+    ui->tabWidget->setCurrentIndex(1);
+
+    ui->tableView->setColumnWidth(0, 150);
+    ui->tableView->setColumnWidth(1, 150);
+    ui->tableView->setColumnWidth(2, 150);
+    ui->tableView->setColumnWidth(3, 150);
+    ui->tableView->setColumnWidth(4, 150);
+    ui->tableView->resizeRowsToContents();
+
+
+    for (int i = 0; i< 6; i++) {
+        lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");}
+
+    ui->pushButton_search->click();
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    qmodel_ordId->setQuery("SELECT Users.FullName, Users.`Name`, Users.SecName, Users.`Login`, Users.`Password`, Users.`Rights`, Users.`Function`, Users.`Active`, Users.Valid_from, Users.Valid_until, Users.Email, Users.Phone,"
+    "Users.Phone_m, Users.Phone2, Users.Phone2_m, Users.`Description`, Users.`id` "
+    "FROM Users WHERE Users.id = '" + QVariant(curUser).toString() + "';");
+    qmodel_ordId->query().first();
+
+    qmodel_u_func->setQuery("SELECT NULL FROM `Functions` UNION SELECT FName From `Functions`");
+    qmodel_u_rules->setQuery("SELECT NULL FROM `Rights` UNION SELECT Name From `Rights`");
+
+    ui->tabWidget->setCurrentIndex(4);
+    ui->tabWidget_3->setCurrentIndex(0);
+
+    ui->label_u_pass_valid->hide();
+    ui->lineEdit_u_pass_valid->hide();
+    ui->pushButton_u_add->hide();
+
+    ui->label_Users->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Профиль пользователя: " + qmodel_ordId->index(0, 0).data().toString() + " (" + qmodel_ordId->index(0, 5).data().toString() + ")</span></p></body></html>");
+    ui->lineEdit_u_login->setText(qmodel_ordId->index(0, 3).data().toString());
+    ui->lineEdit_u_name->setText(qmodel_ordId->index(0, 1).data().toString());
+    ui->lineEdit_u_secName->setText(qmodel_ordId->index(0, 2).data().toString());
+    ui->lineEdit_u_password->setText(qmodel_ordId->index(0, 4).data().toString());
+    ui->comboBox_u_active->setCurrentIndex(qmodel_ordId->index(0, 7).data().toInt());
+    ui->lineEdit_u_email->setText(qmodel_ordId->index(0, 10).data().toString());
+    ui->lineEdit_u_validF->setText(QDateTime::fromString(qmodel_ordId->index(0, 8).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_u_validU->setText(QDateTime::fromString(qmodel_ordId->index(0, 9).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_u_phone->setText(qmodel_ordId->index(0, 11).data().toString());
+    ui->lineEdit_u_phone_m->setText(qmodel_ordId->index(0, 12).data().toString());
+    ui->lineEdit_u_phone2->setText(qmodel_ordId->index(0, 13).data().toString());
+    ui->lineEdit_u_phone2_m->setText(qmodel_ordId->index(0, 14).data().toString());
+    ui->textEdit_u_description->setPlainText(qmodel_ordId->index(0, 15).data().toString());
+    ui->comboBox_u_func->setCurrentIndex(qmodel_ordId->index(0, 6).data().toInt());
+    ui->comboBox_u_rules->setCurrentText(qmodel_ordId->index(0, 5).data().toString());
+}
+
+void MainWindow::on_pushButton_u_del_clicked()
+{
+    QMessageBox::StandardButton del;
+    del = QMessageBox::question(this, "Удаление пользователя", "Внимание!!!\n\nДанные пользователя  " + qmodel_ordId->index(0,0).data().toString() + "  будут удалены безвозвратно!\n\nВы действительно хотите удалить пользователя?", QMessageBox::Yes|QMessageBox::No);
+
+    if(del == QMessageBox::Yes)
+    {
+        QSqlQuery delOrd(db);
+
+        //qDebug() << qmodel_ordId->index(0,16).data().toString();
+
+        delOrd.exec("DELETE FROM Users WHERE id = " + qmodel_ordId->index(0,16).data().toString());
+
+        tmr->start(1);
+        emit ui->action_users->triggered();
+    }
+}
+
+void MainWindow::on_pushButton_u_save_clicked()
+{
+    if(ui->lineEdit_u_login->text() != "" && ui->lineEdit_u_name->text() != "" && ui->lineEdit_u_secName->text() != "" && ui->lineEdit_u_password->text() != "" &&
+       ui->lineEdit_u_pass_valid->text() != "" && ui->lineEdit_u_phone->text().length() == 18){
+
+        QMessageBox::StandardButton create;
+        create = QMessageBox::question(this, "Редактирование пользователя", "Вы действительно хотите внести изменения в профиль пользователя?", QMessageBox::Yes|QMessageBox::No);
+
+        if(create == QMessageBox::Yes)
+        {
+            QSqlQuery updUsr(db);
+
+            updUsr.prepare("UPDATE Users SET `Name`=:1, `SecName`=:2, `Login`=:3, `Password`=:4, `Rights`=:5, `Function`=:6 , `Active`=:7, `Valid_from`=:8, `Valid_until`=:9, "
+                           "`Email`=:10, `Phone`=:11, `Phone_m`=:12, `Phone2`=:13, `Phone2_m`=:14, `Description`=:15 WHERE Users.`id` = " + qmodel_ordId->index(0, 16).data().toString() + ";");
+            updUsr.bindValue(":1", ui->lineEdit_u_name->text());
+            updUsr.bindValue(":2", ui->lineEdit_u_secName->text());
+            updUsr.bindValue(":3", ui->lineEdit_u_login->text());
+            updUsr.bindValue(":4", ui->lineEdit_u_password->text());
+            if(ui->comboBox_u_rules->currentIndex() == 0)
+            {
+                updUsr.bindValue(":5", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":5", ui->comboBox_u_rules->currentText());
+            }
+            if(ui->comboBox_u_func->currentIndex() == 0)
+            {
+                updUsr.bindValue(":6", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":6", ui->comboBox_u_func->currentIndex());
+            }
+            updUsr.bindValue(":7", ui->comboBox_u_active->currentIndex());
+            if(ui->lineEdit_u_validF->text() == ""){
+                updUsr.bindValue(":8", QVariant(QVariant::DateTime));
+            }else{
+                updUsr.bindValue(":8",QDateTime::fromString(ui->lineEdit_u_validF->text(), "yyyy.MM.dd hh:mm:ss").toString("yyyy-MM-dd hh:mm:ss"));
+            }
+            if(ui->lineEdit_u_validU->text() == ""){
+                updUsr.bindValue(":9", QVariant(QVariant::DateTime));
+            }else{
+                updUsr.bindValue(":9",QDateTime::fromString(ui->lineEdit_u_validU->text(), "yyyy.MM.dd hh:mm:ss").toString("yyyy-MM-dd hh:mm:ss"));
+            }
+            if(ui->lineEdit_u_email->text() == ""){
+                updUsr.bindValue(":10", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":10", ui->lineEdit_u_email->text());
+            }
+            updUsr.bindValue(":11", ui->lineEdit_u_phone->text());
+            if(ui->lineEdit_u_phone_m->text() == ""){
+                updUsr.bindValue(":12", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":12", ui->lineEdit_u_phone_m->text());
+            }
+            if(ui->lineEdit_u_phone2->text() == ""){
+                updUsr.bindValue(":13", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":13", ui->lineEdit_u_phone2->text());
+            }
+            if(ui->lineEdit_u_phone2_m->text() == ""){
+                updUsr.bindValue(":14", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":14", ui->lineEdit_u_phone2_m->text());
+            }
+            if(ui->textEdit_u_description->toPlainText() == ""){
+                updUsr.bindValue(":15", QVariant(QVariant::Int));
+            }else{
+                updUsr.bindValue(":15", ui->textEdit_u_description->toPlainText());
+            }
+            updUsr.exec();
+        }
+
+    }else{
+        QMessageBox::critical(this, "Редактирование пользователя", "Одно или несколько обязательных полей пусты!\n\nПожалуйста, проверь введенные данные.)");
+    }
+
+    for (int i = 0; i< 5; i++) {
+        if(leList2.at(i)->text() == "") {
+            lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }else{
+            lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");}}
+
+    if(leList2.at(5)->text().length() < 18) {
+            lableList2.at(5)->setStyleSheet("background-color: rgb(181, 181, 181); border: 2px solid red;");
+        }else {
+            lableList2.at(5)->setStyleSheet("background-color: rgb(181, 181, 181);");}
+}
+
+void MainWindow::countPagesChanges()
+{
+    multiplier_f = 1;
+
+    Limit_bef = ui->comboBox_pages->currentText();
+}
+
+void MainWindow::on_pushButton_next_clicked()
+{
+    if(countRows - (QVariant(ui->comboBox_pages->currentText()).toInt() * multiplier_s) > 0){
+        multiplier_f++;
+    }
+
+    ui->pushButton_search->click();
+}
+
+void MainWindow::on_pushButton_back_clicked()
+{
+    if(multiplier_f != 1){
+        multiplier_f--;
+    }
+
+    ui->pushButton_search->click();
+}
+
+void MainWindow::on_pushButton_toLast_clicked()
+{
+    while (countRows - (QVariant(ui->comboBox_pages->currentText()).toInt() * multiplier_f) > 0) {
+        multiplier_f++;
+    }
+
+    ui->pushButton_search->click();
+}
+
+void MainWindow::on_pushButton_toFirst_clicked()
+{
+    multiplier_f = 1;
+
+    ui->pushButton_search->click();
 }

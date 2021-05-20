@@ -22,6 +22,11 @@ private slots:
 
     void ConOrNot(bool conect);
     void LogOrNot(bool logIn);
+    void logOut();
+
+    void on_btnReturn_clicked();
+
+    void IndexChanged();
 
 private:
     Ui::SecondWindow *ui;
@@ -32,10 +37,15 @@ private:
 
     bool conect;
 
+
+    QMovie mLogo;
+    double m;
+
 signals:
     void ShowMain();
-    void DBConnect(QString sendStr, QString dbType);
+    void DBConnect(QString sendStr, QString dbType, QString ip);
     void DBLog(QString log, QString pass);
+    void RevCon();
 };
 
 #endif // SECONDWINDOW_H
