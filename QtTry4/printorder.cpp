@@ -8,6 +8,8 @@ PrintOrder::PrintOrder(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //this->setWindowFlags(Qt::WindowMinimizeButtonHint);
+    this->setWindowFlag(Qt::WindowMinimizeButtonHint, false);
     this->setBtn(0);
 
     qmodel_filReport = new QSqlQueryModel;
