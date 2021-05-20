@@ -1332,12 +1332,17 @@
                 <rect>
                  <x>0</x>
 <<<<<<< HEAD
+<<<<<<< HEAD
                  <y>0</y>
 <<<<<<< HEAD
                  <width>770</width>
                  <height>707</height>
 =======
                  <width>1121</width>
+=======
+                 <y>-44</y>
+                 <width>1025</width>
+>>>>>>> parent of 54806f8 (beta 0.4.5)
 =======
                  <y>-44</y>
                  <width>1025</width>

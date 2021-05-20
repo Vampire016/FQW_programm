@@ -266,6 +266,7 @@ void MainWindow::on_act_home_triggered()
 void MainWindow::on_act_orders_triggered()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     queryMode = 1;
     multiplier_f = 1;
 
@@ -281,6 +282,8 @@ void MainWindow::on_act_orders_triggered()
 
     ui->pushButton_twsSearch_del->click();
 
+=======
+>>>>>>> parent of 54806f8 (beta 0.4.5)
 =======
 >>>>>>> parent of 54806f8 (beta 0.4.5)
     ui->tabWidget->setCurrentIndex(1);    
