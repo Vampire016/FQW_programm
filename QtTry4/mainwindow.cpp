@@ -265,6 +265,27 @@ void MainWindow::on_act_home_triggered()
 //--------------------------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_act_orders_triggered()
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    queryMode = 1;
+    multiplier_f = 1;
+
+<<<<<<< HEAD
+    //ui->tableView->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->tableView->setFocusPolicy(Qt::NoFocus);
+=======
+    ui->comboBox_var_1->clear();
+    ui->comboBox_var_1_1->clear();
+    ui->comboBox_var_1->addItems(*var1);
+    ui->comboBox_var_1_1->addItems(*var1);
+>>>>>>> 54806f89d0e45761bd5f47c45d138df273804283
+
+    ui->pushButton_twsSearch_del->click();
+
+=======
+>>>>>>> parent of 54806f8 (beta 0.4.5)
+=======
+>>>>>>> parent of 54806f8 (beta 0.4.5)
     ui->tabWidget->setCurrentIndex(1);    
 
     ui->tableView->setColumnWidth(1, 400);
@@ -657,6 +678,7 @@ void MainWindow::UpdateDB()
     */
 
 
+
     if(ui->PB_wOpened->text() == "0")
     {
         ui->PB_wOpened->setStyleSheet("QPushButton{background: transparent; font-weight: bold; color: black}");
@@ -944,7 +966,12 @@ void MainWindow::onTableView_clicked()
 {
     ui->tableView->selectRow(ui->tableView->currentIndex().row());
 
+<<<<<<< HEAD
+    qDebug() << index;
+    qDebug() << ui->tableView->currentIndex().row();
+=======
     //qDebug() << index;
+>>>>>>> 54806f89d0e45761bd5f47c45d138df273804283
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
