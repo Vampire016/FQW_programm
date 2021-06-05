@@ -1,3 +1,5 @@
+release/actions_left.o
+release/actions_right.o
 release/clickablecalendar.o
 release/clickablewidget.o
 release/main.o
@@ -6,6 +8,8 @@ release/printorder.o
 release/qtoolcalendar.o
 release/secondwindow.o
 release/qrc_resourses.o
+release/moc_actions_left.o
+release/moc_actions_right.o
 release/moc_clickablecalendar.o
 release/moc_clickablewidget.o
 release/moc_mainwindow.o

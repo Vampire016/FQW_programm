@@ -9,6 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    actions_left.cpp \
+    actions_right.cpp \
     clickablecalendar.cpp \
     clickablewidget.cpp \
     main.cpp \
@@ -19,6 +21,8 @@ SOURCES += \
 
 HEADERS += \
     Libraries.h \
+    actions_left.h \
+    actions_right.h \
     clickablecalendar.h \
     clickablewidget.h \
     mainwindow.h \
@@ -28,6 +32,8 @@ HEADERS += \
     secondwindow.h
 
 FORMS += \
+    actions_left.ui \
+    actions_right.ui \
     mainwindow.ui \
     printorder.ui \
     secondwindow.ui

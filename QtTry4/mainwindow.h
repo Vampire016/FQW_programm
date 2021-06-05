@@ -7,6 +7,8 @@
 #include "qtabwidget_v.h"
 #include "clickablewidget.h"
 #include "clickablecalendar.h"
+#include "actions_left.h"
+#include "actions_right.h"
 #include "qtoolcalendar.h"
 
 
@@ -51,6 +53,9 @@ private slots:
     void FocusDateFi_2();
     void FocusDateVF();
     void FocusDateVU();
+    void FocusDateSBD();
+    void FocusDateSFD();
+    void FocusDateDecision();
 
     void FocusToolBtn();
 
@@ -105,13 +110,29 @@ private slots:
 
     void on_pushButton_toFirst_clicked();
 
+    void on_pushButton_messege_clicked();
+
+    void delAct_clicked(int pos);
+
+
+
+    void on_pushButton_act_return_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_act_add_clicked();
+
 private:
     Ui::MainWindow *ui;    
 
     QSqlDatabase db;
 
-    QSqlQueryModel* qmodel, * qmodel_u_func, * qmodel_u_rules, * qmodel_stats, * qmodel_c1, * qmodel_c1_1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_piory, * qmodel_creator,
-    * qmodel_super, * qmodel_appoin, * qmodel_id, *qmodel_ordId, *filOrd, *filOrd_1, *countOrd;
+    QSqlQueryModel* qmodel, * qmodel_u_func, * qmodel_u_rules, * qmodel_stats, * qmodel_c1, * qmodel_c1_1, * qmodel_c2, * qmodel_categ, * qmodel_stat, * qmodel_reqS, * qmodel_agree, * qmodel_piory, * qmodel_creator,
+    * qmodel_super, * qmodel_appoin, * qmodel_id, *qmodel_ordId, *filOrd, *filOrd_1, *countOrd, *qmodel_actID, *qmodel_act, *qmodel_usrNames;
 
     QSqlQuery *createOrd, *btnSave;
 
@@ -122,11 +143,11 @@ private:
 
     QTimer *tmr, *saveTmr;
 
-    QMenu *report, *menuOp, *menuCl, *menuDi, *menuFi, *menuFi_2, *menuVF, *menuVU;
+    QMenu *report, *menuOp, *menuCl, *menuDi, *menuFi, *menuFi_2, *menuVF, *menuVU, *menuSBD, *menuSFD, *menuDecision;
 
-    QWidgetAction *actionOp, *actionCl,  *actionDi, *actionFi, *actionFi_2, *actionVF, *actionVU;
+    QWidgetAction *actionOp, *actionCl,  *actionDi, *actionFi, *actionFi_2, *actionVF, *actionVU, *actionSBD, *actionSFD, *actionDecision;
 
-    ClickableCalendar *calendarOp, *calendarCl, *calendarDi, *calendarFi, *calendarFi_2, *calendarVF, *calendarVU;
+    ClickableCalendar *calendarOp, *calendarCl, *calendarDi, *calendarFi, *calendarFi_2, *calendarVF, *calendarVU, *calendarSBD, *calendarSFD, *calendarDecision;
 
     QToolButton *curToolBtn;
 
@@ -139,20 +160,38 @@ private:
     QGraphicsScene *scene;
     QPixmap image;
 
+    Actions_left *actLeft;
+    Actions_right *actRight;
+
 
     bool subWflags, conect, btnVis;        
     QStringList *var0_0, *var1, *var1_1, *var1_u, *var1_1_u, *var1_2, *var2_1, *var2_2, *var2_3, *var2_4, *Limit_s;
 
     int counterUpdate, curUser, cbVar_1, cbVar_2, cbVar_3, cbVar_0_1, cbVar_1_1, cbVar_2_1, cbVar_3_1, var_2, var_2_2,
-        queryMode, multiplier_f, multiplier_s, lFrom, lTo, countRows;
+        queryMode, multiplier_f, multiplier_s, lFrom, lTo, countRows, act_type_click;
 
     QString str_1, str_1_1, str_2, str_2_1, str_3, str_3_1, str_4, str_4_1, str_and, id, leFind, leFind_1, offset, Limit_bef, Limit;
 
+    struct Node_act
+    {
+        QWidget *Wg = nullptr;
+        struct Node_act *next;
+        struct Node_act *prev;
+        int numberPos = NULL;
+    };
+
+    Node_act *tail = NULL, *head = NULL, *actNode;
+
+    void reprintActs();
+    void autoFillActs(QString actID);
 
 signals:
     void RevDBConnect(bool conect);
     void RevDBLog(bool logIn);
     void fillReportSig(int id);
     void reload();
+
+    void mainWinP(QMainWindow *mainWin);
+    void actLeftPos(int pos);
 };
 #endif // MAINWINDOW_H

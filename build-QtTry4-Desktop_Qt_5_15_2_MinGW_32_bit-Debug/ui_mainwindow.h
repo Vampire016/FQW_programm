@@ -15,7 +15,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -49,7 +49,7 @@ public:
     QAction *action_u_create;
     QAction *action_users;
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout_22;
+    QVBoxLayout *verticalLayout_10;
     QTabWidget *tabWidget;
     QWidget *tab;
     QVBoxLayout *verticalLayout_2;
@@ -142,6 +142,25 @@ public:
     QHBoxLayout *horizontalLayout_2;
     TabWidget *tabWidget_2;
     QWidget *tab_5;
+    QVBoxLayout *verticalLayout_11;
+    QLabel *label_titleZayavki;
+    QSpacerItem *verticalSpacer_5;
+    QHBoxLayout *horizontalLayout_22;
+    QLabel *label_add_action;
+    QSpacerItem *horizontalSpacer_37;
+    QPushButton *pushButton_messege;
+    QPushButton *pushButton_7;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_9;
+    QPushButton *pushButton_10;
+    QSpacerItem *horizontalSpacer_36;
+    QSpacerItem *verticalSpacer_6;
+    QFrame *line;
+    QLabel *label_history_actions;
+    QScrollArea *scrollArea_actions;
+    QWidget *scrollAreaWidgetContents_2;
+    QVBoxLayout *verticalLayout_13;
+    QVBoxLayout *Layout_actions;
     ClickableWidget *tab_6;
     QVBoxLayout *verticalLayout_5;
     QScrollArea *scrollArea;
@@ -183,6 +202,9 @@ public:
     QHBoxLayout *horizontalLayout_14;
     QLabel *label_10;
     QComboBox *comboBox_9;
+    QSpacerItem *horizontalSpacer_28;
+    QLabel *label__ord_agree;
+    QComboBox *comboBox_ord_agree;
     QSpacerItem *horizontalSpacer_8;
     QHBoxLayout *horizontalLayout_21;
     QLabel *label_13;
@@ -313,7 +335,54 @@ public:
     QPushButton *pushButton_u_del;
     QSpacerItem *horizontalSpacer_64;
     QWidget *tab_15;
-    QGraphicsView *graphicsView;
+    QVBoxLayout *verticalLayout_20;
+    QWidget *widget_2;
+    QVBoxLayout *verticalLayout_21;
+    QLabel *label_act_fill;
+    QWidget *widget;
+    QWidget *widget_set_mess;
+    QVBoxLayout *verticalLayout_15;
+    QHBoxLayout *horizontalLayout_27;
+    QLabel *label_u_description_2;
+    QTextEdit *textEdit_set_mess_txt;
+    QSpacerItem *horizontalSpacer_29;
+    QWidget *widget_set_work;
+    QVBoxLayout *verticalLayout_12;
+    QHBoxLayout *horizontalLayout_28;
+    QLabel *label_u_description_3;
+    QTextEdit *textEdit_set_work_txt;
+    QSpacerItem *horizontalSpacer_30;
+    QHBoxLayout *horizontalLayout_29;
+    QLabel *label_date_beg_work;
+    QLineEdit *lineEdit_set_beg_date_work;
+    QToolCalendar *toolButton_set_beg_date_work;
+    QSpacerItem *horizontalSpacer_31;
+    QHBoxLayout *horizontalLayout_30;
+    QLabel *label_date_fin_work;
+    QLineEdit *lineEdit_set_fin_date_work;
+    QToolCalendar *toolButton_set_fin_date_work;
+    QSpacerItem *horizontalSpacer_32;
+    QWidget *widget_set_agree;
+    QVBoxLayout *verticalLayout_14;
+    QHBoxLayout *horizontalLayout_31;
+    QLabel *label_u_description_4;
+    QTextEdit *textEdit_set_agree_txt;
+    QSpacerItem *horizontalSpacer_33;
+    QHBoxLayout *horizontalLayout_32;
+    QLabel *label__act_status_agree;
+    QComboBox *comboBox_set_status_agree;
+    QSpacerItem *horizontalSpacer_34;
+    QHBoxLayout *horizontalLayout_33;
+    QLabel *label_date_beg_work_2;
+    QLineEdit *lineEdit_set_date_decision;
+    QToolCalendar *toolButton_set_date_decision;
+    QSpacerItem *horizontalSpacer_35;
+    QHBoxLayout *horizontalLayout_59;
+    QSpacerItem *horizontalSpacer_68;
+    QPushButton *pushButton_act_return;
+    QPushButton *pushButton_act_add;
+    QSpacerItem *horizontalSpacer_69;
+    QSpacerItem *verticalSpacer_4;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_2;
@@ -322,7 +391,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1224, 768);
+        MainWindow->resize(1280, 768);
         MainWindow->setMinimumSize(QSize(0, 0));
         MainWindow->setAutoFillBackground(false);
         act_home = new QAction(MainWindow);
@@ -337,8 +406,8 @@ public:
         action_users->setObjectName(QString::fromUtf8("action_users"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        horizontalLayout_22 = new QHBoxLayout(centralwidget);
-        horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
+        verticalLayout_10 = new QVBoxLayout(centralwidget);
+        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setStyleSheet(QString::fromUtf8(""));
@@ -915,6 +984,102 @@ public:
         tabWidget_2->setTabPosition(QTabWidget::West);
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
+        verticalLayout_11 = new QVBoxLayout(tab_5);
+        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
+        label_titleZayavki = new QLabel(tab_5);
+        label_titleZayavki->setObjectName(QString::fromUtf8("label_titleZayavki"));
+        sizePolicy1.setHeightForWidth(label_titleZayavki->sizePolicy().hasHeightForWidth());
+        label_titleZayavki->setSizePolicy(sizePolicy1);
+        label_titleZayavki->setMinimumSize(QSize(0, 30));
+        label_titleZayavki->setMaximumSize(QSize(6000, 30));
+        label_titleZayavki->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label_titleZayavki->setTextFormat(Qt::RichText);
+        label_titleZayavki->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_11->addWidget(label_titleZayavki);
+
+        verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_5);
+
+        horizontalLayout_22 = new QHBoxLayout();
+        horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
+        label_add_action = new QLabel(tab_5);
+        label_add_action->setObjectName(QString::fromUtf8("label_add_action"));
+
+        horizontalLayout_22->addWidget(label_add_action);
+
+        horizontalSpacer_37 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_37);
+
+        pushButton_messege = new QPushButton(tab_5);
+        pushButton_messege->setObjectName(QString::fromUtf8("pushButton_messege"));
+
+        horizontalLayout_22->addWidget(pushButton_messege);
+
+        pushButton_7 = new QPushButton(tab_5);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+
+        horizontalLayout_22->addWidget(pushButton_7);
+
+        pushButton_8 = new QPushButton(tab_5);
+        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+
+        horizontalLayout_22->addWidget(pushButton_8);
+
+        pushButton_9 = new QPushButton(tab_5);
+        pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+
+        horizontalLayout_22->addWidget(pushButton_9);
+
+        pushButton_10 = new QPushButton(tab_5);
+        pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
+
+        horizontalLayout_22->addWidget(pushButton_10);
+
+        horizontalSpacer_36 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_36);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_22);
+
+        verticalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_6);
+
+        line = new QFrame(tab_5);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_11->addWidget(line);
+
+        label_history_actions = new QLabel(tab_5);
+        label_history_actions->setObjectName(QString::fromUtf8("label_history_actions"));
+
+        verticalLayout_11->addWidget(label_history_actions);
+
+        scrollArea_actions = new QScrollArea(tab_5);
+        scrollArea_actions->setObjectName(QString::fromUtf8("scrollArea_actions"));
+        scrollArea_actions->setStyleSheet(QString::fromUtf8(""));
+        scrollArea_actions->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        scrollArea_actions->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 1192, 522));
+        verticalLayout_13 = new QVBoxLayout(scrollAreaWidgetContents_2);
+        verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
+        Layout_actions = new QVBoxLayout();
+        Layout_actions->setObjectName(QString::fromUtf8("Layout_actions"));
+
+        verticalLayout_13->addLayout(Layout_actions);
+
+        scrollArea_actions->setWidget(scrollAreaWidgetContents_2);
+
+        verticalLayout_11->addWidget(scrollArea_actions);
+
         tabWidget_2->addTab(tab_5, QString());
         tab_6 = new ClickableWidget();
         tab_6->setObjectName(QString::fromUtf8("tab_6"));
@@ -937,7 +1102,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1121, 711));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1177, 711));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label_idZayavki = new QLabel(scrollAreaWidgetContents);
@@ -1204,6 +1369,29 @@ public:
         comboBox_9->setFrame(true);
 
         horizontalLayout_14->addWidget(comboBox_9);
+
+        horizontalSpacer_28 = new QSpacerItem(105, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_14->addItem(horizontalSpacer_28);
+
+        label__ord_agree = new QLabel(scrollAreaWidgetContents);
+        label__ord_agree->setObjectName(QString::fromUtf8("label__ord_agree"));
+        sizePolicy1.setHeightForWidth(label__ord_agree->sizePolicy().hasHeightForWidth());
+        label__ord_agree->setSizePolicy(sizePolicy1);
+        label__ord_agree->setMinimumSize(QSize(100, 45));
+        label__ord_agree->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+
+        horizontalLayout_14->addWidget(label__ord_agree);
+
+        comboBox_ord_agree = new QComboBox(scrollAreaWidgetContents);
+        comboBox_ord_agree->setObjectName(QString::fromUtf8("comboBox_ord_agree"));
+        sizePolicy1.setHeightForWidth(comboBox_ord_agree->sizePolicy().hasHeightForWidth());
+        comboBox_ord_agree->setSizePolicy(sizePolicy1);
+        comboBox_ord_agree->setMinimumSize(QSize(215, 0));
+        comboBox_ord_agree->setMaximumSize(QSize(215, 16777215));
+        comboBox_ord_agree->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_14->addWidget(comboBox_ord_agree);
 
         horizontalSpacer_8 = new QSpacerItem(6000, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
@@ -1517,7 +1705,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 1132, 807));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 1177, 807));
         verticalLayout_19 = new QVBoxLayout(scrollAreaWidgetContents_3);
         verticalLayout_19->setObjectName(QString::fromUtf8("verticalLayout_19"));
         label_Users = new QLabel(scrollAreaWidgetContents_3);
@@ -2114,21 +2302,334 @@ public:
         tabWidget_3->addTab(tab_14, QString());
         tab_15 = new QWidget();
         tab_15->setObjectName(QString::fromUtf8("tab_15"));
-        graphicsView = new QGraphicsView(tab_15);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(50, 310, 1080, 250));
+        verticalLayout_20 = new QVBoxLayout(tab_15);
+        verticalLayout_20->setObjectName(QString::fromUtf8("verticalLayout_20"));
+        widget_2 = new QWidget(tab_15);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        verticalLayout_21 = new QVBoxLayout(widget_2);
+        verticalLayout_21->setObjectName(QString::fromUtf8("verticalLayout_21"));
+        label_act_fill = new QLabel(widget_2);
+        label_act_fill->setObjectName(QString::fromUtf8("label_act_fill"));
+        QSizePolicy sizePolicy8(QSizePolicy::Ignored, QSizePolicy::Fixed);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(label_act_fill->sizePolicy().hasHeightForWidth());
+        label_act_fill->setSizePolicy(sizePolicy8);
+        label_act_fill->setMinimumSize(QSize(0, 30));
+        label_act_fill->setMaximumSize(QSize(6000, 30));
+        label_act_fill->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label_act_fill->setTextFormat(Qt::RichText);
+        label_act_fill->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_21->addWidget(label_act_fill);
+
+        widget = new QWidget(widget_2);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setMinimumSize(QSize(0, 330));
+        widget_set_mess = new QWidget(widget);
+        widget_set_mess->setObjectName(QString::fromUtf8("widget_set_mess"));
+        widget_set_mess->setGeometry(QRect(10, 10, 750, 212));
+        verticalLayout_15 = new QVBoxLayout(widget_set_mess);
+        verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
+        horizontalLayout_27 = new QHBoxLayout();
+        horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
+        label_u_description_2 = new QLabel(widget_set_mess);
+        label_u_description_2->setObjectName(QString::fromUtf8("label_u_description_2"));
+        sizePolicy6.setHeightForWidth(label_u_description_2->sizePolicy().hasHeightForWidth());
+        label_u_description_2->setSizePolicy(sizePolicy6);
+        label_u_description_2->setMinimumSize(QSize(110, 160));
+        label_u_description_2->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+
+        horizontalLayout_27->addWidget(label_u_description_2);
+
+        textEdit_set_mess_txt = new QTextEdit(widget_set_mess);
+        textEdit_set_mess_txt->setObjectName(QString::fromUtf8("textEdit_set_mess_txt"));
+        sizePolicy7.setHeightForWidth(textEdit_set_mess_txt->sizePolicy().hasHeightForWidth());
+        textEdit_set_mess_txt->setSizePolicy(sizePolicy7);
+        textEdit_set_mess_txt->setMinimumSize(QSize(500, 160));
+        textEdit_set_mess_txt->setMaximumSize(QSize(500, 16777215));
+        textEdit_set_mess_txt->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+
+        horizontalLayout_27->addWidget(textEdit_set_mess_txt);
+
+        horizontalSpacer_29 = new QSpacerItem(9000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_27->addItem(horizontalSpacer_29);
+
+
+        verticalLayout_15->addLayout(horizontalLayout_27);
+
+        widget_set_work = new QWidget(widget);
+        widget_set_work->setObjectName(QString::fromUtf8("widget_set_work"));
+        widget_set_work->setGeometry(QRect(10, 10, 750, 318));
+        verticalLayout_12 = new QVBoxLayout(widget_set_work);
+        verticalLayout_12->setObjectName(QString::fromUtf8("verticalLayout_12"));
+        horizontalLayout_28 = new QHBoxLayout();
+        horizontalLayout_28->setObjectName(QString::fromUtf8("horizontalLayout_28"));
+        label_u_description_3 = new QLabel(widget_set_work);
+        label_u_description_3->setObjectName(QString::fromUtf8("label_u_description_3"));
+        sizePolicy6.setHeightForWidth(label_u_description_3->sizePolicy().hasHeightForWidth());
+        label_u_description_3->setSizePolicy(sizePolicy6);
+        label_u_description_3->setMinimumSize(QSize(190, 160));
+        label_u_description_3->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+
+        horizontalLayout_28->addWidget(label_u_description_3);
+
+        textEdit_set_work_txt = new QTextEdit(widget_set_work);
+        textEdit_set_work_txt->setObjectName(QString::fromUtf8("textEdit_set_work_txt"));
+        sizePolicy7.setHeightForWidth(textEdit_set_work_txt->sizePolicy().hasHeightForWidth());
+        textEdit_set_work_txt->setSizePolicy(sizePolicy7);
+        textEdit_set_work_txt->setMinimumSize(QSize(500, 160));
+        textEdit_set_work_txt->setMaximumSize(QSize(500, 16777215));
+        textEdit_set_work_txt->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+
+        horizontalLayout_28->addWidget(textEdit_set_work_txt);
+
+        horizontalSpacer_30 = new QSpacerItem(9000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_28->addItem(horizontalSpacer_30);
+
+
+        verticalLayout_12->addLayout(horizontalLayout_28);
+
+        horizontalLayout_29 = new QHBoxLayout();
+        horizontalLayout_29->setObjectName(QString::fromUtf8("horizontalLayout_29"));
+        label_date_beg_work = new QLabel(widget_set_work);
+        label_date_beg_work->setObjectName(QString::fromUtf8("label_date_beg_work"));
+        sizePolicy1.setHeightForWidth(label_date_beg_work->sizePolicy().hasHeightForWidth());
+        label_date_beg_work->setSizePolicy(sizePolicy1);
+        label_date_beg_work->setMinimumSize(QSize(190, 45));
+        label_date_beg_work->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);\n"
+"\n"
+""));
+
+        horizontalLayout_29->addWidget(label_date_beg_work);
+
+        lineEdit_set_beg_date_work = new QLineEdit(widget_set_work);
+        lineEdit_set_beg_date_work->setObjectName(QString::fromUtf8("lineEdit_set_beg_date_work"));
+        sizePolicy1.setHeightForWidth(lineEdit_set_beg_date_work->sizePolicy().hasHeightForWidth());
+        lineEdit_set_beg_date_work->setSizePolicy(sizePolicy1);
+        lineEdit_set_beg_date_work->setMinimumSize(QSize(250, 25));
+        lineEdit_set_beg_date_work->setMaximumSize(QSize(250, 16777215));
+        lineEdit_set_beg_date_work->setCursor(QCursor(Qt::IBeamCursor));
+        lineEdit_set_beg_date_work->setInputMethodHints(Qt::ImhNone);
+        lineEdit_set_beg_date_work->setMaxLength(19);
+
+        horizontalLayout_29->addWidget(lineEdit_set_beg_date_work);
+
+        toolButton_set_beg_date_work = new QToolCalendar(widget_set_work);
+        toolButton_set_beg_date_work->setObjectName(QString::fromUtf8("toolButton_set_beg_date_work"));
+        toolButton_set_beg_date_work->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_29->addWidget(toolButton_set_beg_date_work);
+
+        horizontalSpacer_31 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_29->addItem(horizontalSpacer_31);
+
+
+        verticalLayout_12->addLayout(horizontalLayout_29);
+
+        horizontalLayout_30 = new QHBoxLayout();
+        horizontalLayout_30->setObjectName(QString::fromUtf8("horizontalLayout_30"));
+        label_date_fin_work = new QLabel(widget_set_work);
+        label_date_fin_work->setObjectName(QString::fromUtf8("label_date_fin_work"));
+        sizePolicy1.setHeightForWidth(label_date_fin_work->sizePolicy().hasHeightForWidth());
+        label_date_fin_work->setSizePolicy(sizePolicy1);
+        label_date_fin_work->setMinimumSize(QSize(190, 45));
+        label_date_fin_work->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);\n"
+"\n"
+""));
+
+        horizontalLayout_30->addWidget(label_date_fin_work);
+
+        lineEdit_set_fin_date_work = new QLineEdit(widget_set_work);
+        lineEdit_set_fin_date_work->setObjectName(QString::fromUtf8("lineEdit_set_fin_date_work"));
+        sizePolicy1.setHeightForWidth(lineEdit_set_fin_date_work->sizePolicy().hasHeightForWidth());
+        lineEdit_set_fin_date_work->setSizePolicy(sizePolicy1);
+        lineEdit_set_fin_date_work->setMinimumSize(QSize(250, 25));
+        lineEdit_set_fin_date_work->setMaximumSize(QSize(250, 16777215));
+        lineEdit_set_fin_date_work->setCursor(QCursor(Qt::IBeamCursor));
+        lineEdit_set_fin_date_work->setStyleSheet(QString::fromUtf8(""));
+        lineEdit_set_fin_date_work->setInputMethodHints(Qt::ImhNone);
+        lineEdit_set_fin_date_work->setMaxLength(19);
+
+        horizontalLayout_30->addWidget(lineEdit_set_fin_date_work);
+
+        toolButton_set_fin_date_work = new QToolCalendar(widget_set_work);
+        toolButton_set_fin_date_work->setObjectName(QString::fromUtf8("toolButton_set_fin_date_work"));
+        toolButton_set_fin_date_work->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_30->addWidget(toolButton_set_fin_date_work);
+
+        horizontalSpacer_32 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_30->addItem(horizontalSpacer_32);
+
+
+        verticalLayout_12->addLayout(horizontalLayout_30);
+
+        widget_set_agree = new QWidget(widget);
+        widget_set_agree->setObjectName(QString::fromUtf8("widget_set_agree"));
+        widget_set_agree->setGeometry(QRect(10, 10, 750, 318));
+        verticalLayout_14 = new QVBoxLayout(widget_set_agree);
+        verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
+        horizontalLayout_31 = new QHBoxLayout();
+        horizontalLayout_31->setObjectName(QString::fromUtf8("horizontalLayout_31"));
+        label_u_description_4 = new QLabel(widget_set_agree);
+        label_u_description_4->setObjectName(QString::fromUtf8("label_u_description_4"));
+        sizePolicy6.setHeightForWidth(label_u_description_4->sizePolicy().hasHeightForWidth());
+        label_u_description_4->setSizePolicy(sizePolicy6);
+        label_u_description_4->setMinimumSize(QSize(190, 160));
+        label_u_description_4->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+
+        horizontalLayout_31->addWidget(label_u_description_4);
+
+        textEdit_set_agree_txt = new QTextEdit(widget_set_agree);
+        textEdit_set_agree_txt->setObjectName(QString::fromUtf8("textEdit_set_agree_txt"));
+        sizePolicy7.setHeightForWidth(textEdit_set_agree_txt->sizePolicy().hasHeightForWidth());
+        textEdit_set_agree_txt->setSizePolicy(sizePolicy7);
+        textEdit_set_agree_txt->setMinimumSize(QSize(500, 192));
+        textEdit_set_agree_txt->setMaximumSize(QSize(500, 16777215));
+        textEdit_set_agree_txt->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+
+        horizontalLayout_31->addWidget(textEdit_set_agree_txt);
+
+        horizontalSpacer_33 = new QSpacerItem(9000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_31->addItem(horizontalSpacer_33);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_31);
+
+        horizontalLayout_32 = new QHBoxLayout();
+        horizontalLayout_32->setObjectName(QString::fromUtf8("horizontalLayout_32"));
+        label__act_status_agree = new QLabel(widget_set_agree);
+        label__act_status_agree->setObjectName(QString::fromUtf8("label__act_status_agree"));
+        sizePolicy1.setHeightForWidth(label__act_status_agree->sizePolicy().hasHeightForWidth());
+        label__act_status_agree->setSizePolicy(sizePolicy1);
+        label__act_status_agree->setMinimumSize(QSize(190, 45));
+        label__act_status_agree->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+
+        horizontalLayout_32->addWidget(label__act_status_agree);
+
+        comboBox_set_status_agree = new QComboBox(widget_set_agree);
+        comboBox_set_status_agree->setObjectName(QString::fromUtf8("comboBox_set_status_agree"));
+        sizePolicy1.setHeightForWidth(comboBox_set_status_agree->sizePolicy().hasHeightForWidth());
+        comboBox_set_status_agree->setSizePolicy(sizePolicy1);
+        comboBox_set_status_agree->setMinimumSize(QSize(215, 0));
+        comboBox_set_status_agree->setMaximumSize(QSize(215, 16777215));
+        comboBox_set_status_agree->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_32->addWidget(comboBox_set_status_agree);
+
+        horizontalSpacer_34 = new QSpacerItem(9000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_32->addItem(horizontalSpacer_34);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_32);
+
+        horizontalLayout_33 = new QHBoxLayout();
+        horizontalLayout_33->setObjectName(QString::fromUtf8("horizontalLayout_33"));
+        label_date_beg_work_2 = new QLabel(widget_set_agree);
+        label_date_beg_work_2->setObjectName(QString::fromUtf8("label_date_beg_work_2"));
+        sizePolicy1.setHeightForWidth(label_date_beg_work_2->sizePolicy().hasHeightForWidth());
+        label_date_beg_work_2->setSizePolicy(sizePolicy1);
+        label_date_beg_work_2->setMinimumSize(QSize(190, 45));
+        label_date_beg_work_2->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);\n"
+"\n"
+""));
+
+        horizontalLayout_33->addWidget(label_date_beg_work_2);
+
+        lineEdit_set_date_decision = new QLineEdit(widget_set_agree);
+        lineEdit_set_date_decision->setObjectName(QString::fromUtf8("lineEdit_set_date_decision"));
+        sizePolicy1.setHeightForWidth(lineEdit_set_date_decision->sizePolicy().hasHeightForWidth());
+        lineEdit_set_date_decision->setSizePolicy(sizePolicy1);
+        lineEdit_set_date_decision->setMinimumSize(QSize(250, 25));
+        lineEdit_set_date_decision->setMaximumSize(QSize(250, 16777215));
+        lineEdit_set_date_decision->setCursor(QCursor(Qt::IBeamCursor));
+        lineEdit_set_date_decision->setInputMethodHints(Qt::ImhNone);
+        lineEdit_set_date_decision->setMaxLength(19);
+
+        horizontalLayout_33->addWidget(lineEdit_set_date_decision);
+
+        toolButton_set_date_decision = new QToolCalendar(widget_set_agree);
+        toolButton_set_date_decision->setObjectName(QString::fromUtf8("toolButton_set_date_decision"));
+        toolButton_set_date_decision->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_33->addWidget(toolButton_set_date_decision);
+
+        horizontalSpacer_35 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_33->addItem(horizontalSpacer_35);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_33);
+
+
+        verticalLayout_21->addWidget(widget);
+
+        horizontalLayout_59 = new QHBoxLayout();
+        horizontalLayout_59->setObjectName(QString::fromUtf8("horizontalLayout_59"));
+        horizontalSpacer_68 = new QSpacerItem(300, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_59->addItem(horizontalSpacer_68);
+
+        pushButton_act_return = new QPushButton(widget_2);
+        pushButton_act_return->setObjectName(QString::fromUtf8("pushButton_act_return"));
+        sizePolicy1.setHeightForWidth(pushButton_act_return->sizePolicy().hasHeightForWidth());
+        pushButton_act_return->setSizePolicy(sizePolicy1);
+        pushButton_act_return->setMinimumSize(QSize(90, 25));
+        pushButton_act_return->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_act_return->setLayoutDirection(Qt::RightToLeft);
+        pushButton_act_return->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/resource/img/arrow.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_act_return->setIcon(icon13);
+
+        horizontalLayout_59->addWidget(pushButton_act_return);
+
+        pushButton_act_add = new QPushButton(widget_2);
+        pushButton_act_add->setObjectName(QString::fromUtf8("pushButton_act_add"));
+        sizePolicy1.setHeightForWidth(pushButton_act_add->sizePolicy().hasHeightForWidth());
+        pushButton_act_add->setSizePolicy(sizePolicy1);
+        pushButton_act_add->setMinimumSize(QSize(90, 25));
+        pushButton_act_add->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_act_add->setLayoutDirection(Qt::RightToLeft);
+        pushButton_act_add->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        pushButton_act_add->setIcon(icon9);
+        pushButton_act_add->setIconSize(QSize(16, 16));
+
+        horizontalLayout_59->addWidget(pushButton_act_add);
+
+        horizontalSpacer_69 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_59->addItem(horizontalSpacer_69);
+
+
+        verticalLayout_21->addLayout(horizontalLayout_59);
+
+        verticalSpacer_4 = new QSpacerItem(20, 235, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_21->addItem(verticalSpacer_4);
+
+
+        verticalLayout_20->addWidget(widget_2);
+
         tabWidget_3->addTab(tab_15, QString());
 
         verticalLayout_16->addWidget(tabWidget_3);
 
         tabWidget->addTab(tab_9, QString());
 
-        horizontalLayout_22->addWidget(tabWidget);
+        verticalLayout_10->addWidget(tabWidget);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1224, 21));
+        menubar->setGeometry(QRect(0, 0, 1280, 21));
         menubar->setCursor(QCursor(Qt::PointingHandCursor));
         menubar->setFocusPolicy(Qt::NoFocus);
         menu = new QMenu(menubar);
@@ -2149,9 +2650,9 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
-        tabWidget_2->setCurrentIndex(3);
-        tabWidget_3->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(4);
+        tabWidget_2->setCurrentIndex(0);
+        tabWidget_3->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2217,6 +2718,14 @@ public:
         label_pages->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
+        label_titleZayavki->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
+        label_add_action->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        pushButton_messege->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_10->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        label_history_actions->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));
         label_idZayavki->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
@@ -2265,6 +2774,7 @@ public:
 "\n"
 "</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\230\321\201\321\202\320\276\321\207\320\275\320\270\320\272</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\267\320\260\320\277\321\200\320\276\321\201\320\260</span></p></div></body></html>", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\237\321\200\320\270\320\276\321\200\320\270\321\202\320\265\321\202</span></p></body></html>", nullptr));
+        label__ord_agree->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\241\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\270\320\265</span></p></body></html>", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\243\321\207\320\260\321\201\321\202\320\275\320\270\320\272</span></p></body></html>", nullptr));
         label_14->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\230\320\275\320\270\321\206\320\270\320\260\321\202\320\276\321\200 \320\267\320\260\320\277\321\200\320\276\321\201\320\260</span></p></body></html>", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\235\320\260\320\261\320\273\321\216\320\264\320\260\321\202\320\265\320\273\321\214</span></p></body></html>", nullptr));
@@ -2385,6 +2895,43 @@ public:
         pushButton_u_save->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214  ", nullptr));
         pushButton_u_del->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214  ", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_14), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
+        label_act_fill->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
+        label_u_description_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\\n\\ndiv {\\nline-height: 0.5;\\n}\\n\\n</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\242\320\265\320\272\321\201\321\202</span></p><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\272\320\276\320\274\320\274\320\265\320\275\321\202\320\260\321\200\320\270\321\217</span></p></div></body></html>", nullptr));
+        label_u_description_3->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\\n\\ndiv {\\nline-height: 0.5;\\n}\\n\\n</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\242\320\265\320\272\321\201\321\202 \320\267\320\260\320\264\320\260\321\207\320\270</span></p></body></html>", nullptr));
+        label_date_beg_work->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
+"\n"
+"div {\n"
+"line-height: 0.5;\n"
+"}\n"
+"\n"
+"</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\224\320\260\321\202\320\260 \320\275\320\260\321\207\320\260\320\273\320\260 \320\267\320\260\320\264\320\260\321\207\320\270</span></p><</div></body></html>", nullptr));
+        lineEdit_set_beg_date_work->setInputMask(QString());
+        lineEdit_set_beg_date_work->setText(QString());
+        toolButton_set_beg_date_work->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        label_date_fin_work->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
+"\n"
+"div {\n"
+"line-height: 0.5;\n"
+"}\n"
+"\n"
+"</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\224\320\260\321\202\320\260 \320\267\320\260\320\262\320\265\321\200\321\210\320\265\320\275\320\270\321\217 \320\267\320\260\320\264\320\260\321\207\320\270</span></p><</div></body></html>", nullptr));
+        lineEdit_set_fin_date_work->setInputMask(QString());
+        lineEdit_set_fin_date_work->setText(QString());
+        toolButton_set_fin_date_work->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        label_u_description_4->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\\n\\ndiv {\\nline-height: 0.5;\\n}\\n\\n</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\242\320\265\320\272\321\201\321\202 \321\200\320\265\321\210\320\265\320\275\320\270\321\217</span></p></body></html>", nullptr));
+        label__act_status_agree->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\241\321\202\320\260\321\202\321\203\321\201 \321\201\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\270\321\217</span></p></body></html>", nullptr));
+        label_date_beg_work_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
+"\n"
+"div {\n"
+"line-height: 0.5;\n"
+"}\n"
+"\n"
+"</style><body><div><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">\320\224\320\260\321\202\320\260 \321\200\320\265\321\210\320\265\320\275\320\270\321\217</span></p><</div></body></html>", nullptr));
+        lineEdit_set_date_decision->setInputMask(QString());
+        lineEdit_set_date_decision->setText(QString());
+        toolButton_set_date_decision->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        pushButton_act_return->setText(QCoreApplication::translate("MainWindow", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 ", nullptr));
+        pushButton_act_add->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214  ", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_15), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_9), QCoreApplication::translate("MainWindow", "Tab5", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\264\320\264\320\265\321\200\320\266\320\272\320\260", nullptr));

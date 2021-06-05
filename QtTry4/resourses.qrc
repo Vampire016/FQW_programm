@@ -10,7 +10,6 @@
         <file>img/reload4.png</file>
         <file>img/settings.png</file>
         <file>img/trash.png</file>
-        <file>img/user.png</file>
         <file>img/add_green.png</file>
         <file>img/add_round.png</file>
         <file>img/sign-out.png</file>
@@ -18,5 +17,12 @@
         <file>img/next.png</file>
         <file>img/toFirst.png</file>
         <file>img/toLast.png</file>
+        <file>img/36.png</file>
+        <file>img/117todo.png</file>
+        <file>img/bubble.png</file>
+        <file>img/like.png</file>
+        <file>img/11clock.png</file>
+        <file>img/user.png</file>
+        <file>img/arrow.png</file>
     </qresource>
 </RCC>
