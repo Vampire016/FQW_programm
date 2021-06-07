@@ -114,6 +114,9 @@ private slots:
 
     void delAct_clicked(int pos);
 
+    void checkBoxChanged(int pos, int arg1);
+
+    void actWorkEditClicked(int pos);
 
 
     void on_pushButton_act_return_clicked();
@@ -124,7 +127,11 @@ private slots:
 
     void on_pushButton_10_clicked();
 
-    void on_pushButton_act_add_clicked();
+    void on_pushButton_act_add_clicked();    
+
+    void on_pushButton_act_save_clicked();
+
+    void on_pushButton_8_clicked();
 
 private:
     Ui::MainWindow *ui;    
@@ -164,11 +171,11 @@ private:
     Actions_right *actRight;
 
 
-    bool subWflags, conect, btnVis;        
+    bool subWflags, conect, btnVis, reprintFst;
     QStringList *var0_0, *var1, *var1_1, *var1_u, *var1_1_u, *var1_2, *var2_1, *var2_2, *var2_3, *var2_4, *Limit_s;
 
     int counterUpdate, curUser, cbVar_1, cbVar_2, cbVar_3, cbVar_0_1, cbVar_1_1, cbVar_2_1, cbVar_3_1, var_2, var_2_2,
-        queryMode, multiplier_f, multiplier_s, lFrom, lTo, countRows, act_type_click;
+        queryMode, multiplier_f, multiplier_s, lFrom, lTo, countRows, act_type_click, curPosAct;
 
     QString str_1, str_1_1, str_2, str_2_1, str_3, str_3_1, str_4, str_4_1, str_and, id, leFind, leFind_1, offset, Limit_bef, Limit;
 

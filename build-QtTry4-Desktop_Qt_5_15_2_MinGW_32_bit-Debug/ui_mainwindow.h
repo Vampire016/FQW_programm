@@ -143,15 +143,19 @@ public:
     TabWidget *tabWidget_2;
     QWidget *tab_5;
     QVBoxLayout *verticalLayout_11;
-    QLabel *label_titleZayavki;
+    QLabel *label_titleZayavki_act;
     QSpacerItem *verticalSpacer_5;
     QHBoxLayout *horizontalLayout_22;
     QLabel *label_add_action;
     QSpacerItem *horizontalSpacer_37;
     QPushButton *pushButton_messege;
+    QSpacerItem *horizontalSpacer_38;
     QPushButton *pushButton_7;
+    QSpacerItem *horizontalSpacer_39;
     QPushButton *pushButton_8;
+    QSpacerItem *horizontalSpacer_40;
     QPushButton *pushButton_9;
+    QSpacerItem *horizontalSpacer_41;
     QPushButton *pushButton_10;
     QSpacerItem *horizontalSpacer_36;
     QSpacerItem *verticalSpacer_6;
@@ -243,6 +247,17 @@ public:
     QPushButton *pushButton_3;
     QSpacerItem *horizontalSpacer_24;
     QWidget *tab_7;
+    QVBoxLayout *verticalLayout_22;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_4;
+    QVBoxLayout *verticalLayout_23;
+    QLabel *label_idZayavki_2;
+    QSpacerItem *verticalSpacer_8;
+    QHBoxLayout *horizontalLayout_26;
+    QSpacerItem *horizontalSpacer_42;
+    QLabel *label_18;
+    QSpacerItem *horizontalSpacer_43;
+    QSpacerItem *verticalSpacer_7;
     QWidget *tab_8;
     QVBoxLayout *verticalLayout_7;
     QHBoxLayout *horizontalLayout_24;
@@ -381,6 +396,7 @@ public:
     QSpacerItem *horizontalSpacer_68;
     QPushButton *pushButton_act_return;
     QPushButton *pushButton_act_add;
+    QPushButton *pushButton_act_save;
     QSpacerItem *horizontalSpacer_69;
     QSpacerItem *verticalSpacer_4;
     QMenuBar *menubar;
@@ -431,6 +447,7 @@ public:
         pushButton_5->setSizePolicy(sizePolicy);
         pushButton_5->setMinimumSize(QSize(0, 32));
         pushButton_5->setMaximumSize(QSize(16777215, 32));
+        pushButton_5->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/resource/img/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_5->setIcon(icon);
@@ -451,6 +468,7 @@ public:
         pushButton_4->setSizePolicy(sizePolicy1);
         pushButton_4->setMinimumSize(QSize(32, 32));
         pushButton_4->setMaximumSize(QSize(32, 32));
+        pushButton_4->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/resource/img/sign-out.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_4->setIcon(icon1);
@@ -986,17 +1004,17 @@ public:
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
         verticalLayout_11 = new QVBoxLayout(tab_5);
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
-        label_titleZayavki = new QLabel(tab_5);
-        label_titleZayavki->setObjectName(QString::fromUtf8("label_titleZayavki"));
-        sizePolicy1.setHeightForWidth(label_titleZayavki->sizePolicy().hasHeightForWidth());
-        label_titleZayavki->setSizePolicy(sizePolicy1);
-        label_titleZayavki->setMinimumSize(QSize(0, 30));
-        label_titleZayavki->setMaximumSize(QSize(6000, 30));
-        label_titleZayavki->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
-        label_titleZayavki->setTextFormat(Qt::RichText);
-        label_titleZayavki->setAlignment(Qt::AlignCenter);
+        label_titleZayavki_act = new QLabel(tab_5);
+        label_titleZayavki_act->setObjectName(QString::fromUtf8("label_titleZayavki_act"));
+        sizePolicy1.setHeightForWidth(label_titleZayavki_act->sizePolicy().hasHeightForWidth());
+        label_titleZayavki_act->setSizePolicy(sizePolicy1);
+        label_titleZayavki_act->setMinimumSize(QSize(0, 30));
+        label_titleZayavki_act->setMaximumSize(QSize(6000, 30));
+        label_titleZayavki_act->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label_titleZayavki_act->setTextFormat(Qt::RichText);
+        label_titleZayavki_act->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_11->addWidget(label_titleZayavki);
+        verticalLayout_11->addWidget(label_titleZayavki_act);
 
         verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -1009,32 +1027,74 @@ public:
 
         horizontalLayout_22->addWidget(label_add_action);
 
-        horizontalSpacer_37 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_37 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_22->addItem(horizontalSpacer_37);
 
         pushButton_messege = new QPushButton(tab_5);
         pushButton_messege->setObjectName(QString::fromUtf8("pushButton_messege"));
+        pushButton_messege->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_messege->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 211, 211);"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/resource/img/bubble.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_messege->setIcon(icon9);
 
         horizontalLayout_22->addWidget(pushButton_messege);
 
+        horizontalSpacer_38 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_38);
+
         pushButton_7 = new QPushButton(tab_5);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pushButton_7->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_7->setStyleSheet(QString::fromUtf8("background-color: rgb(244, 164, 96);"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/resource/img/117todo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_7->setIcon(icon10);
 
         horizontalLayout_22->addWidget(pushButton_7);
 
+        horizontalSpacer_39 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_39);
+
         pushButton_8 = new QPushButton(tab_5);
         pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        pushButton_8->setEnabled(true);
+        pushButton_8->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_8->setStyleSheet(QString::fromUtf8("background-color: rgb(46, 139, 87);"));
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/resource/img/clip.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_8->setIcon(icon11);
 
         horizontalLayout_22->addWidget(pushButton_8);
 
+        horizontalSpacer_40 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_40);
+
         pushButton_9 = new QPushButton(tab_5);
         pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+        pushButton_9->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_9->setStyleSheet(QString::fromUtf8("background-color: rgb(119, 238, 0);"));
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/resource/img/like.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_9->setIcon(icon12);
 
         horizontalLayout_22->addWidget(pushButton_9);
 
+        horizontalSpacer_41 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_41);
+
         pushButton_10 = new QPushButton(tab_5);
         pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
+        pushButton_10->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_10->setStyleSheet(QString::fromUtf8("background-color: rgb(135, 206, 250);"));
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/resource/img/36.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_10->setIcon(icon13);
 
         horizontalLayout_22->addWidget(pushButton_10);
 
@@ -1045,7 +1105,7 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_22);
 
-        verticalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_11->addItem(verticalSpacer_6);
 
@@ -1068,7 +1128,7 @@ public:
         scrollArea_actions->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 1192, 522));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 1192, 528));
         verticalLayout_13 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
         Layout_actions = new QVBoxLayout();
@@ -1583,9 +1643,9 @@ public:
         pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setLayoutDirection(Qt::RightToLeft);
         pushButton->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/resource/img/add_round.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon9);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/resource/img/add_round.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon14);
 
         horizontalLayout_17->addWidget(pushButton);
 
@@ -1610,9 +1670,9 @@ public:
         pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setLayoutDirection(Qt::RightToLeft);
         pushButton_2->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/resource/img/pen.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_2->setIcon(icon10);
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/resource/img/pen.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_2->setIcon(icon15);
 
         horizontalLayout_23->addWidget(pushButton_2);
 
@@ -1624,9 +1684,9 @@ public:
         pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_3->setLayoutDirection(Qt::RightToLeft);
         pushButton_3->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/resource/img/trash.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_3->setIcon(icon11);
+        QIcon icon16;
+        icon16.addFile(QString::fromUtf8(":/resource/img/trash.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_3->setIcon(icon16);
         pushButton_3->setIconSize(QSize(16, 16));
 
         horizontalLayout_23->addWidget(pushButton_3);
@@ -1645,6 +1705,74 @@ public:
         tabWidget_2->addTab(tab_6, QString());
         tab_7 = new QWidget();
         tab_7->setObjectName(QString::fromUtf8("tab_7"));
+        tab_7->setEnabled(true);
+        verticalLayout_22 = new QVBoxLayout(tab_7);
+        verticalLayout_22->setObjectName(QString::fromUtf8("verticalLayout_22"));
+        scrollArea_2 = new QScrollArea(tab_7);
+        scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
+        sizePolicy5.setHeightForWidth(scrollArea_2->sizePolicy().hasHeightForWidth());
+        scrollArea_2->setSizePolicy(sizePolicy5);
+        scrollArea_2->setMinimumSize(QSize(600, 0));
+        scrollArea_2->setAutoFillBackground(false);
+        scrollArea_2->setStyleSheet(QString::fromUtf8(""));
+        scrollArea_2->setFrameShape(QFrame::NoFrame);
+        scrollArea_2->setFrameShadow(QFrame::Sunken);
+        scrollArea_2->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        scrollArea_2->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_4 = new QWidget();
+        scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1194, 661));
+        verticalLayout_23 = new QVBoxLayout(scrollAreaWidgetContents_4);
+        verticalLayout_23->setObjectName(QString::fromUtf8("verticalLayout_23"));
+        label_idZayavki_2 = new QLabel(scrollAreaWidgetContents_4);
+        label_idZayavki_2->setObjectName(QString::fromUtf8("label_idZayavki_2"));
+        sizePolicy1.setHeightForWidth(label_idZayavki_2->sizePolicy().hasHeightForWidth());
+        label_idZayavki_2->setSizePolicy(sizePolicy1);
+        label_idZayavki_2->setMinimumSize(QSize(0, 30));
+        label_idZayavki_2->setMaximumSize(QSize(6000, 30));
+        label_idZayavki_2->setStyleSheet(QString::fromUtf8("background-color: rgb(181, 181, 181);"));
+        label_idZayavki_2->setTextFormat(Qt::RichText);
+        label_idZayavki_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_23->addWidget(label_idZayavki_2);
+
+        verticalSpacer_8 = new QSpacerItem(20, 140, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_23->addItem(verticalSpacer_8);
+
+        horizontalLayout_26 = new QHBoxLayout();
+        horizontalLayout_26->setObjectName(QString::fromUtf8("horizontalLayout_26"));
+        horizontalSpacer_42 = new QSpacerItem(1000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_26->addItem(horizontalSpacer_42);
+
+        label_18 = new QLabel(scrollAreaWidgetContents_4);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+        sizePolicy1.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
+        label_18->setSizePolicy(sizePolicy1);
+        label_18->setMinimumSize(QSize(651, 351));
+        label_18->setMaximumSize(QSize(651, 351));
+        label_18->setPixmap(QPixmap(QString::fromUtf8(":/resource/img/reconstruktion.png")));
+        label_18->setScaledContents(true);
+
+        horizontalLayout_26->addWidget(label_18);
+
+        horizontalSpacer_43 = new QSpacerItem(1000, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_26->addItem(horizontalSpacer_43);
+
+
+        verticalLayout_23->addLayout(horizontalLayout_26);
+
+        verticalSpacer_7 = new QSpacerItem(20, 1000, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_23->addItem(verticalSpacer_7);
+
+        scrollArea_2->setWidget(scrollAreaWidgetContents_4);
+
+        verticalLayout_22->addWidget(scrollArea_2);
+
         tabWidget_2->addTab(tab_7, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QString::fromUtf8("tab_8"));
@@ -1660,9 +1788,10 @@ public:
         btn_print->setObjectName(QString::fromUtf8("btn_print"));
         btn_print->setMinimumSize(QSize(45, 45));
         btn_print->setMaximumSize(QSize(45, 45));
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/resource/img/print.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_print->setIcon(icon12);
+        btn_print->setCursor(QCursor(Qt::PointingHandCursor));
+        QIcon icon17;
+        icon17.addFile(QString::fromUtf8(":/resource/img/print.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_print->setIcon(icon17);
         btn_print->setIconSize(QSize(32, 32));
 
         horizontalLayout_24->addWidget(btn_print);
@@ -1705,7 +1834,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 1177, 807));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 1132, 807));
         verticalLayout_19 = new QVBoxLayout(scrollAreaWidgetContents_3);
         verticalLayout_19->setObjectName(QString::fromUtf8("verticalLayout_19"));
         label_Users = new QLabel(scrollAreaWidgetContents_3);
@@ -2246,7 +2375,7 @@ public:
         pushButton_u_add->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_u_add->setLayoutDirection(Qt::RightToLeft);
         pushButton_u_add->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        pushButton_u_add->setIcon(icon9);
+        pushButton_u_add->setIcon(icon14);
 
         horizontalLayout_53->addWidget(pushButton_u_add);
 
@@ -2271,7 +2400,7 @@ public:
         pushButton_u_save->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_u_save->setLayoutDirection(Qt::RightToLeft);
         pushButton_u_save->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        pushButton_u_save->setIcon(icon10);
+        pushButton_u_save->setIcon(icon15);
 
         horizontalLayout_54->addWidget(pushButton_u_save);
 
@@ -2283,7 +2412,7 @@ public:
         pushButton_u_del->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_u_del->setLayoutDirection(Qt::RightToLeft);
         pushButton_u_del->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        pushButton_u_del->setIcon(icon11);
+        pushButton_u_del->setIcon(icon16);
         pushButton_u_del->setIconSize(QSize(16, 16));
 
         horizontalLayout_54->addWidget(pushButton_u_del);
@@ -2585,9 +2714,9 @@ public:
         pushButton_act_return->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_act_return->setLayoutDirection(Qt::RightToLeft);
         pushButton_act_return->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/resource/img/arrow.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_act_return->setIcon(icon13);
+        QIcon icon18;
+        icon18.addFile(QString::fromUtf8(":/resource/img/arrow.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_act_return->setIcon(icon18);
 
         horizontalLayout_59->addWidget(pushButton_act_return);
 
@@ -2599,10 +2728,22 @@ public:
         pushButton_act_add->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_act_add->setLayoutDirection(Qt::RightToLeft);
         pushButton_act_add->setStyleSheet(QString::fromUtf8("background-color: gold;"));
-        pushButton_act_add->setIcon(icon9);
+        pushButton_act_add->setIcon(icon14);
         pushButton_act_add->setIconSize(QSize(16, 16));
 
         horizontalLayout_59->addWidget(pushButton_act_add);
+
+        pushButton_act_save = new QPushButton(widget_2);
+        pushButton_act_save->setObjectName(QString::fromUtf8("pushButton_act_save"));
+        sizePolicy1.setHeightForWidth(pushButton_act_save->sizePolicy().hasHeightForWidth());
+        pushButton_act_save->setSizePolicy(sizePolicy1);
+        pushButton_act_save->setMinimumSize(QSize(90, 25));
+        pushButton_act_save->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_act_save->setLayoutDirection(Qt::RightToLeft);
+        pushButton_act_save->setStyleSheet(QString::fromUtf8("background-color: gold;"));
+        pushButton_act_save->setIcon(icon15);
+
+        horizontalLayout_59->addWidget(pushButton_act_save);
 
         horizontalSpacer_69 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -2650,8 +2791,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(4);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(3);
         tabWidget_3->setCurrentIndex(1);
 
 
@@ -2718,14 +2859,14 @@ public:
         label_pages->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 3", nullptr));
-        label_titleZayavki->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
-        label_add_action->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        pushButton_messege->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_7->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_9->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_10->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        label_history_actions->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_titleZayavki_act->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
+        label_add_action->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214:</span></p></body></html>", nullptr));
+        pushButton_messege->setText(QCoreApplication::translate("MainWindow", "  \320\232\320\276\320\274\320\274\320\265\320\275\321\202\320\260\321\200\320\270\320\271", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("MainWindow", "  \320\227\320\260\320\264\320\260\321\207\320\260", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "  \320\224\320\276\320\272\321\203\320\274\320\265\320\275\321\202", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("MainWindow", "  \320\241\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
+        pushButton_10->setText(QCoreApplication::translate("MainWindow", "  \320\240\320\265\321\210\320\265\320\275\320\270\320\265", nullptr));
+        label_history_actions->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\264\320\265\320\271\321\201\321\202\320\262\320\270\320\271:</span></p></body></html>", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "\320\240\320\260\320\261\320\276\321\202\320\260 \321\201 \320\267\320\260\321\217\320\262\320\272\320\276\320\271", nullptr));
         label_idZayavki->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">N/A</span></p></body></html>", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<html><head/><style>\n"
@@ -2785,6 +2926,8 @@ public:
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214  ", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214  ", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("MainWindow", "\320\227\320\260\321\217\320\262\320\272\320\260", nullptr));
+        label_idZayavki_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\270\320\267\320\274\320\265\320\275\320\265\320\275\320\270\320\271</span></p></body></html>", nullptr));
+        label_18->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_7), QCoreApplication::translate("MainWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217", nullptr));
         btn_print->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_8), QCoreApplication::translate("MainWindow", "\320\236\321\202\321\207\320\265\321\202", nullptr));
@@ -2932,6 +3075,7 @@ public:
         toolButton_set_date_decision->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
         pushButton_act_return->setText(QCoreApplication::translate("MainWindow", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 ", nullptr));
         pushButton_act_add->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214  ", nullptr));
+        pushButton_act_save->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214  ", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_15), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_9), QCoreApplication::translate("MainWindow", "Tab5", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\264\320\264\320\265\321\200\320\266\320\272\320\260", nullptr));

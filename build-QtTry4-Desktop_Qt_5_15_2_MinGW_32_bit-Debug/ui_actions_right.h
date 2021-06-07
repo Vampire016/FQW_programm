@@ -129,7 +129,7 @@ public:
         pushButton_editWork->setSizePolicy(sizePolicy1);
         pushButton_editWork->setMinimumSize(QSize(24, 24));
         pushButton_editWork->setMaximumSize(QSize(24, 24));
-        pushButton_editWork->setCursor(QCursor(Qt::ClosedHandCursor));
+        pushButton_editWork->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_editWork->setStyleSheet(QString::fromUtf8("background: transparent;"));
         pushButton_editWork->setIconSize(QSize(24, 24));
 
@@ -144,6 +144,7 @@ public:
         sizePolicy1.setHeightForWidth(checkBox_work->sizePolicy().hasHeightForWidth());
         checkBox_work->setSizePolicy(sizePolicy1);
         checkBox_work->setMinimumSize(QSize(20, 20));
+        checkBox_work->setCursor(QCursor(Qt::PointingHandCursor));
         checkBox_work->setStyleSheet(QString::fromUtf8("background: transparent;"));
         checkBox_work->setIconSize(QSize(16, 16));
 

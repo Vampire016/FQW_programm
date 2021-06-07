@@ -13,6 +13,7 @@ PrintOrder::PrintOrder(QWidget *parent) :
     this->setBtn(0);
 
     qmodel_filReport = new QSqlQueryModel;
+    qmodel_txtDecision = new QSqlQueryModel;
 
 
     this->setWindowFlag(Qt::WindowMinimizeButtonHint, false);
@@ -64,6 +65,10 @@ void PrintOrder::fillReport(int id)
                                "Where Orders.id = '" + QVariant(id).toString() + "';");
     qmodel_filReport->query().first();
 
+    qmodel_txtDecision->setQuery("SELECT `text` FROM Actions WHERE id_ord = " + QVariant(id).toString() + " AND act_pos = (SELECT max(act_pos) FROM Actions WHERE id_ord = " + QVariant(id).toString() + ");");
+    qmodel_txtDecision->query().first();
+
+
     QString tmp = qmodel_filReport->index(0,7).data().toString();
 
     ui->label->setText("<html><head/><body><p align='center'><span style=' font-size:14pt; font-weight:600;'>" + QVariant(id).toString() + "</span></p></body></html>");
@@ -78,6 +83,8 @@ void PrintOrder::fillReport(int id)
     ui->lineEdit_bordName_11->setText(QDateTime::fromString(qmodel_filReport->index(0,3).data().toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
     ui->textEdit->setPlainText(qmodel_filReport->index(0,8).data().toString());
     ui->label_SubTechName->setText(ui->lineEdit_TechName->text());
+
+    ui->textEdit_2->setText(qmodel_txtDecision->query().value(0).toString());
 }
 
 void PrintOrder::inputReject()

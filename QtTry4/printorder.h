@@ -28,7 +28,7 @@ private:
 
     QPixmap *logo;
 
-    QSqlQueryModel *qmodel_filReport;
+    QSqlQueryModel *qmodel_filReport, *qmodel_txtDecision;
 
     int btn;
 

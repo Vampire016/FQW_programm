@@ -29,10 +29,13 @@ private:
 
 signals:
     void delAct(int pos);
+    void checkBoxChanged(int pos, int arg1);
+    void workEditClick(int pos);
 
 public slots:
     void mainWinP(QMainWindow *mainWin);
     void actLeftPos(int pos);
+    void setDelHiden();
 
     void on_pushButton_delAct_clicked();
 
@@ -65,6 +68,10 @@ public slots:
     void setDateRangeWork(QString date);
     void setNameWorkerWork(QString name);
     //-----------------------------------
+
+private slots:
+    void on_checkBox_work_clicked();
+    void on_pushButton_editWork_clicked();
 
 };
 

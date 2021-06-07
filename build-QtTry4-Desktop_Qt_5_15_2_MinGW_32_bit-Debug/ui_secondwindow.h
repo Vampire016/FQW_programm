@@ -174,6 +174,7 @@ public:
 
         password = new QLineEdit(layoutWidget1);
         password->setObjectName(QString::fromUtf8("password"));
+        password->setEchoMode(QLineEdit::Password);
 
         horizontalLayout_3->addWidget(password);
 
@@ -183,6 +184,7 @@ public:
         btnReturn = new QPushButton(groupBox_2);
         btnReturn->setObjectName(QString::fromUtf8("btnReturn"));
         btnReturn->setGeometry(QRect(30, 80, 75, 23));
+        btnReturn->setCursor(QCursor(Qt::PointingHandCursor));
 
         retranslateUi(SecondWindow);
 

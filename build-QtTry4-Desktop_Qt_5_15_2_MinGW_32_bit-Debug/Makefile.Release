@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextr
 INCPATH       = -I..\QtTry4 -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\include -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtPrintSupport -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtWidgets -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtGui -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtANGLE -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtSql -ID:\Programs\QT_3\5.15.2\mingw81_32\include\QtCore -Irelease -I. -ID:\Programs\QT_3\5.15.2\mingw81_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5PrintSupport.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Widgets.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Gui.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Sql.a D:\Programs\QT_3\5.15.2\mingw81_32\lib\libQt5Core.a release\QtTry4_resource_res.o  -lmingw32 D:\Programs\QT_3\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Programs\QT_3\5.15.2\mingw81_32\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -40,7 +40,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\QtTry4_resource_res.o
 SED           = $(QMAKE) -install sed
 MOVE          = move
 
@@ -114,8 +114,11 @@ DESTDIR_TARGET = release\QtTry4.exe
 first: all
 all: Makefile.Release  release/QtTry4.exe
 
-release/QtTry4.exe: D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5PrintSupport.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Widgets.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Gui.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Sql.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Core.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libqtmain.a ui_actions_left.h ui_actions_right.h ui_mainwindow.h ui_printorder.h ui_secondwindow.h $(OBJECTS) 
+release/QtTry4.exe: D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5PrintSupport.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Widgets.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Gui.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Sql.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libQt5Core.a D:/Programs/QT_3/5.15.2/mingw81_32/lib/libqtmain.a ui_actions_left.h ui_actions_right.h ui_mainwindow.h ui_printorder.h ui_secondwindow.h $(OBJECTS) release/QtTry4_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.QtTry4.Release  $(LIBS)
+
+release/QtTry4_resource_res.o: QtTry4_resource.rc
+	windres -i QtTry4_resource.rc -o release\QtTry4_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\QtTry4\QtTry4.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -127,6 +130,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\actions_left.o release\actions_right.o release\clickablecalendar.o release\clickablewidget.o release\main.o release\mainwindow.o release\printorder.o release\qtoolcalendar.o release\secondwindow.o release\qrc_resourses.o release\moc_actions_left.o release\moc_actions_right.o release\moc_clickablecalendar.o release\moc_clickablewidget.o release\moc_mainwindow.o release\moc_printorder.o release\moc_qtoolcalendar.o release\moc_secondwindow.o
+	-$(DEL_FILE) release\QtTry4_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -150,7 +154,9 @@ release/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/rcc.exe \
 		../QtTry4/img/calendar.png \
 		../QtTry4/img/bubble.png \
+		../QtTry4/img/IT-Osoba_Logo_ico.ico \
 		../QtTry4/img/add_green.png \
+		../QtTry4/img/warning.png \
 		../QtTry4/img/clip.png \
 		../QtTry4/img/print.png \
 		../QtTry4/img/reload4.png \
@@ -162,6 +168,7 @@ release/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		../QtTry4/img/trash.png \
 		../QtTry4/img/117todo.png \
 		../QtTry4/img/Cross.png \
+		../QtTry4/img/reconstruktion.png \
 		../QtTry4/img/sign-out.png \
 		../QtTry4/img/36.png \
 		../QtTry4/img/toFirst.png \

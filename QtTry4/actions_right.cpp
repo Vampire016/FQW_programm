@@ -144,8 +144,14 @@ void Actions_right::setTextWork(QString txt)
 
     if(ui->textEdit_work_desc->document()->size().height() > ui->textEdit_work_desc->height()){
         ui->textEdit_work_desc->setMinimumHeight(ui->textEdit_work_desc->document()->size().height());
+
+        if((ui->textEdit_work_desc->y() + ui->textEdit_work_desc->document()->size().height()) > (ui->groupBox_work->height() - 20)){
+            this->setMinimumHeight(this->height() + (((ui->textEdit_work_desc->y() + ui->textEdit_work_desc->document()->size().height()) + 60) - ui->groupBox_work->height()));
+            ui->groupBox_work->setMinimumHeight((ui->textEdit_work_desc->y() + ui->textEdit_work_desc->document()->size().height()) + 60);
+        }
+        /*
         ui->groupBox_work->setMinimumHeight(ui->groupBox_work->height() + (ui->textEdit_work_desc->document()->size().height() - 100));
-        this->setMinimumHeight(this->height() + (ui->textEdit_work_desc->document()->size().height() - 100));
+        this->setMinimumHeight(this->height() + (ui->textEdit_work_desc->document()->size().height() - 100));*/
     }
 }
 
@@ -167,8 +173,8 @@ void Actions_right::setTextAgree(QString txt)
     if(ui->textEdit_text_agree->document()->size().height() > ui->textEdit_text_agree->height()){
         ui->textEdit_text_agree->setMinimumHeight(ui->textEdit_text_agree->document()->size().height());
         if((ui->textEdit_text_agree->y() + ui->textEdit_text_agree->document()->size().height()) > (ui->groupBox_agreement->height() - 20)){
-            this->setMinimumHeight(this->height() + (((ui->textEdit_text_agree->y() + ui->textEdit_text_agree->document()->size().height()) - 30) - ui->groupBox_agreement->height()));
-            ui->groupBox_agreement->setMinimumHeight((ui->textEdit_text_agree->y() + ui->textEdit_text_agree->document()->size().height()) - 30);
+            this->setMinimumHeight(this->height() + (((ui->textEdit_text_agree->y() + ui->textEdit_text_agree->document()->size().height()) + 30) - ui->groupBox_agreement->height()));
+            ui->groupBox_agreement->setMinimumHeight((ui->textEdit_text_agree->y() + ui->textEdit_text_agree->document()->size().height()) + 30);
         }
     }
 }
@@ -187,4 +193,25 @@ void Actions_right::setDate_CurUsrName(QString date, QString name, int agree)
         agreement = "В ожидании согласнования на ";
     }
     ui->label_date_name_agree->setText(agreement + date + " " + name);
+}
+
+
+void Actions_right::on_checkBox_work_clicked()
+{
+    int ch;
+
+    if(ui->checkBox_work->checkState() == Qt::Checked){
+        ch = 1;
+    }else{
+        ch = 0;
+    }
+
+    connect(this, SIGNAL(checkBoxChanged(int, int)), this->mainWin, SLOT(checkBoxChanged(int, int)));
+    emit checkBoxChanged(pos, ch);
+}
+
+void Actions_right::on_pushButton_editWork_clicked()
+{
+    connect(this, SIGNAL(workEditClick(int)), this->mainWin, SLOT(actWorkEditClicked(int)));
+    emit workEditClick(pos);
 }

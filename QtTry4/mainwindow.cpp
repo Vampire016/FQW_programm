@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     //--------------------------------------------------------------------------------------------------------------------------------------------
     conect = false;
     sw = new SecondWindow;
+    sw->setWindowIcon(QIcon(":/resource/img/IT-Osoba_Logo_ico.ico"));
+    sw->setWindowTitle("Авторизация");
     sw->show();
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableView_2->setSelectionMode(QAbstractItemView::NoSelection);
     ui->tableView_2->verticalHeader()->setVisible(false);
     ui->tableView_2->setStyleSheet("QHeaderView::section { background: rgb(181,181,181);}");
-    ui->tableView_2->setModel(qmodel_stats);
+    ui->tableView_2->setModel(qmodel_stats);    
     //--------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -332,8 +334,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->widget_set_agree->hide();
     ui->widget_set_mess->hide();
     ui->widget_set_work->hide();
+    ui->pushButton_act_save->hide();
 
     act_type_click = 0;
+    reprintFst = true;
 
 }
 
@@ -927,11 +931,6 @@ void MainWindow::UpdateDB()
 {
     counterUpdate++;
 
-    if(counterUpdate == 1){
-        on_act_orders_triggered();
-        on_act_home_triggered();
-    }
-
     qDebug() << "Update #" + QVariant(counterUpdate).toString() + "   Current User ID: " + QVariant(curUser).toString();
 
 
@@ -947,8 +946,20 @@ void MainWindow::UpdateDB()
 
 
 
-    qmodel_stats->setQuery("SELECT `Status`.SName AS `Orders`, COUNT(Orders.`Status`) AS `Amount` FROM Orders LEFT JOIN `Status` ON Orders.`Status` = `Status`.id");
+    qmodel_stats->setQuery("SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 1 "
+    "UNION SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 2 "
+    "UNION SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 3 "
+    "UNION SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 4 "
+    "UNION SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 5 "
+    "UNION SELECT `Status`.SName AS `Orders status`, COUNT(Orders.`Status`) AS `Amount` FROM Orders RIGHT JOIN `Status` ON Orders.`Status` = `Status`.id WHERE `Status`.id = 6");
     qmodel_stats->query().first();
+
+
+    if(counterUpdate == 1){
+        on_act_orders_triggered();
+        on_act_home_triggered();
+        ui->tableView_2->setColumnWidth(0, 1000);
+    }
 
 
     if(queryMode == 1){
@@ -1110,7 +1121,7 @@ void MainWindow::UpdateDB()
 "ABS(SUM(Status.SName = 'Новый')) AS cNew, "
 "ABS(SUM(Status.SName = 'Решена')) AS cSolved, "
 "ABS(SUM(Status.SName = 'Ожидающие')) AS cAwaits "
-"FROM Status INNER JOIN Orders ON Status.id = Orders.Status;");
+"FROM Orders INNER JOIN Status ON Orders.Status = Status.id;");
 
     qmodel_c1_1->setQuery("SELECT ABS(SUM(`Work`.DateDecision < '" + str + "' AND Orders.`Status` <> 'Закрыто')) FROM `Work` INNER JOIN (Orders INNER JOIN `Status` ON Orders.`Status` = `Status`.id) ON `Work`.id = Orders.id;");
 
@@ -1663,6 +1674,22 @@ void MainWindow::on_pushButton_clicked()
             };
             creOrd.exec();
 
+
+            qmodel_actID->setQuery("SELECT max(Actions.id) FROM Actions");
+            qmodel_actID->query().first();
+
+            QSqlQuery creActDesc(db);
+            creActDesc.prepare("INSERT INTO Actions (id, act_pos, right_or_left, id_ord, id_creator, id_editor, date_create, act_type) VALUES (?,?,?,?,?,?,?,?)");
+            creActDesc.addBindValue(QVariant(qmodel_actID->query().value(0).toInt() + 1).toString());
+            creActDesc.addBindValue("0");
+            creActDesc.addBindValue("L");
+            creActDesc.addBindValue(1 + qmodel_id->query().value(0).toInt());
+            creActDesc.addBindValue(ui->comboBox_10->currentIndex());
+            creActDesc.addBindValue(ui->comboBox_10->currentIndex());
+            creActDesc.addBindValue(ui->lineEdit->text());
+            creActDesc.addBindValue("1");
+            creActDesc.exec();
+
             tmr->start(0);
             emit ui->act_orders->triggered();
         }
@@ -1818,6 +1845,8 @@ void MainWindow::twiceClickOnTableRow(const QModelIndex &index)
     ui->comboBox_12->setCurrentIndex(qmodel_ordId->index(0, 8).data().toInt());
     ui->lineEdit_6->setText(qmodel_ordId->index(0, 1).data().toString());
     ui->textEdit->setText(qmodel_ordId->index(0, 12).data().toString());
+
+    ui->label_titleZayavki_act->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>ID #" + id + "  -  " + qmodel_ordId->index(0, 1).data().toString() + " (ITOsoba LLC)</span></p></body></html>");
 
     emit fillReportSig(QVariant(id).toInt());
     }else if(queryMode == 2){
@@ -2019,11 +2048,13 @@ void MainWindow::on_pushButton_3_clicked()
     {
         QSqlQuery delOrd(db);
 
+        delOrd.exec("DELETE FROM Actions WHERE id_ord = " + id);
         delOrd.exec("DELETE FROM `Create` WHERE id = " + id);
         delOrd.exec("DELETE FROM `Work` WHERE id = " + id);
         delOrd.exec("DELETE FROM `Edit` WHERE id = " + id);
         delOrd.exec("DELETE FROM `Control` WHERE id = " + id);
         delOrd.exec("DELETE FROM `Orders` WHERE id = " + id);
+
 
         tmr->start(0);
         emit ui->act_orders->triggered();
@@ -2457,8 +2488,19 @@ void MainWindow::delAct_clicked(int pos)
                 //qDebug() << "#" + QVariant(i).toString() + " номер позиции " + QVariant(curr->numberPos).toString() + " / полученный " +  QVariant(pos).toString();
 
                 QSqlQuery delAct(db);
-
                 delAct.exec("DELETE FROM Actions WHERE act_pos = " + QVariant(pos).toString());
+
+  /*
+                if(curr == tail){
+                    curr->prev = tail;
+                    curr->prev->next = nullptr;
+                    delete curr;
+                }else{
+                    curr->prev->next = curr->next;
+                    curr->next->prev = curr->prev;
+                    delete curr;
+                }
+  */
             }
             curr = curr->next;
         }
@@ -2477,6 +2519,7 @@ void MainWindow::reprintActs()
     "WHERE Actions.id_ord = " + id + ";");
 
     bool fst = false;
+
 
     while(QLayoutItem *item = ui->Layout_actions->itemAt(0))
     {
@@ -2512,6 +2555,7 @@ void MainWindow::reprintActs()
         {
             actLeft = new Actions_left();
             actLeft->Type_Action(query_act.value(5).toInt());
+            actLeft->setDelHiden();
 
             actNode->Wg = actLeft;
             actNode->next = NULL;
@@ -2539,21 +2583,28 @@ void MainWindow::reprintActs()
                 tail = actNode;
                 actNode->numberPos = actNode->prev->numberPos + 1;
 
-                autoFillActs(query_act.value(0).toString());
+                connect(this, SIGNAL(mainWinP(QMainWindow *)), actLeft, SLOT(mainWinP(QMainWindow *)));
+                emit mainWinP(this);
 
                 actLeft->setPosNumber(actNode->numberPos - 1);
+
+                autoFillActs(query_act.value(0).toString());
             }else{
                 actRight = new Actions_right();
                 actRight->Type_Action(query_act.value(5).toInt());
+
                 actNode->Wg = actRight;
                 actNode->prev = tail;
                 tail->next = actNode;
                 tail = actNode;
                 actNode->numberPos = actNode->prev->numberPos + 1;
 
-                autoFillActs(query_act.value(0).toString());
+                connect(this, SIGNAL(mainWinP(QMainWindow *)), actRight, SLOT(mainWinP(QMainWindow *)));
+                emit mainWinP(this);
 
                 actRight->setPosNumber(actNode->numberPos - 1);
+
+                autoFillActs(query_act.value(0).toString());
             }
 
             updActPos.exec("UPDATE Actions SET `act_pos`= " + QVariant(actNode->numberPos - 1).toString() +" WHERE Actions.`id_ord` = " + id + " AND Actions.act_pos = " + query_act.value(6).toString());
@@ -2570,6 +2621,7 @@ void MainWindow::reprintActs()
         //ui->scrollArea_actions->update();
 
     }
+
 }
 
 void MainWindow::autoFillActs(QString actID)
@@ -2681,6 +2733,9 @@ void MainWindow::on_pushButton_act_return_clicked()
     ui->widget_set_work->hide();
     ui->widget_set_agree->hide();
 
+    ui->pushButton_act_add->show();
+    ui->pushButton_act_save->hide();
+
     ui->label_act_fill->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>N/A</span></p></body></html>");
 
     ui->textEdit_set_work_txt->clear();
@@ -2700,58 +2755,7 @@ void MainWindow::on_pushButton_messege_clicked()
 
     ui->label_act_fill->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Данные блока \"Комментарий\"</span></p></body></html>");
 
-    /*
-    time_t     now = time(0);
-    struct tm  tstruct;
-    char       buf[80];
-    tstruct = *localtime(&now);
-    strftime(buf, sizeof(buf), "%Y.%m.%d %X", &tstruct);
-    QString str(buf);
 
-
-    actLeft = new Actions_left;
-
-    connect(this, SIGNAL(mainWinP(QMainWindow *)), actLeft, SLOT(mainWinP(QMainWindow *)));
-
-    emit mainWinP(this);
-
-
-
-    actNode->Wg = actLeft;
-    actNode->prev = tail;
-    actNode->numberPos = tail->numberPos + 1;
-    tail->next = actNode;
-    tail = actNode;
-
-    ui->Layout_actions->insertWidget(0, actLeft);
-    actLeft->Type_Action(2);
-    actLeft->setTextMessege("*test - test - test*");
-
-
-    Node_act *curr = head;
-    for (int i = 0; i < (tail->numberPos); i++) {
-        connect(this, SIGNAL(actLeftPos(int)), curr->Wg, SLOT(actLeftPos(int)));
-        emit actLeftPos(i);
-        curr = curr->next;
-    }
-
-
-    qmodel_actID->setQuery("SELECT max(Actions.id) FROM Actions");
-    qmodel_actID->query().first();
-
-    QSqlQuery insAct(db);
-
-    insAct.prepare("INSERT INTO Actions (id, id_ord, id_creator, id_editor, date_create, act_type, text) "
-    "VALUES (?, ?, ?, ?, ?, ?, ?)");
-    insAct.addBindValue(QVariant(1 + qmodel_actID->query().value(0).toInt()).toString());
-    insAct.addBindValue(id);
-    insAct.addBindValue(qmodel_ordId->query().value(6).toString());
-    insAct.addBindValue(QVariant(curUser).toString());
-    insAct.addBindValue(str);
-    insAct.addBindValue(QVariant(2).toString());
-    insAct.addBindValue("");
-    insAct.exec();
-    */
 }
 
 void MainWindow::on_pushButton_act_add_clicked()
@@ -2899,7 +2903,7 @@ void MainWindow::on_pushButton_act_add_clicked()
         insAct.exec();
         break;
     case 3:
-        insAct.prepare("INSERT INTO Actions (id, id_ord, id_creator, id_editor, date_create, act_type, text, right_or_left, act_pos, date_beg, date_fin, check) "
+        insAct.prepare("INSERT INTO Actions (id, id_ord, id_creator, id_editor, date_create, act_type, text, right_or_left, act_pos, date_beg, date_fin, `check`) "
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         insAct.addBindValue(QVariant(1 + qmodel_actID->query().value(0).toInt()).toString());
         insAct.addBindValue(id);
@@ -2907,7 +2911,7 @@ void MainWindow::on_pushButton_act_add_clicked()
         insAct.addBindValue(QVariant(curUser).toString());
         insAct.addBindValue(str);
         insAct.addBindValue(QVariant(act_type_click).toString());
-        insAct.addBindValue(ui->textEdit_set_mess_txt->toPlainText());
+        insAct.addBindValue(ui->textEdit_set_work_txt->toPlainText());
         if(curUser == qmodel_ordId->query().value(6).toInt()){
             insAct.addBindValue("L");
         }else{
@@ -2916,7 +2920,7 @@ void MainWindow::on_pushButton_act_add_clicked()
         insAct.addBindValue(actNode->numberPos - 1);
         insAct.addBindValue(ui->lineEdit_set_beg_date_work->text());
         insAct.addBindValue(ui->lineEdit_set_fin_date_work->text());
-        insAct.addBindValue(0);
+        insAct.addBindValue("0");
         insAct.exec();
         break;
     case 4:
@@ -2928,7 +2932,7 @@ void MainWindow::on_pushButton_act_add_clicked()
         insAct.addBindValue(QVariant(curUser).toString());
         insAct.addBindValue(str);
         insAct.addBindValue(QVariant(act_type_click).toString());
-        insAct.addBindValue(ui->textEdit_set_mess_txt->toPlainText());
+        insAct.addBindValue(ui->textEdit_set_agree_txt->toPlainText());
         if(curUser == qmodel_ordId->query().value(6).toInt()){
             insAct.addBindValue("L");
         }else{
@@ -2938,7 +2942,7 @@ void MainWindow::on_pushButton_act_add_clicked()
         insAct.addBindValue(ui->lineEdit_set_date_decision->text());
         insAct.exec();
 
-        updOrdDateDecision.exec("UPDATE `Work` SET DateDecision =" + ui->lineEdit_set_date_decision->text() + " Where `Work`.id = " + id);
+        updOrdDateDecision.exec("UPDATE `Work` SET DateDecision = '" + ui->lineEdit_set_date_decision->text() + "' Where `Work`.id = " + QVariant(id).toString() + ";");
         break;
     }
     on_pushButton_act_return_clicked();
@@ -2967,4 +2971,50 @@ void MainWindow::on_pushButton_10_clicked()
     ui->widget_set_agree->show();
 
     ui->label_act_fill->setText("<html><head/><body><p><span style=' font-size:12pt; font-weight:600;'>Данные блока \"Решение\"</span></p></body></html>");
+}
+
+void MainWindow::checkBoxChanged(int pos, int arg1)
+{
+    QSqlQuery updCheck(db);
+    updCheck.exec("UPDATE Actions SET `check` =" + QVariant(arg1).toString() + " WHERE Actions.act_pos = " + QVariant(pos).toString() + " AND Actions.id_ord = " + id);
+}
+
+void MainWindow::actWorkEditClicked(int pos)
+{
+    QSqlQuery selWorkAct(db);
+    selWorkAct.exec("SELECT `text`, date_beg, date_fin, id FROM Actions WHERE id_ord = " + QVariant(id).toString() + " AND act_pos = " + QVariant(pos).toString());
+    selWorkAct.first();
+
+    curPosAct = selWorkAct.value(3).toUInt();
+
+    on_pushButton_7_clicked();
+
+    ui->pushButton_act_save->show();
+    ui->pushButton_act_add->hide();
+
+    ui->textEdit_set_work_txt->setText(selWorkAct.value(0).toString());
+    ui->lineEdit_set_beg_date_work->setText(QDateTime::fromString(selWorkAct.value(1).toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+    ui->lineEdit_set_fin_date_work->setText(QDateTime::fromString(selWorkAct.value(2).toString(), "yyyy-MM-ddTHH:mm:ss.zzz").toString("yyyy.MM.dd HH:mm:ss"));
+
+}
+
+void MainWindow::on_pushButton_act_save_clicked()
+{
+    QSqlQuery updWorkAct(db);
+    updWorkAct.prepare("UPDATE Actions SET `text` =:1, date_beg =:2, date_fin =:3 WHERE id = " + QVariant(curPosAct).toString());
+    updWorkAct.bindValue(":1", ui->textEdit_set_work_txt->toPlainText());
+    updWorkAct.bindValue(":2", ui->lineEdit_set_beg_date_work->text());
+    updWorkAct.bindValue(":3", ui->lineEdit_set_fin_date_work->text());
+    updWorkAct.exec();
+
+    on_pushButton_act_return_clicked();
+    reprintActs();
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QMessageBox *msgBox;
+    msgBox = new QMessageBox;
+
+    msgBox->warning(this, "Недоступно", "Данная функция не реализована на текущем этапе.\n\nОжидайте в следующих версиях продукта.");
 }
