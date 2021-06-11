@@ -13,7 +13,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     ui->groupBox_2->hide();
 
-    mLogo.setFileName("E:/Ilya/Desktop/Desktop/GitHub_projects/FQW_programm/QtTry4/img/OsobaLogo.gif");
+    mLogo.setFileName("E:/Ilya/Desktop/Osoba_LOGO/OsobaLogo.gif");
     mLogo.setSpeed(100);
     mLogo.setScaledSize(QSize(150,98));
     ui->label_mLogo->setMovie(&mLogo);

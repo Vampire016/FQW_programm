@@ -154,7 +154,6 @@ release/qrc_resourses.cpp: ../QtTry4/resourses.qrc \
 		D:/Programs/QT_3/5.15.2/mingw81_32/bin/rcc.exe \
 		../QtTry4/img/calendar.png \
 		../QtTry4/img/bubble.png \
-		../QtTry4/img/IT-Osoba_Logo_ico.ico \
 		../QtTry4/img/add_green.png \
 		../QtTry4/img/warning.png \
 		../QtTry4/img/clip.png \

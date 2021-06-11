@@ -1123,7 +1123,7 @@ void MainWindow::UpdateDB()
 "ABS(SUM(Status.SName = 'Ожидающие')) AS cAwaits "
 "FROM Orders INNER JOIN Status ON Orders.Status = Status.id;");
 
-    qmodel_c1_1->setQuery("SELECT ABS(SUM(`Work`.DateDecision < '" + str + "' AND Orders.`Status` <> 'Закрыто')) FROM `Work` INNER JOIN (Orders INNER JOIN `Status` ON Orders.`Status` = `Status`.id) ON `Work`.id = Orders.id;");
+    qmodel_c1_1->setQuery("SELECT COUNT(`Work`.DateDecision < '" + str + "' ) FROM `Work` INNER JOIN (Orders INNER JOIN `Status` ON Orders.`Status` = `Status`.id) ON `Work`.id = Orders.id WHERE Orders.`Status` <> '6';");
 
     qmodel_c1->query().first();
     qmodel_c1_1->query().first();
@@ -2155,6 +2155,10 @@ void MainWindow::on_action_u_create_triggered()
     ui->lineEdit_u_email->clear();
     ui->textEdit_u_description->clear();
     ui->comboBox_u_active->setCurrentIndex(0);
+
+    for (int i = 0; i< 6; i++) {
+        lableList2.at(i)->setStyleSheet("background-color: rgb(181, 181, 181);");}
+
 }
 
 void MainWindow::on_pushButton_u_add_clicked()
@@ -2346,7 +2350,7 @@ void MainWindow::on_pushButton_u_del_clicked()
 void MainWindow::on_pushButton_u_save_clicked()
 {
     if(ui->lineEdit_u_login->text() != "" && ui->lineEdit_u_name->text() != "" && ui->lineEdit_u_secName->text() != "" && ui->lineEdit_u_password->text() != "" &&
-       ui->lineEdit_u_pass_valid->text() != "" && ui->lineEdit_u_phone->text().length() == 18){
+       ui->lineEdit_u_phone->text().length() == 18){
 
         QMessageBox::StandardButton create;
         create = QMessageBox::question(this, "Редактирование пользователя", "Вы действительно хотите внести изменения в профиль пользователя?", QMessageBox::Yes|QMessageBox::No);
